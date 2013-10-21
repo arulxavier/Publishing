@@ -1,6 +1,7 @@
 package com.fixent.publish.server.model;
 
 import java.util.Date;
+import java.util.Set;
 
 public class SubscribeInfo {
 	
@@ -9,4 +10,5 @@ public class SubscribeInfo {
 	Subscriber subscriber;
 	Date startDate;
 	Date endDate;
+	Set<DeliverySchedule> deliverySchedules;
 }
