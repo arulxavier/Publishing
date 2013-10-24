@@ -6,10 +6,11 @@ import java.util.Set;
 public class SubscribeInfo {
 	
 	int id;
-	Book book;
-	Subscriber subscriber;
+	int noOfYear;
 	Date startDate;
 	Date endDate;
+	Book book;
+	Subscriber subscriber;
 	Set<DeliverySchedule> deliverySchedules;
 	
 	public int getId() {
@@ -47,6 +48,12 @@ public class SubscribeInfo {
 	}
 	public void setDeliverySchedules(Set<DeliverySchedule> deliverySchedules) {
 		this.deliverySchedules = deliverySchedules;
+	}
+	public int getNoOfYear() {
+		return noOfYear;
+	}
+	public void setNoOfYear(int noOfYear) {
+		this.noOfYear = noOfYear;
 	}
 	
 	

@@ -8,12 +8,12 @@ package com.fixent.publish.client.subscribe.view;
  *
  * @author Mathan
  */
-public class SubscribeDashoardView extends javax.swing.JPanel {
+public class SubscriberDashboardView extends javax.swing.JPanel {
 
     /**
      * Creates new form SubscribeDashoardView
      */
-    public SubscribeDashoardView() {
+    public SubscriberDashboardView() {
         initComponents();
     }
 
@@ -27,11 +27,11 @@ public class SubscribeDashoardView extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        subscriberIdTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        subscriberNameTextField = new javax.swing.JTextField();
+        addButton = new javax.swing.JButton();
+        searchButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -39,18 +39,18 @@ public class SubscribeDashoardView extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("Subscriber ID");
 
-        jTextField1.setColumns(15);
+        subscriberIdTextField.setColumns(15);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setText("Subscriber Name");
 
-        jTextField2.setColumns(15);
+        subscriberNameTextField.setColumns(15);
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton1.setText("Add");
+        addButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        addButton.setText("Add");
 
-        jButton2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton2.setText("Search");
+        searchButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        searchButton.setText("Search");
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel3.setText("Subscriber Dashboard");
@@ -69,17 +69,17 @@ public class SubscribeDashoardView extends javax.swing.JPanel {
                             .addGap(184, 184, 184)
                             .addComponent(jLabel1)
                             .addGap(53, 53, 53)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(subscriberIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(50, 50, 50)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(subscriberNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,26 +89,26 @@ public class SubscribeDashoardView extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                    .addComponent(subscriberIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                     .addComponent(jLabel1))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(subscriberNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addComponent(jLabel2))
                 .addGap(30, 30, 30)
-                .addComponent(jButton2)
+                .addComponent(searchButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(addButton)
                 .addGap(238, 238, 238))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton addButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField subscriberIdTextField;
+    private javax.swing.JTextField subscriberNameTextField;
     // End of variables declaration//GEN-END:variables
 }
