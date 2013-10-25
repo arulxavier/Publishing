@@ -29,8 +29,8 @@ extends JPanel {
 		
 		Menu menu = new Menu();
 		
-		LeftPanel leftPanel = new LeftPanel();
-		add(leftPanel, BorderLayout.WEST);
+		LeftPanelController leftPanelController = new LeftPanelController();
+		add(leftPanelController.leftPanel, BorderLayout.WEST);
 		add(new HeaderPanel(), BorderLayout.NORTH);
 		
 		JScrollPane scrollPane = new JScrollPane();

@@ -5,7 +5,7 @@ import com.fixent.publish.server.model.Frequency;
 
 public class TestBookServiceImpl {
 	
-	void createBook() {
+	static void createBook() {
 		
 		Book book = new Book();
 		book.setName("Sample Book");
@@ -13,6 +13,11 @@ public class TestBookServiceImpl {
 		
 		BookServiceImpl bookServiceImpl = new BookServiceImpl();
 		bookServiceImpl.createBook(book);
+	}
+	
+	public static void main(String[] args) {
+		
+		createBook();
 	}
 
 }

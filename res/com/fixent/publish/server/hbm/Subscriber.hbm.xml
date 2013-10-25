@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.fixent.publish.server.model.Subscriber" table="SUBSCRIBER">
+		<id name="id" type="int">
+			<column name="ID" precision="5" scale="0" />
+			<generator class="assigned" />
+		</id>
+
+		<property name="name" type="string">
+			<column name="NAME" length="20" not-null="true" />
+		</property>
+		<property name="mobileNumber" type="string">
+			<column name="MOBILE_NUMBER" length="20" not-null="true" />
+		</property>
+		
+		<property name="street" type="string">
+			<column name="STREET" not-null="true" />
+		</property>
+		<property name="city" type="string">
+			<column name="CITY" not-null="true" />
+		</property>
+		<property name="state" type="string">
+			<column name="STATE" not-null="true" />
+		</property>
+		<property name="country" type="string">
+			<column name="COUNTRY" not-null="true" />
+		</property>
+		<property name="pincode" type="int">
+			<column name="PINCODE" not-null="true" />
+		</property>
+		
+		 <set name="subscribeInfos" table="SUBSCRIBE_INFO" 
+				inverse="true" lazy="true" fetch="select"  cascade="all">
+            <key>
+                <column name="SUBSCRIBER_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.fixent.publish.server.model.SubscribeInfo"/>
+        </set>
+		
+	</class>
+</hibernate-mapping>

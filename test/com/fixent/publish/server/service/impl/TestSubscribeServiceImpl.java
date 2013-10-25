@@ -1,23 +1,47 @@
 package com.fixent.publish.server.service.impl;
 
-import com.fixent.publish.server.model.Address;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.fixent.publish.server.model.Book;
+import com.fixent.publish.server.model.SubscribeInfo;
 import com.fixent.publish.server.model.Subscriber;
 
 public class TestSubscribeServiceImpl {
 	
-	void createSubscribe() {
+	static void createSubscribe() {
 		
 		Subscriber subscriber = new Subscriber();
 		
+//		subscriber.setId(1);
 		subscriber.setName("Name");
 		subscriber.setMobileNumber("4561237890");
 		
-		Address address = new Address();
-		address.setStreet("Street");
-		address.setCity("City");
-		address.setState("State");
-		address.setCountry("Country");
-		subscriber.setAddress(address);
+		subscriber.setStreet("Street");
+		subscriber.setCity("City");
+		subscriber.setState("State");
+		subscriber.setCountry("Country");
+		
+		Set<SubscribeInfo> subscribeInfos = new HashSet<SubscribeInfo>();
+		SubscribeInfo subscribeInfo = new SubscribeInfo();
+		subscribeInfo.setNoOfYear(1);
+		subscribeInfo.setStartDate(new Date());
+		subscribeInfo.setEndDate(new Date());
+		Book book = new Book();
+		book.setId(0);
+		subscribeInfo.setBook(book);
+		subscribeInfos.add(subscribeInfo);
+		subscribeInfo.setSubscriber(subscriber);
+		
+		subscriber.setSubscribeInfos(subscribeInfos);
+		
+		SubscribeServiceImpl impl = new SubscribeServiceImpl();
+		impl.createSubscriber(subscriber);
+	}
+	
+	public static void main(String[] args) {
+		createSubscribe();
 	}
 
 }

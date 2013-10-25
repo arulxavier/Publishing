@@ -2,6 +2,9 @@ package com.fixent.publish.server.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 import com.fixent.publish.server.common.BaseDAO;
 import com.fixent.publish.server.model.Book;
 
@@ -9,7 +12,11 @@ public class BookDAO
 extends BaseDAO {
 
 	public boolean createBook(Book book) {
-		// TODO Auto-generated method stub
+		
+		Session session = getSession();
+		session.beginTransaction();
+		session.save(book);
+		session.getTransaction().commit();
 		return false;
 	}
 
@@ -34,8 +41,10 @@ extends BaseDAO {
 	}
 
 	public List<Book> getBooks() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session session = getSession();
+		Criteria criteria = session.createCriteria(Book.class);
+		return criteria.list();
 	}
 
 }

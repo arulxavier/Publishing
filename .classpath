@@ -2,6 +2,33 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/antlr-2.7.6.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/commons-cli-1.0.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/commons-collections-3.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/commons-lang-2.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/commons-lang3-3.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/dom4j-1.6.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/hibernate-commons-annotations-3.2.0.Final.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/hibernate-core-3.6.3.Final.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/javassist-3.12.1.GA.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/jta-1.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/junit-3.8.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/junit-4.8.2.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/mysql-connector-java-5.1.25-bin.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/mysql-connector-java-5.1.9.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-archiver-2.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-build-api-0.0.4.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-compiler-api-1.9.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-compiler-javac-1.9.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-compiler-manager-1.9.1.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-digest-1.0.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-interactivity-api-1.0-alpha-4.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-interpolation-1.13.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-interpolation-1.15.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-io-2.0.2.jar"/>
+	<classpathentry kind="var" path="3RD_PARTY_JARS/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

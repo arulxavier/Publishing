@@ -2,6 +2,8 @@ package com.fixent.publish.server.dao;
 
 import java.util.List;
 
+import org.hibernate.Session;
+
 import com.fixent.publish.server.common.BaseDAO;
 import com.fixent.publish.server.model.Subscriber;
 
@@ -9,8 +11,12 @@ public class SubscriberDAO
 extends BaseDAO {
 
 	public boolean createSubscriber(Subscriber subscriber) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		Session session = getSession();
+		session.beginTransaction();
+		session.save(subscriber);
+		session.getTransaction().commit();
+		return true;
 	}
 
 	public boolean modifySubscriber(Subscriber subscriber) {
