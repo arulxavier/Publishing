@@ -11,6 +11,15 @@
 		<property name="name" type="string">
 			<column name="NAME" length="20" not-null="true" />
 		</property>
+		
+		<property name="author" type="string">
+			<column name="AUTHOR" length="20" not-null="true" />
+		</property>
+		
+		<property name="publishingDate" type="date">
+			<column name="PUBLISHING_DATE" length="20" not-null="true" />
+		</property>
+		
 		<property name="frequency" type="string">
 			<column name="FREQUENCY" length="20" not-null="true" />
 		</property>

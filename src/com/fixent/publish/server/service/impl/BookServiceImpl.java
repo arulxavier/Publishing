@@ -16,6 +16,8 @@ implements BookService {
 		try {
 			
 			BookDAO dao = new BookDAO();
+			int id = dao.getMaxId();
+			book.setId(id+1);
 			status = dao.createBook(book);
 			
 		} catch (Exception e) {

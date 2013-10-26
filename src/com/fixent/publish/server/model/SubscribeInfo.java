@@ -7,8 +7,8 @@ public class SubscribeInfo {
 	
 	int id;
 	int noOfYear;
-	Date startDate;
-	Date endDate;
+	Date subscribeDate;
+	Date expiredDate;
 	Book book;
 	Subscriber subscriber;
 	Set<DeliverySchedule> deliverySchedules;
@@ -31,18 +31,7 @@ public class SubscribeInfo {
 	public void setSubscriber(Subscriber subscriber) {
 		this.subscriber = subscriber;
 	}
-	public Date getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-	public Date getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+	
 	public Set<DeliverySchedule> getDeliverySchedules() {
 		return deliverySchedules;
 	}
@@ -54,6 +43,18 @@ public class SubscribeInfo {
 	}
 	public void setNoOfYear(int noOfYear) {
 		this.noOfYear = noOfYear;
+	}
+	public Date getSubscribeDate() {
+		return subscribeDate;
+	}
+	public void setSubscribeDate(Date subscribeDate) {
+		this.subscribeDate = subscribeDate;
+	}
+	public Date getExpiredDate() {
+		return expiredDate;
+	}
+	public void setExpiredDate(Date expiredDate) {
+		this.expiredDate = expiredDate;
 	}
 	
 	

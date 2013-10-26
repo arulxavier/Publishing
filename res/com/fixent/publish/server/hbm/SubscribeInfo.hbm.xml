@@ -11,15 +11,15 @@
 		<property name="noOfYear" type="int">
 			<column name="NO_OF_YEAR" length="20" not-null="true" />
 		</property>
-		<property name="startDate" type="date">
+		<property name="subscribeDate" type="date">
 			<column name="START_DATE" length="20" not-null="true" />
 		</property>		
-		<property name="endDate" type="date">
+		<property name="expiredDate" type="date">
 			<column name="END_DATE" not-null="true" />
 		</property>
 		
 		<many-to-one name="book" class="com.fixent.publish.server.model.Book" column="BOOK_ID" not-null="true" />
-		<many-to-one name="subscriber" class="com.fixent.publish.server.model.Subscriber" column="SUBSCRIBER_ID" not-null="true" />
+		<many-to-one name="subscriber" class="com.fixent.publish.server.model.Subscriber" column="SUBSCRIBER_ID"/>
 		
 	</class>
 </hibernate-mapping>

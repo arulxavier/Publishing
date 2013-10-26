@@ -111,4 +111,62 @@ public class SubscriberDashboardView extends javax.swing.JPanel {
     private javax.swing.JTextField subscriberIdTextField;
     private javax.swing.JTextField subscriberNameTextField;
     // End of variables declaration//GEN-END:variables
+	public javax.swing.JButton getAddButton() {
+		return addButton;
+	}
+
+	public void setAddButton(javax.swing.JButton addButton) {
+		this.addButton = addButton;
+	}
+
+	public javax.swing.JLabel getjLabel1() {
+		return jLabel1;
+	}
+
+	public void setjLabel1(javax.swing.JLabel jLabel1) {
+		this.jLabel1 = jLabel1;
+	}
+
+	public javax.swing.JLabel getjLabel2() {
+		return jLabel2;
+	}
+
+	public void setjLabel2(javax.swing.JLabel jLabel2) {
+		this.jLabel2 = jLabel2;
+	}
+
+	public javax.swing.JLabel getjLabel3() {
+		return jLabel3;
+	}
+
+	public void setjLabel3(javax.swing.JLabel jLabel3) {
+		this.jLabel3 = jLabel3;
+	}
+
+	public javax.swing.JButton getSearchButton() {
+		return searchButton;
+	}
+
+	public void setSearchButton(javax.swing.JButton searchButton) {
+		this.searchButton = searchButton;
+	}
+
+	public javax.swing.JTextField getSubscriberIdTextField() {
+		return subscriberIdTextField;
+	}
+
+	public void setSubscriberIdTextField(
+			javax.swing.JTextField subscriberIdTextField) {
+		this.subscriberIdTextField = subscriberIdTextField;
+	}
+
+	public javax.swing.JTextField getSubscriberNameTextField() {
+		return subscriberNameTextField;
+	}
+
+	public void setSubscriberNameTextField(
+			javax.swing.JTextField subscriberNameTextField) {
+		this.subscriberNameTextField = subscriberNameTextField;
+	}
+    
 }

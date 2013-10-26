@@ -27,15 +27,15 @@ public class BookView extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bookListTable = new javax.swing.JTable();
+        addButton = new javax.swing.JButton();
+        viewButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        bookListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -54,16 +54,16 @@ public class BookView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(bookListTable);
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton1.setText("Add");
+        addButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        addButton.setText("Add");
 
-        jButton2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton2.setText("View");
+        viewButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        viewButton.setText("View");
 
-        jButton3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton3.setText("Delete");
+        deleteButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        deleteButton.setText("Delete");
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Book List View");
@@ -79,9 +79,9 @@ public class BookView extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(viewButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,20 +92,70 @@ public class BookView extends javax.swing.JPanel {
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(addButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(viewButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(deleteButton)
                 .addContainerGap(87, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton addButton;
+    private javax.swing.JTable bookListTable;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
+	public javax.swing.JButton getAddButton() {
+		return addButton;
+	}
+
+	public void setAddButton(javax.swing.JButton addButton) {
+		this.addButton = addButton;
+	}
+
+	public javax.swing.JTable getBookListTable() {
+		return bookListTable;
+	}
+
+	public void setBookListTable(javax.swing.JTable bookListTable) {
+		this.bookListTable = bookListTable;
+	}
+
+	public javax.swing.JButton getDeleteButton() {
+		return deleteButton;
+	}
+
+	public void setDeleteButton(javax.swing.JButton deleteButton) {
+		this.deleteButton = deleteButton;
+	}
+
+	public javax.swing.JLabel getjLabel1() {
+		return jLabel1;
+	}
+
+	public void setjLabel1(javax.swing.JLabel jLabel1) {
+		this.jLabel1 = jLabel1;
+	}
+
+	public javax.swing.JScrollPane getjScrollPane1() {
+		return jScrollPane1;
+	}
+
+	public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+		this.jScrollPane1 = jScrollPane1;
+	}
+
+	public javax.swing.JButton getViewButton() {
+		return viewButton;
+	}
+
+	public void setViewButton(javax.swing.JButton viewButton) {
+		this.viewButton = viewButton;
+	}
+
+    
+    
 }

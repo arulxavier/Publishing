@@ -5,7 +5,7 @@
 	<class name="com.fixent.publish.server.model.Subscriber" table="SUBSCRIBER">
 		<id name="id" type="int">
 			<column name="ID" precision="5" scale="0" />
-			<generator class="assigned" />
+			<generator class="increment" />
 		</id>
 
 		<property name="name" type="string">
@@ -32,7 +32,7 @@
 		</property>
 		
 		 <set name="subscribeInfos" table="SUBSCRIBE_INFO" 
-				inverse="true" lazy="true" fetch="select"  cascade="all">
+				inverse="false" lazy="true" fetch="select"  cascade="all">
             <key>
                 <column name="SUBSCRIBER_ID" not-null="true" />
             </key>

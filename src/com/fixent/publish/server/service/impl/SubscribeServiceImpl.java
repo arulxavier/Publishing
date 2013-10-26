@@ -17,6 +17,8 @@ implements SubscribeService {
 		try {
 			
 			SubscriberDAO dao = new SubscriberDAO();
+			int id = dao.getMaxId();
+			subscriber.setId(id+1);
 			status = dao.createSubscriber(subscriber);
 			
 		} catch (Exception e) {

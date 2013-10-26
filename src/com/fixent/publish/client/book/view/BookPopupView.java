@@ -28,16 +28,17 @@ public class BookPopupView extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        bookIdTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        bookNmaeTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        frequencyComboBox = new javax.swing.JComboBox();
+        saveButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        authorTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        publishingDatePicker = new com.fixent.scm.client.component.ADatePicker();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -47,21 +48,21 @@ public class BookPopupView extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setText("Book ID");
 
-        jTextField1.setColumns(15);
+        bookIdTextField.setColumns(15);
 
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel3.setText("Book Name");
 
-        jTextField2.setColumns(15);
+        bookNmaeTextField.setColumns(15);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel4.setText("Frequency");
 
-        jComboBox1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select One", "Monthly", "Quartally", "Semi Annual", "Annual" }));
+        frequencyComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        frequencyComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select One", "Monthly", "Quartally", "Semi Annual", "Annual" }));
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton1.setText("Save");
+        saveButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        saveButton.setText("Save");
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel5.setText("Author");
@@ -69,8 +70,8 @@ public class BookPopupView extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel6.setText("Publishing Date");
 
-        jButton2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jButton2.setText("Cancel");
+        cancelButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cancelButton.setText("Cancel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -92,13 +93,14 @@ public class BookPopupView extends javax.swing.JPanel {
                                     .addComponent(jLabel5))
                                 .addGap(61, 61, 61)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(bookNmaeTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bookIdTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(authorTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(frequencyComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(publishingDatePicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(saveButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cancelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,41 +111,153 @@ public class BookPopupView extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1))
+                    .addComponent(bookIdTextField))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2))
+                    .addComponent(bookNmaeTextField))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3))
+                    .addComponent(authorTextField))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(frequencyComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addComponent(saveButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelButton)
+                        .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(publishingDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JTextField authorTextField;
+    private javax.swing.JTextField bookIdTextField;
+    private javax.swing.JTextField bookNmaeTextField;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JComboBox frequencyComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private com.fixent.scm.client.component.ADatePicker publishingDatePicker;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
+	public javax.swing.JTextField getAuthorTextField() {
+		return authorTextField;
+	}
+
+	public void setAuthorTextField(javax.swing.JTextField authorTextField) {
+		this.authorTextField = authorTextField;
+	}
+
+	public javax.swing.JTextField getBookIdTextField() {
+		return bookIdTextField;
+	}
+
+	public void setBookIdTextField(javax.swing.JTextField bookIdTextField) {
+		this.bookIdTextField = bookIdTextField;
+	}
+
+	public javax.swing.JTextField getBookNmaeTextField() {
+		return bookNmaeTextField;
+	}
+
+	public void setBookNmaeTextField(javax.swing.JTextField bookNmaeTextField) {
+		this.bookNmaeTextField = bookNmaeTextField;
+	}
+
+	public javax.swing.JButton getCancelButton() {
+		return cancelButton;
+	}
+
+	public void setCancelButton(javax.swing.JButton cancelButton) {
+		this.cancelButton = cancelButton;
+	}
+
+	public javax.swing.JComboBox getFrequencyComboBox() {
+		return frequencyComboBox;
+	}
+
+	public void setFrequencyComboBox(javax.swing.JComboBox frequencyComboBox) {
+		this.frequencyComboBox = frequencyComboBox;
+	}
+
+	public javax.swing.JLabel getjLabel1() {
+		return jLabel1;
+	}
+
+	public void setjLabel1(javax.swing.JLabel jLabel1) {
+		this.jLabel1 = jLabel1;
+	}
+
+	public javax.swing.JLabel getjLabel2() {
+		return jLabel2;
+	}
+
+	public void setjLabel2(javax.swing.JLabel jLabel2) {
+		this.jLabel2 = jLabel2;
+	}
+
+	public javax.swing.JLabel getjLabel3() {
+		return jLabel3;
+	}
+
+	public void setjLabel3(javax.swing.JLabel jLabel3) {
+		this.jLabel3 = jLabel3;
+	}
+
+	public javax.swing.JLabel getjLabel4() {
+		return jLabel4;
+	}
+
+	public void setjLabel4(javax.swing.JLabel jLabel4) {
+		this.jLabel4 = jLabel4;
+	}
+
+	public javax.swing.JLabel getjLabel5() {
+		return jLabel5;
+	}
+
+	public void setjLabel5(javax.swing.JLabel jLabel5) {
+		this.jLabel5 = jLabel5;
+	}
+
+	public javax.swing.JLabel getjLabel6() {
+		return jLabel6;
+	}
+
+	public void setjLabel6(javax.swing.JLabel jLabel6) {
+		this.jLabel6 = jLabel6;
+	}
+
+	public com.fixent.scm.client.component.ADatePicker getPublishingDatePicker() {
+		return publishingDatePicker;
+	}
+
+	public void setPublishingDatePicker(
+			com.fixent.scm.client.component.ADatePicker publishingDatePicker) {
+		this.publishingDatePicker = publishingDatePicker;
+	}
+
+	public javax.swing.JButton getSaveButton() {
+		return saveButton;
+	}
+
+	public void setSaveButton(javax.swing.JButton saveButton) {
+		this.saveButton = saveButton;
+	}
+    
+    
 }

@@ -9,6 +9,8 @@ public class SubscriberListController {
 	public SubscriberListController() {
 		
 		view = new SubscriberListView();
+		
+		
 	}
 
 }

@@ -1,10 +1,15 @@
 package com.fixent.publish.server.model;
 
+import java.util.Date;
+
 public class Book {
 	
 	int id;
 	String name;
+	String author;	
+	Date publishingDate;
 	String frequency;
+	
 	public int getId() {
 		return id;
 	}
@@ -22,6 +27,18 @@ public class Book {
 	}
 	public void setFrequency(String frequency) {
 		this.frequency = frequency;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public Date getPublishingDate() {
+		return publishingDate;
+	}
+	public void setPublishingDate(Date publishingDate) {
+		this.publishingDate = publishingDate;
 	}
 	
 	

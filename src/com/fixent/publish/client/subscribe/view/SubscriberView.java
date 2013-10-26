@@ -48,6 +48,8 @@ public class SubscriberView extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         subscribeInfoTable = new javax.swing.JTable();
         saveButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -110,11 +112,25 @@ public class SubscriberView extends javax.swing.JPanel {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(subscribeInfoTable);
 
         saveButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         saveButton.setText("Save");
+
+        addButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        addButton.setText("Add");
+
+        deleteButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        deleteButton.setText("Delete");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -175,7 +191,10 @@ public class SubscriberView extends javax.swing.JPanel {
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(saveButton)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(addButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGap(50, 50, 50))))
         );
         layout.setVerticalGroup(
@@ -220,14 +239,20 @@ public class SubscriberView extends javax.swing.JPanel {
                 .addComponent(jLabel11)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
+                .addComponent(addButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deleteButton)
+                .addGap(87, 87, 87)
                 .addComponent(saveButton)
-                .addGap(10, 10, 10))
+                .addGap(27, 27, 27))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addButton;
     private javax.swing.JTextField cityTextField;
     private javax.swing.JTextField countryTextField;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -249,4 +274,201 @@ public class SubscriberView extends javax.swing.JPanel {
     private javax.swing.JTextField subscriberIdTextField;
     private javax.swing.JTextField subscriberNameTextField;
     // End of variables declaration//GEN-END:variables
+	public javax.swing.JTextField getCityTextField() {
+		return cityTextField;
+	}
+
+	public void setCityTextField(javax.swing.JTextField cityTextField) {
+		this.cityTextField = cityTextField;
+	}
+
+	public javax.swing.JTextField getCountryTextField() {
+		return countryTextField;
+	}
+
+	public void setCountryTextField(javax.swing.JTextField countryTextField) {
+		this.countryTextField = countryTextField;
+	}
+
+	public javax.swing.JLabel getjLabel1() {
+		return jLabel1;
+	}
+
+	public void setjLabel1(javax.swing.JLabel jLabel1) {
+		this.jLabel1 = jLabel1;
+	}
+
+	public javax.swing.JLabel getjLabel10() {
+		return jLabel10;
+	}
+
+	public void setjLabel10(javax.swing.JLabel jLabel10) {
+		this.jLabel10 = jLabel10;
+	}
+
+	public javax.swing.JLabel getjLabel11() {
+		return jLabel11;
+	}
+
+	public void setjLabel11(javax.swing.JLabel jLabel11) {
+		this.jLabel11 = jLabel11;
+	}
+
+	public javax.swing.JLabel getjLabel2() {
+		return jLabel2;
+	}
+
+	public void setjLabel2(javax.swing.JLabel jLabel2) {
+		this.jLabel2 = jLabel2;
+	}
+
+	public javax.swing.JLabel getjLabel3() {
+		return jLabel3;
+	}
+
+	public void setjLabel3(javax.swing.JLabel jLabel3) {
+		this.jLabel3 = jLabel3;
+	}
+
+	public javax.swing.JLabel getjLabel4() {
+		return jLabel4;
+	}
+
+	public void setjLabel4(javax.swing.JLabel jLabel4) {
+		this.jLabel4 = jLabel4;
+	}
+
+	public javax.swing.JLabel getjLabel5() {
+		return jLabel5;
+	}
+
+	public void setjLabel5(javax.swing.JLabel jLabel5) {
+		this.jLabel5 = jLabel5;
+	}
+
+	public javax.swing.JLabel getjLabel6() {
+		return jLabel6;
+	}
+
+	public void setjLabel6(javax.swing.JLabel jLabel6) {
+		this.jLabel6 = jLabel6;
+	}
+
+	public javax.swing.JLabel getjLabel7() {
+		return jLabel7;
+	}
+
+	public void setjLabel7(javax.swing.JLabel jLabel7) {
+		this.jLabel7 = jLabel7;
+	}
+
+	public javax.swing.JLabel getjLabel8() {
+		return jLabel8;
+	}
+
+	public void setjLabel8(javax.swing.JLabel jLabel8) {
+		this.jLabel8 = jLabel8;
+	}
+
+	public javax.swing.JLabel getjLabel9() {
+		return jLabel9;
+	}
+
+	public void setjLabel9(javax.swing.JLabel jLabel9) {
+		this.jLabel9 = jLabel9;
+	}
+
+	public javax.swing.JScrollPane getjScrollPane1() {
+		return jScrollPane1;
+	}
+
+	public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+		this.jScrollPane1 = jScrollPane1;
+	}
+
+	public javax.swing.JTextField getMobileNumberTextField() {
+		return mobileNumberTextField;
+	}
+
+	public void setMobileNumberTextField(
+			javax.swing.JTextField mobileNumberTextField) {
+		this.mobileNumberTextField = mobileNumberTextField;
+	}
+
+	public javax.swing.JTextField getPincodeTextField() {
+		return pincodeTextField;
+	}
+
+	public void setPincodeTextField(javax.swing.JTextField pincodeTextField) {
+		this.pincodeTextField = pincodeTextField;
+	}
+
+	public javax.swing.JButton getSaveButton() {
+		return saveButton;
+	}
+
+	public void setSaveButton(javax.swing.JButton saveButton) {
+		this.saveButton = saveButton;
+	}
+
+	public javax.swing.JTextField getStateTextField() {
+		return stateTextField;
+	}
+
+	public void setStateTextField(javax.swing.JTextField stateTextField) {
+		this.stateTextField = stateTextField;
+	}
+
+	public javax.swing.JTextField getStreetTextField() {
+		return streetTextField;
+	}
+
+	public void setStreetTextField(javax.swing.JTextField streetTextField) {
+		this.streetTextField = streetTextField;
+	}
+
+	public javax.swing.JTable getSubscribeInfoTable() {
+		return subscribeInfoTable;
+	}
+
+	public void setSubscribeInfoTable(javax.swing.JTable subscribeInfoTable) {
+		this.subscribeInfoTable = subscribeInfoTable;
+	}
+
+	public javax.swing.JTextField getSubscriberIdTextField() {
+		return subscriberIdTextField;
+	}
+
+	public void setSubscriberIdTextField(
+			javax.swing.JTextField subscriberIdTextField) {
+		this.subscriberIdTextField = subscriberIdTextField;
+	}
+
+	public javax.swing.JTextField getSubscriberNameTextField() {
+		return subscriberNameTextField;
+	}
+
+	public void setSubscriberNameTextField(
+			javax.swing.JTextField subscriberNameTextField) {
+		this.subscriberNameTextField = subscriberNameTextField;
+	}
+
+	public javax.swing.JButton getAddButton() {
+		return addButton;
+	}
+
+	public void setAddButton(javax.swing.JButton addButton) {
+		this.addButton = addButton;
+	}
+
+	public javax.swing.JButton getDeleteButton() {
+		return deleteButton;
+	}
+
+	public void setDeleteButton(javax.swing.JButton deleteButton) {
+		this.deleteButton = deleteButton;
+	}
+    
+    
+    
 }

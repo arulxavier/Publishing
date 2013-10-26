@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
+import com.fixent.publish.client.book.controller.BookController;
 import com.fixent.publish.client.subscribe.controller.SubscriberDashboardController;
 
 public class LeftPanelController {
@@ -27,38 +28,7 @@ public class LeftPanelController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
-			System.out.println(leftPanel.getParent());
-
-			for (Component component2 : leftPanel.getParent()
-					.getComponents()) {
-
-				if (component2 instanceof JScrollPane) {
-
-					for (Component component : ((JScrollPane) component2)
-							.getComponents()) {
-
-						if (component instanceof JViewport) {
-
-							RightPanel rightSidePanel = (RightPanel) ((JViewport) component)
-									.getComponents()[0];
-							rightSidePanel.removeAll();
-							if (((JButton)e.getSource()).getText().equalsIgnoreCase(
-									"Book")) {
-
-								rightSidePanel
-										.add(new SubscriberDashboardController().view,
-												BorderLayout.CENTER);
-							}
-							rightSidePanel.repaint();
-							rightSidePanel.revalidate();
-							rightSidePanel.setVisible(true);
-						}
-					}
-
-				}
-			}
-
+			navigateAction(e);
 		}
 
 	}
@@ -67,11 +37,53 @@ public class LeftPanelController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
-			System.out.println(leftPanel.getParent());
-
+			navigateAction(e);
 		}
 
+	}
+	
+	void navigateAction(ActionEvent e) {
+		
+
+
+		System.out.println(leftPanel.getParent());
+
+		for (Component component2 : leftPanel.getParent()
+				.getComponents()) {
+
+			if (component2 instanceof JScrollPane) {
+
+				for (Component component : ((JScrollPane) component2)
+						.getComponents()) {
+
+					if (component instanceof JViewport) {
+
+						RightPanel rightSidePanel = (RightPanel) ((JViewport) component)
+								.getComponents()[0];
+						rightSidePanel.removeAll();
+						if (((JButton)e.getSource()).getText().equalsIgnoreCase(
+								"Book")) {
+
+							rightSidePanel
+									.add(new BookController().view,
+											BorderLayout.CENTER);
+						} else if (((JButton)e.getSource()).getText().equalsIgnoreCase(
+								"Subscriber")) {
+
+							rightSidePanel
+									.add(new SubscriberDashboardController().view,
+											BorderLayout.CENTER);
+						}
+						rightSidePanel.repaint();
+						rightSidePanel.revalidate();
+						rightSidePanel.setVisible(true);
+					}
+				}
+
+			}
+		}
+
+	
 	}
 
 }

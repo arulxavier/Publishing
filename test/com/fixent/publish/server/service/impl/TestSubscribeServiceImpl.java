@@ -26,8 +26,8 @@ public class TestSubscribeServiceImpl {
 		Set<SubscribeInfo> subscribeInfos = new HashSet<SubscribeInfo>();
 		SubscribeInfo subscribeInfo = new SubscribeInfo();
 		subscribeInfo.setNoOfYear(1);
-		subscribeInfo.setStartDate(new Date());
-		subscribeInfo.setEndDate(new Date());
+		subscribeInfo.setSubscribeDate(new Date());
+		subscribeInfo.setExpiredDate(new Date());
 		Book book = new Book();
 		book.setId(0);
 		subscribeInfo.setBook(book);
