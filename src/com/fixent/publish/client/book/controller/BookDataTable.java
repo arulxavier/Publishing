@@ -1,3 +1,4 @@
+
 package com.fixent.publish.client.book.controller;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class BookDataTable extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		return books.size();
+		return books != null ? books.size():0;
 	}
 
 	@Override
@@ -37,6 +38,10 @@ public class BookDataTable extends AbstractTableModel {
 			return entity.getId();
 		case 1:
 			return entity.getName();
+		case 2:
+			return entity.getAuthor();
+		case 3:
+			return entity.getFrequency();
 		default:
 			return null;
 		}

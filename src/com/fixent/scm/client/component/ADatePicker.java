@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,6 +33,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -78,8 +80,14 @@ public class ADatePicker extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\dev\\ssm\\doc\\DateChooser_O.gif")); // NOI18N
+        Image img = null;
+        try {
+			
+        	img = ImageIO.read(getClass().getResource("DateChooser_O.gif"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        jLabel1.setIcon(new ImageIcon(img)); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -130,6 +138,31 @@ public class ADatePicker extends javax.swing.JPanel {
 	public void setjTextField1(JTextField1 jTextField1) {
 		this.jTextField1 = jTextField1;
 	}
+	
+	public void setEditable(boolean status) {
+		
+		jTextField1.setEditable(status);
+		jLabel1.setEnabled(status);
+	}
+	
+	public void setTextEditable(boolean status) {
+		
+		jTextField1.setEditable(status);
+	}
+
+	public javax.swing.JLabel getjLabel1() {
+		return jLabel1;
+	}
+
+	public void setjLabel1(javax.swing.JLabel jLabel1) {
+		this.jLabel1 = jLabel1;
+	}
+	
+	public JTextField getDateField(){
+		return this.jTextField1;
+	}
+	
+	
     
     
 }

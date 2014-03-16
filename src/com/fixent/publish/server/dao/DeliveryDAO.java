@@ -10,7 +10,6 @@ public class DeliveryDAO
 extends BaseDAO{
 
 	public List<DeliverySchedule> getDeliverySchedules(Date date) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

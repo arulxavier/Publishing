@@ -5,18 +5,18 @@ import java.util.Set;
 
 public class SubscribeInfo {
 	
-	int id;
-	int noOfYear;
+	Integer id;
+	Integer noOfYear;
 	Date subscribeDate;
 	Date expiredDate;
 	Book book;
 	Subscriber subscriber;
 	Set<DeliverySchedule> deliverySchedules;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public Book getBook() {
@@ -38,10 +38,10 @@ public class SubscribeInfo {
 	public void setDeliverySchedules(Set<DeliverySchedule> deliverySchedules) {
 		this.deliverySchedules = deliverySchedules;
 	}
-	public int getNoOfYear() {
+	public Integer getNoOfYear() {
 		return noOfYear;
 	}
-	public void setNoOfYear(int noOfYear) {
+	public void setNoOfYear(Integer noOfYear) {
 		this.noOfYear = noOfYear;
 	}
 	public Date getSubscribeDate() {

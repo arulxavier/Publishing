@@ -20,7 +20,7 @@ public class SubscribeInfoDataTable extends AbstractTableModel {
 	/**/
 	private static final long serialVersionUID = 1L;
 	List<SubscribeInfo> subscribeInfos;
-	String columnList[] = new String[] { "Book Name", "Subscribe Date", "No Of Year" };
+	String columnList[] = new String[] { "Book Name", "Subscribed Date", "Years" };
 
 	@Override
 	public int getColumnCount() {

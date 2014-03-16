@@ -1,5 +1,6 @@
 package com.fixent.publish.server.pdf;
 
+import java.io.File;
 import java.io.FileOutputStream;
 
 import com.itextpdf.text.Document;
@@ -13,7 +14,7 @@ public class PositionPdf {
   public static void main(String[] args) {
     try {
       Document document = new Document();
-      PdfWriter.getInstance(document, new FileOutputStream(FILE));
+      PdfWriter.getInstance(document, new FileOutputStream(new File("hello.pdf")));
       document.open();
       // Left
       Paragraph paragraph = new Paragraph("This is right aligned text");

@@ -14,6 +14,6 @@ public interface SubscribeService {
 	
 	Subscriber getSubscriber(String subscriberName);
 	
-	List<Subscriber> getSubscriber();
+	List<Subscriber> getSubscriber(Integer subscriberId, String subscriberName);
 
 }

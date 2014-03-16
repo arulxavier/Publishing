@@ -4,21 +4,21 @@ import java.util.Set;
 
 public class Subscriber {
 	
-	int id;
+	Integer id;
 	String name;
 	String mobileNumber;
 	String street;
 	String city;
 	String state;
 	String country;
-	int pincode;
+	Integer pincode;
 	
 	Set<SubscribeInfo> subscribeInfos;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -63,10 +63,10 @@ public class Subscriber {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public int getPincode() {
+	public Integer getPincode() {
 		return pincode;
 	}
-	public void setPincode(int pincode) {
+	public void setPincode(Integer pincode) {
 		this.pincode = pincode;
 	}
 	

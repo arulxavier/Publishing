@@ -30,5 +30,15 @@
 	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-interpolation-1.15.jar"/>
 	<classpathentry kind="var" path="3RD_PARTY_JARS/plexus-io-2.0.2.jar"/>
 	<classpathentry kind="var" path="3RD_PARTY_JARS/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itextpdf-5.4.4.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itextpdf-5.4.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itextpdf-5.4.4-sources.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itext-pdfa-5.4.4.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itext-pdfa-5.4.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itext-pdfa-5.4.4-sources.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itext-xtra-5.4.4.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itext-xtra-5.4.4-javadoc.jar"/>
+	<classpathentry kind="lib" path="D:/temp/itext-xtra-5.4.4-sources.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Accordion"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

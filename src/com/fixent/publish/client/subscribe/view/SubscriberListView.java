@@ -32,20 +32,22 @@ public class SubscriberListView extends javax.swing.JPanel {
         modifyButton = new javax.swing.JButton();
         viewButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        cancelBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         subscriberListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
+        subscriberListTable.setFillsViewportHeight(true);
         jScrollPane1.setViewportView(subscriberListTable);
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -60,13 +62,15 @@ public class SubscriberListView extends javax.swing.JPanel {
         deleteButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         deleteButton.setText("Delete");
 
+        cancelBtn.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cancelBtn.setText("Cancel");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(deleteButton)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(50, 50, 50)
@@ -74,28 +78,37 @@ public class SubscriberListView extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(29, 29, 29)
                             .addComponent(jLabel1)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(viewButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(modifyButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cancelBtn)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(deleteButton)
+                                .addComponent(modifyButton)))
+                        .addGap(8, 8, 8)))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(modifyButton)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(viewButton)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(deleteButton)
-                .addGap(60, 60, 60))
+                .addGap(20, 20, 20)
+                .addComponent(cancelBtn)
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -103,4 +116,60 @@ public class SubscriberListView extends javax.swing.JPanel {
     private javax.swing.JTable subscriberListTable;
     private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
+	public javax.swing.JButton getDeleteButton() {
+		return deleteButton;
+	}
+
+	public void setDeleteButton(javax.swing.JButton deleteButton) {
+		this.deleteButton = deleteButton;
+	}
+
+	public javax.swing.JLabel getjLabel1() {
+		return jLabel1;
+	}
+
+	public void setjLabel1(javax.swing.JLabel jLabel1) {
+		this.jLabel1 = jLabel1;
+	}
+
+	public javax.swing.JScrollPane getjScrollPane1() {
+		return jScrollPane1;
+	}
+
+	public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+		this.jScrollPane1 = jScrollPane1;
+	}
+
+	public javax.swing.JButton getModifyButton() {
+		return modifyButton;
+	}
+
+	public void setModifyButton(javax.swing.JButton modifyButton) {
+		this.modifyButton = modifyButton;
+	}
+
+	public javax.swing.JTable getSubscriberListTable() {
+		return subscriberListTable;
+	}
+
+	public void setSubscriberListTable(javax.swing.JTable subscriberListTable) {
+		this.subscriberListTable = subscriberListTable;
+	}
+
+	public javax.swing.JButton getViewButton() {
+		return viewButton;
+	}
+
+	public void setViewButton(javax.swing.JButton viewButton) {
+		this.viewButton = viewButton;
+	}
+
+	public javax.swing.JButton getCancelBtn() {
+		return cancelBtn;
+	}
+
+	public void setCancelBtn(javax.swing.JButton cancelBtn) {
+		this.cancelBtn = cancelBtn;
+	}
+    
 }
