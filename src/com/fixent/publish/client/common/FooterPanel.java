@@ -34,7 +34,7 @@ extends JPanel {
 	class MoreAction
 	implements MouseListener {
 
-		@Override
+		
 		public void mouseClicked(MouseEvent e) {
 			
 			errorPopup = new JWindow();
@@ -44,25 +44,25 @@ extends JPanel {
 			errorPopup.setVisible(true);			
 		}
 
-		@Override
+		
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
+		
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
+		
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
 
-		@Override
+		
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
 			
@@ -73,7 +73,7 @@ extends JPanel {
 	class CloseAction
 	implements ActionListener {
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 			errorPopup.dispose();
 		}

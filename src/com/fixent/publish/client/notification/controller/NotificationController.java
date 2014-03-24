@@ -30,7 +30,7 @@ public class NotificationController extends BaseController {
 
 	class PrintAllButton implements ActionListener {
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 			NotificationUtil.createPDFForSubscriber(subscribers, false, "Notofications.pdf");
 		}
@@ -39,7 +39,7 @@ public class NotificationController extends BaseController {
 
 	class PrintButton implements ActionListener {
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 
 			setErrorMsg("");

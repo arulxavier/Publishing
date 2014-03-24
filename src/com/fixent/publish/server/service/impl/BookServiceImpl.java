@@ -9,7 +9,7 @@ import com.fixent.publish.server.service.BookService;
 
 public class BookServiceImpl implements BookService {
 
-	@Override
+	
 	public boolean createBook(Book book) {
 
 		boolean status = false;
@@ -26,7 +26,7 @@ public class BookServiceImpl implements BookService {
 		return status;
 	}
 
-	@Override
+	
 	public boolean modifyBook(Book book) {
 
 		boolean status = false;
@@ -41,7 +41,7 @@ public class BookServiceImpl implements BookService {
 		return status;
 	}
 
-	@Override
+	
 	public boolean deleteBook(Book book) {
 
 		boolean status = false;
@@ -59,7 +59,7 @@ public class BookServiceImpl implements BookService {
 		return status;
 	}
 
-	@Override
+	
 	public Book getBook(String name) {
 
 		Book book = null;
@@ -74,7 +74,7 @@ public class BookServiceImpl implements BookService {
 		return book;
 	}
 
-	@Override
+	
 	public Book getBookById(int id) {
 
 		Book book = null;
@@ -89,7 +89,7 @@ public class BookServiceImpl implements BookService {
 		return book;
 	}
 
-	@Override
+	
 	public List<Book> getBooks() {
 
 		List<Book> books = null;

@@ -9,7 +9,7 @@ import com.fixent.publish.server.service.SubscribeService;
 
 public class SubscribeServiceImpl implements SubscribeService {
 
-	@Override
+	
 	public boolean createSubscriber(Subscriber subscriber) {
 
 		boolean status = false;
@@ -25,7 +25,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 		return status;
 	}
 
-	@Override
+	
 	public boolean modifySubscriber(Subscriber subscriber) {
 
 		boolean status = false;
@@ -39,7 +39,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 		return status;
 	}
 
-	@Override
+	
 	public boolean deleteSubscriber(Subscriber subscriber) {
 
 		boolean status = false;
@@ -55,7 +55,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 		return status;
 	}
 
-	@Override
+	
 	public Subscriber getSubscriber(String subscriberName) {
 
 		Subscriber subscriber = null;
@@ -71,7 +71,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 		return subscriber;
 	}
 
-	@Override
+	
 	public List<Subscriber> getSubscriber(Integer id, String name) {
 
 		List<Subscriber> subscribers = null;

@@ -22,17 +22,17 @@ public class SubscribeInfoDataTable extends AbstractTableModel {
 	List<SubscribeInfo> subscribeInfos;
 	String columnList[] = new String[] { "Book Name", "Subscribed Date", "Years" };
 
-	@Override
+	
 	public int getColumnCount() {
 		return columnList.length;
 	}
 
-	@Override
+	
 	public int getRowCount() {
 		return subscribeInfos.size();
 	}
 
-	@Override
+	
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
 		SubscribeInfo entity = subscribeInfos.get(rowIndex);
@@ -48,7 +48,7 @@ public class SubscribeInfoDataTable extends AbstractTableModel {
 		}
 	}
 
-	@Override
+	
 	public String getColumnName(int col) {
 		return columnList[col];
 	}

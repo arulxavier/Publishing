@@ -48,7 +48,7 @@ public class SubscriberListController extends BaseController {
 
 	class ViewAction implements ActionListener {
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 
 			int row = view.getSubscriberListTable().getSelectedRow();
@@ -69,7 +69,7 @@ public class SubscriberListController extends BaseController {
 
 	class ModifyAction implements ActionListener {
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 
 			int row = view.getSubscriberListTable().getSelectedRow();
@@ -92,7 +92,7 @@ public class SubscriberListController extends BaseController {
 
 	class DeletAction implements ActionListener {
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 
 			int row = view.getSubscriberListTable().getSelectedRow();
@@ -111,7 +111,7 @@ public class SubscriberListController extends BaseController {
 
 	class MainCancelAction implements ActionListener {
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 
 			RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();

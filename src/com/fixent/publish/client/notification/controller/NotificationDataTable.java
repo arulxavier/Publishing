@@ -19,17 +19,17 @@ public class NotificationDataTable extends AbstractTableModel {
 	String columnList[] = new String[] { "Subscriber ID", "Subscriber Name",
 			"Mobile Number", "Book Name" ,  "Expired Date", "Frequency"};
 
-	@Override
+	
 	public int getColumnCount() {
 		return columnList.length;
 	}
 
-	@Override
+	
 	public int getRowCount() {
 		return subscribers !=null ? subscribers.size() : 0;
 	}
 
-	@Override
+	
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
 		SubscribeInfo entity = subscribers.get(rowIndex);
@@ -51,7 +51,7 @@ public class NotificationDataTable extends AbstractTableModel {
 		}
 	}
 
-	@Override
+	
 	public String getColumnName(int col) {
 		return columnList[col];
 	}

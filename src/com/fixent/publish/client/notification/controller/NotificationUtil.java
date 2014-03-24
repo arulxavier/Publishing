@@ -129,7 +129,7 @@ public class NotificationUtil {
 		try {
 			Document document = new Document();
 			PdfWriter.getInstance(document, new FileOutputStream(new File(
-					"D:/publishing/report/"+ fileName)));
+					"C:\\cbeyond\\"+ fileName)));
 			document.open();
 
 			Paragraph preface = new Paragraph();

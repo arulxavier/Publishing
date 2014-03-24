@@ -10,7 +10,7 @@ import com.fixent.publish.server.service.DeliveryService;
 public class DeliveryServiceImpl 
 implements DeliveryService {
 
-	@Override
+	
 	public List<DeliverySchedule> getDeliverySchedules(Date date) {
 		
 		List<DeliverySchedule> deliverySchedules = null;

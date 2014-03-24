@@ -25,13 +25,13 @@ public class DeliveryController extends BaseController {
 
 		setView();
 
-		view.getPrintButton().addActionListener(new PrintButton());
+		view.getPrintButton().addActionListener(new PrintButton(this.subscribers));
 		view.getPrintAllButton().addActionListener(new PrintAllButton());
 	}
 
 	class PrintAllButton implements ActionListener {
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 			NotificationUtil.createPDFForSubscriber(subscribers, false, "DeliveryReports.pdf");
 		}
@@ -39,19 +39,28 @@ public class DeliveryController extends BaseController {
 	}
 
 	class PrintButton implements ActionListener {
+		
+		
+		List<SubscribeInfo> subscribeInfos;
+		public PrintButton(List<SubscribeInfo> subscribeInfos) {
+			
+			
+			
+			this.subscribeInfos = subscribeInfos;
+		}
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
 
 			setErrorMsg("");
-			if (view.getNotificationTable().getSelectedRow() >  0)
-			{
-				final int row = view.getNotificationTable().getSelectedRow();
-				SubscribeInfo subscribeInfo = subscribers.get(row);
-				List<SubscribeInfo> infoList = new ArrayList<SubscribeInfo>();
-				infoList.add(subscribeInfo);
-				NotificationUtil.createPDFForSubscriber(infoList, true, "DeliveryReports.pdf");
+			
+			if (!this.subscribeInfos.isEmpty()) {
 				
+//				final int row = view.getNotificationTable().getSelectedRow();
+//				SubscribeInfo subscribeInfo = subscribers.get(row);
+				List<SubscribeInfo> infoList = new ArrayList<SubscribeInfo>();
+				infoList.addAll(this.subscribeInfos);
+				NotificationUtil.createPDFForSubscriber(infoList, true, "DeliveryReports.pdf");
 			}
 		}
 
