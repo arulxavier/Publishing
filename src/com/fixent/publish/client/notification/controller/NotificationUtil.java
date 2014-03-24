@@ -128,8 +128,8 @@ public class NotificationUtil {
 
 		try {
 			Document document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream(new File(
-					"C:\\cbeyond\\"+ fileName)));
+			String filePath = "C:\\pdf\\" + fileName;
+			PdfWriter.getInstance(document, new FileOutputStream(new File(filePath)));
 			document.open();
 
 			Paragraph preface = new Paragraph();
@@ -143,7 +143,7 @@ public class NotificationUtil {
 			
 			document.addHeader("Notifications","D:/dev/logicielfixent/Publishing/src/com/fixent/publish/client/common/Header_Image.png");
 
-			PdfPTable table = new PdfPTable(4);
+			PdfPTable table = new PdfPTable(5);
 			PdfPCell c1 = new PdfPCell(new Phrase("Subscriber ID"));
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(c1);
@@ -159,6 +159,10 @@ public class NotificationUtil {
 			c1 = new PdfPCell(new Phrase("Book Name"));
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(c1);
+			
+			c1 = new PdfPCell(new Phrase("Address"));
+			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+			table.addCell(c1);
 
 			if (subscribeInfos != null && !subscribeInfos.isEmpty()) {
 				for (SubscribeInfo subscribeInfo : subscribeInfos) {
@@ -171,6 +175,12 @@ public class NotificationUtil {
 							.getSubscriber().getMobileNumber() : null);
 					table.addCell(subscribeInfo.getBook() != null ? subscribeInfo
 							.getBook().getName() : null);
+					String address = subscribeInfo.getSubscriber().getStreet() + "\n" +
+							subscribeInfo.getSubscriber().getCity() +  "\n" +
+							subscribeInfo.getSubscriber().getState() + "\n" +
+							subscribeInfo.getSubscriber().getPincode();
+					table.addCell(address);
+							
 				}
 			}
 
@@ -179,10 +189,36 @@ public class NotificationUtil {
 			// Start a new page
 			document.newPage();
 			document.close();
+			openPDF(filePath);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
+	}
+
+	private static void openPDF(String fileName) {
+		
+		try {
+
+			if ((new File(fileName)).exists()) {
+
+				Process p = Runtime
+						.getRuntime()
+						.exec("rundll32 url.dll,FileProtocolHandler " + fileName);
+				p.waitFor();
+
+			} else {
+
+				System.out.println("File is not exists");
+
+			}
+
+			System.out.println("Done");
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
 	}
 
 }

@@ -13,6 +13,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.proxy.HibernateProxy;
 
 import com.fixent.publish.server.common.BaseDAO;
 import com.fixent.publish.server.model.DeliverySchedule;
@@ -115,6 +116,16 @@ public class SubscriberDAO extends BaseDAO {
 			}
 		}
 	}
+	
+	private void initializeSubscriberModel(Subscriber subscriber) {
+		
+		
+		if (subscriber instanceof HibernateProxy) {
+			HibernateProxy hibernateProxy = (HibernateProxy) subscriber;
+			Subscriber subscriber2 = (Subscriber) hibernateProxy;
+			Hibernate.initialize(subscriber2);
+		}
+	}
 
 	private void initializeSubscriberInfo(List<SubscribeInfo> subscribeInfos) {
 
@@ -123,7 +134,8 @@ public class SubscriberDAO extends BaseDAO {
 				Hibernate.initialize(subscribeInfo);
 				Hibernate.initialize(subscribeInfo.getBook());
 				Hibernate.initialize(subscribeInfo.getBook());
-				Hibernate.initialize(subscribeInfo.getSubscriber());
+//				Hibernate.initialize(subscribeInfo.getSubscriber());
+				this.initializeSubscriberModel(subscribeInfo.getSubscriber());
 				if (subscribeInfo.getDeliverySchedules() != null
 						&& !subscribeInfo.getDeliverySchedules().isEmpty()) {
 					for (DeliverySchedule schedule : subscribeInfo
