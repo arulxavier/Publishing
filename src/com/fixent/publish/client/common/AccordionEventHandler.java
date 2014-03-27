@@ -13,6 +13,7 @@ import com.fixent.component.accordion.MenuClickEvent;
 import com.fixent.publish.client.book.controller.BookController;
 import com.fixent.publish.client.notification.controller.DeliveryController;
 import com.fixent.publish.client.notification.controller.NotificationController;
+import com.fixent.publish.client.publishedition.controller.PublishEditionController;
 import com.fixent.publish.client.subscribe.controller.SubscriberDashboardController;
 
 public class AccordionEventHandler extends MenuClickEvent {
@@ -68,6 +69,9 @@ public class AccordionEventHandler extends MenuClickEvent {
 									new NotificationController().view,
 									BorderLayout.CENTER);
 
+						} else if (item.getText().trim().equalsIgnoreCase("Publish Edition")) {
+							
+							rightSidePanel.add(new PublishEditionController().view, BorderLayout.CENTER);
 						}
 						rightSidePanel.repaint();
 					}

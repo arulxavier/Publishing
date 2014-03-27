@@ -23,6 +23,14 @@
 		<property name="frequency" type="string">
 			<column name="FREQUENCY" length="20" not-null="true" />
 		</property>
+		
+		<set name="editions" table="EDITION" 
+				inverse="false" lazy="true" cascade="all" fetch="select">
+            <key>
+                <column name="BOOK_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.fixent.publish.server.model.Edition"/>
+        </set>
 
 	</class>
 </hibernate-mapping>

@@ -12,7 +12,8 @@ import com.fixent.publish.client.notification.view.NotificationView;
 import com.fixent.publish.server.model.SubscribeInfo;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
 
-public class DeliveryController extends BaseController {
+public class DeliveryController 
+extends BaseController {
 
 	public NotificationView view;
 	List<SubscribeInfo> subscribers;

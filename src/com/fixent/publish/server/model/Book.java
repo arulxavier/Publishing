@@ -1,6 +1,7 @@
 package com.fixent.publish.server.model;
 
 import java.util.Date;
+import java.util.Set;
 
 public class Book {
 	
@@ -9,6 +10,7 @@ public class Book {
 	String author;	
 	Date publishingDate;
 	String frequency;
+	Set<Edition> editions;
 	
 	public int getId() {
 		return id;
@@ -40,7 +42,10 @@ public class Book {
 	public void setPublishingDate(Date publishingDate) {
 		this.publishingDate = publishingDate;
 	}
-	
-	
-
+	public Set<Edition> getEditions() {
+		return editions;
+	}
+	public void setEditions(Set<Edition> editions) {
+		this.editions = editions;
+	}
 }

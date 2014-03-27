@@ -12,8 +12,8 @@ import com.fixent.publish.server.model.Book;
 
 public class BookDAO extends BaseDAO {
 
-	@SuppressWarnings("deprecation")
-	public int getMaxId() throws Exception {
+	public int getMaxId() 
+	throws Exception {
 
 		Integer id = 0;
 		Session session = getSession();
@@ -26,8 +26,8 @@ public class BookDAO extends BaseDAO {
 		return id;
 	}
 
-	public int getBookCount(String bookName, Integer bookId, boolean isCreate)
-			{
+	public int getBookCount(String bookName, Integer bookId, boolean isCreate) {
+		
 		BigInteger count;
 		Session session = getSession();
 		StringBuilder builder = new StringBuilder();
@@ -79,6 +79,7 @@ public class BookDAO extends BaseDAO {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Book> getBooks() {
 
 		Session session = getSession();

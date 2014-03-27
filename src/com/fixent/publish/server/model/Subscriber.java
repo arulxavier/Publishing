@@ -7,11 +7,7 @@ public class Subscriber {
 	Integer id;
 	String name;
 	String mobileNumber;
-	String street;
-	String city;
-	String state;
-	String country;
-	Integer pincode;
+	Address address;	
 	
 	Set<SubscribeInfo> subscribeInfos;
 	
@@ -39,36 +35,14 @@ public class Subscriber {
 	public void setSubscribeInfos(Set<SubscribeInfo> subscribeInfos) {
 		this.subscribeInfos = subscribeInfos;
 	}
-	public String getStreet() {
-		return street;
+	
+	public Address getAddress() {
+		return address;
 	}
-	public void setStreet(String street) {
-		this.street = street;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	public Integer getPincode() {
-		return pincode;
-	}
-	public void setPincode(Integer pincode) {
-		this.pincode = pincode;
-	}
+	
 	
 	
 }

@@ -11,7 +11,7 @@ public class SubscribeInfo {
 	Date expiredDate;
 	Book book;
 	Subscriber subscriber;
-	Set<DeliverySchedule> deliverySchedules;
+	
 	
 	public Integer getId() {
 		return id;
@@ -30,13 +30,6 @@ public class SubscribeInfo {
 	}
 	public void setSubscriber(Subscriber subscriber) {
 		this.subscriber = subscriber;
-	}
-	
-	public Set<DeliverySchedule> getDeliverySchedules() {
-		return deliverySchedules;
-	}
-	public void setDeliverySchedules(Set<DeliverySchedule> deliverySchedules) {
-		this.deliverySchedules = deliverySchedules;
 	}
 	public Integer getNoOfYear() {
 		return noOfYear;

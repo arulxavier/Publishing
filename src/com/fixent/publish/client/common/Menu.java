@@ -8,7 +8,6 @@ public class Menu {
 	Map<String, String> rootMenu = new HashMap<String, String>();
 	Map<String, Map<String, String>> subMenuMap = new HashMap<String, Map<String,String>>();
 	Map<String, String> masterSubMenu = new HashMap<String, String>();
-	Map<String, String> studentSubMenu = new HashMap<String, String>();
 	
 	public Menu() {
 		
@@ -16,8 +15,9 @@ public class Menu {
 
 		masterSubMenu.put("1", "Book");
 		masterSubMenu.put("2", "Subscriber");
-		masterSubMenu.put("3", "Delivery");
-		masterSubMenu.put("4", "Notification");
+		masterSubMenu.put("3", "Publish Edition");
+		masterSubMenu.put("4", "Delivery");
+		masterSubMenu.put("5", "Notification");
 
 		
 		subMenuMap.put("Publish", masterSubMenu);

@@ -6,19 +6,18 @@
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
        <property name="hibernate.connection.password">admin@123</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/stpauls</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bookpup</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.hbm2ddl.auto">true</property>
         <property name="show_sql">false</property>
         <property name="current_session_context_class">thread</property>
 
-		
-
-
 		<mapping resource="com/fixent/publish/server/hbm/Book.hbm.xml"></mapping>
 		<mapping resource="com/fixent/publish/server/hbm/Subscriber.hbm.xml"></mapping>
 		<mapping resource="com/fixent/publish/server/hbm/SubscribeInfo.hbm.xml"></mapping>
+		<mapping resource="com/fixent/publish/server/hbm/Edition.hbm.xml"></mapping>
+		<mapping resource="com/fixent/publish/server/hbm/Address.hbm.xml"></mapping>
 
 
 

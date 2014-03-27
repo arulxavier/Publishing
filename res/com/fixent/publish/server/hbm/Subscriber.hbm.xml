@@ -15,22 +15,6 @@
 			<column name="MOBILE_NUMBER" length="20" not-null="true" />
 		</property>
 		
-		<property name="street" type="string">
-			<column name="STREET" not-null="true" />
-		</property>
-		<property name="city" type="string">
-			<column name="CITY" not-null="true" />
-		</property>
-		<property name="state" type="string">
-			<column name="STATE" not-null="true" />
-		</property>
-		<property name="country" type="string">
-			<column name="COUNTRY" not-null="true" />
-		</property>
-		<property name="pincode" type="java.lang.Integer">
-			<column name="PINCODE" not-null="true" />
-		</property>
-		
 		 <set name="subscribeInfos" table="SUBSCRIBE_INFO" 
 				inverse="false" lazy="true" cascade="all" fetch="select">
             <key>
@@ -38,6 +22,10 @@
             </key>
             <one-to-many class="com.fixent.publish.server.model.SubscribeInfo"/>
         </set>
+        
+         <many-to-one name="address" class="com.fixent.publish.server.model.Address" fetch="select">
+            <column name="ADDRESS_ID"  />
+        </many-to-one>
 		
 	</class>
 </hibernate-mapping>

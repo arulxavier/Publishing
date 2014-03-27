@@ -25,6 +25,7 @@ import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.RightSidePanel;
 import com.fixent.publish.client.subscribe.view.SubscriberInfoPopupView;
 import com.fixent.publish.client.subscribe.view.SubscriberView;
+import com.fixent.publish.server.model.Address;
 import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.model.SubscribeInfo;
 import com.fixent.publish.server.model.Subscriber;
@@ -188,12 +189,14 @@ public class SubscriberViewController extends BaseController {
 			subscriber.setMobileNumber(view.getMobileNumberTextField()
 					.getText());
 
-			subscriber.setStreet(view.getStreetTextField().getText());
-			subscriber.setCity(view.getCityTextField().getText());
-			subscriber.setState(view.getStateTextField().getText());
-			subscriber.setCountry(view.getCountryTextField().getText());
-			subscriber.setPincode(Integer.parseInt(view.getPincodeTextField()
+			Address address = new Address();
+			address.setStreet(view.getStreetTextField().getText());
+			address.setCity(view.getCityTextField().getText());
+			address.setState(view.getStateTextField().getText());
+			address.setCountry(view.getCountryTextField().getText());
+			address.setPincode(Integer.parseInt(view.getPincodeTextField()
 					.getText()));
+			subscriber.setAddress(address);
 
 			Set<SubscribeInfo> infoSet = new HashSet<SubscribeInfo>();
 			infoSet.addAll(subscribeInfos);

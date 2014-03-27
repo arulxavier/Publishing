@@ -175,10 +175,10 @@ public class NotificationUtil {
 							.getSubscriber().getMobileNumber() : null);
 					table.addCell(subscribeInfo.getBook() != null ? subscribeInfo
 							.getBook().getName() : null);
-					String address = subscribeInfo.getSubscriber().getStreet() + "\n" +
-							subscribeInfo.getSubscriber().getCity() +  "\n" +
-							subscribeInfo.getSubscriber().getState() + "\n" +
-							subscribeInfo.getSubscriber().getPincode();
+					String address = subscribeInfo.getSubscriber().getAddress().getStreet() + "\n" +
+							subscribeInfo.getSubscriber().getAddress().getCity() +  "\n" +
+							subscribeInfo.getSubscriber().getAddress().getState() + "\n" +
+							subscribeInfo.getSubscriber().getAddress().getPincode();
 					table.addCell(address);
 							
 				}

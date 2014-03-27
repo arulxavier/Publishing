@@ -25,6 +25,7 @@ import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.RightSidePanel;
 import com.fixent.publish.client.subscribe.view.SubscriberInfoPopupView;
 import com.fixent.publish.client.subscribe.view.SubscriberView;
+import com.fixent.publish.server.model.Address;
 import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.model.SubscribeInfo;
 import com.fixent.publish.server.model.Subscriber;
@@ -95,12 +96,12 @@ public class SubscriberController extends BaseController {
 			view.getSubscriberNameTextField().setText(subscriber.getName());
 			view.getMobileNumberTextField().setText(
 					subscriber.getMobileNumber());
-			view.getStreetTextField().setText(subscriber.getStreet());
-			view.getCityTextField().setText(subscriber.getCity());
-			view.getStateTextField().setText(subscriber.getState());
-			view.getCountryTextField().setText(subscriber.getCountry());
+			view.getStreetTextField().setText(subscriber.getAddress().getStreet());
+			view.getCityTextField().setText(subscriber.getAddress().getCity());
+			view.getStateTextField().setText(subscriber.getAddress().getState());
+			view.getCountryTextField().setText(subscriber.getAddress().getCountry());
 			view.getPincodeTextField().setText(
-					String.valueOf(subscriber.getPincode()));
+					String.valueOf(subscriber.getAddress().getPincode()));
 			if (subscriber.getSubscribeInfos() != null) {
 				subscribeInfos = new ArrayList<SubscribeInfo>(
 						subscriber.getSubscribeInfos());
@@ -286,12 +287,14 @@ public class SubscriberController extends BaseController {
 			subscriber.setMobileNumber(view.getMobileNumberTextField()
 					.getText());
 
-			subscriber.setStreet(view.getStreetTextField().getText());
-			subscriber.setCity(view.getCityTextField().getText());
-			subscriber.setState(view.getStateTextField().getText());
-			subscriber.setCountry(view.getCountryTextField().getText());
-			subscriber.setPincode(Integer.parseInt(view.getPincodeTextField()
+			Address address = new Address();
+			address.setStreet(view.getStreetTextField().getText());
+			address.setCity(view.getCityTextField().getText());
+			address.setState(view.getStateTextField().getText());
+			address.setCountry(view.getCountryTextField().getText());
+			address.setPincode(Integer.parseInt(view.getPincodeTextField()
 					.getText()));
+			subscriber.setAddress(address);
 
 			Set<SubscribeInfo> infoSet = new HashSet<SubscribeInfo>();
 			infoSet.addAll(subscribeInfos);

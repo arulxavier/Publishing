@@ -18,10 +18,10 @@ public class TestSubscribeServiceImpl {
 		subscriber.setName("Name");
 		subscriber.setMobileNumber("4561237890");
 		
-		subscriber.setStreet("Street");
+		/*subscriber.setStreet("Street");
 		subscriber.setCity("City");
 		subscriber.setState("State");
-		subscriber.setCountry("Country");
+		subscriber.setCountry("Country");*/
 		
 		Set<SubscribeInfo> subscribeInfos = new HashSet<SubscribeInfo>();
 		SubscribeInfo subscribeInfo = new SubscribeInfo();

@@ -3,6 +3,9 @@ package com.fixent.publish.server.service.impl;
 import java.util.List;
 
 import com.fixent.publish.server.dao.SubscriberDAO;
+import com.fixent.publish.server.model.Address;
+import com.fixent.publish.server.model.Book;
+import com.fixent.publish.server.model.Edition;
 import com.fixent.publish.server.model.SubscribeInfo;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.service.SubscribeService;
@@ -16,6 +19,12 @@ public class SubscribeServiceImpl implements SubscribeService {
 		try {
 
 			SubscriberDAO dao = new SubscriberDAO();
+			
+			Address address = subscriber.getAddress();
+			int addressId = dao.getAddressId();
+			address.setId(addressId);
+			dao.createAddress(address);
+			subscriber.setAddress(address);			
 			int id = dao.getMaxId();
 			subscriber.setId(id + 1);
 			status = dao.createSubscriber(subscriber);
@@ -125,6 +134,39 @@ public class SubscribeServiceImpl implements SubscribeService {
 		}
 		return subscribers;
 
+	}
+	
+	public List<SubscribeInfo> getSubscribersByBook(Book book) {
+		
+		
+		List<SubscribeInfo> subscribeInfos = null;
+
+		try {
+
+			SubscriberDAO dao = new SubscriberDAO();
+			subscribeInfos = dao.getSubscribersByBook(book);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return subscribeInfos;
+		
+	}
+	
+	public boolean saveEdition(Edition edition) {
+
+		boolean status = false;
+		try {
+
+			SubscriberDAO dao = new SubscriberDAO();
+			
+			int id = dao.getEditionMaxId();
+			edition.setId(id + 1);
+			status = dao.createEdition(edition);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return status;
 	}
 
 }
