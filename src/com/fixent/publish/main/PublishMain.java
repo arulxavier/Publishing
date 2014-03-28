@@ -1,6 +1,6 @@
 package com.fixent.publish.main;
 
-import com.fixent.publish.client.common.BaseFrame;
+import com.fixent.publish.client.comon.BaseFrame;
 
 public class PublishMain {
 	

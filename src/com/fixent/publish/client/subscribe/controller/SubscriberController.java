@@ -23,6 +23,7 @@ import javax.swing.event.CaretListener;
 
 import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.RightSidePanel;
+import com.fixent.publish.client.comon.RightPanel;
 import com.fixent.publish.client.subscribe.view.SubscriberInfoPopupView;
 import com.fixent.publish.client.subscribe.view.SubscriberView;
 import com.fixent.publish.server.model.Address;
@@ -227,10 +228,17 @@ public class SubscriberController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
-			RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
+			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
 			rightSidePanel.removeAll();
 			rightSidePanel.add(new SubscriberDashboardController().view,
 					BorderLayout.CENTER);
+			rightSidePanel.repaint();
+			rightSidePanel.revalidate();
+			rightSidePanel.setVisible(true);*/
+			
+			RightPanel rightSidePanel = (RightPanel)view.getParent();
+			rightSidePanel.removeAll();
+			rightSidePanel.add(new SubscriberDashboardController().view, BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);

@@ -53,16 +53,24 @@ public class SubscriberListView extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Subscriber List View");
 
+        modifyButton.setBackground(new java.awt.Color(61, 86, 109));
         modifyButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        modifyButton.setForeground(new java.awt.Color(255, 255, 255));
         modifyButton.setText("Modify");
 
+        viewButton.setBackground(new java.awt.Color(61, 86, 109));
         viewButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        viewButton.setForeground(new java.awt.Color(255, 255, 255));
         viewButton.setText("View");
 
+        deleteButton.setBackground(new java.awt.Color(61, 86, 109));
         deleteButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
 
+        cancelBtn.setBackground(new java.awt.Color(61, 86, 109));
         cancelBtn.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
         cancelBtn.setText("Cancel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -82,11 +90,9 @@ public class SubscriberListView extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cancelBtn)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(deleteButton)
-                                .addComponent(modifyButton)))
-                        .addGap(8, 8, 8)))
+                            .addComponent(deleteButton)
+                            .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(modifyButton))))
                 .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
@@ -95,16 +101,16 @@ public class SubscriberListView extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(modifyButton)
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addComponent(viewButton)
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addComponent(deleteButton)
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addComponent(cancelBtn)
-                .addGap(20, 20, 20))
+                .addGap(19, 19, 19))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

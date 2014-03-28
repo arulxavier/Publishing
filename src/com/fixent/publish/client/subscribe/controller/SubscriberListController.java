@@ -8,6 +8,7 @@ import java.util.List;
 import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.ClientConstants;
 import com.fixent.publish.client.common.RightSidePanel;
+import com.fixent.publish.client.comon.RightPanel;
 import com.fixent.publish.client.subscribe.view.SubscriberListView;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
@@ -57,10 +58,17 @@ public class SubscriberListController extends BaseController {
 			push("subscriber", subscribers.get(row));
 			push(ClientConstants.SCREEN_MODE, ClientConstants.VIEW);
 
-			RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
+			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
 			rightSidePanel.removeAll();
 			rightSidePanel.add(new SubscriberController().view,
 					BorderLayout.CENTER);
+			rightSidePanel.repaint();
+			rightSidePanel.revalidate();
+			rightSidePanel.setVisible(true);*/
+			
+			RightPanel rightSidePanel = (RightPanel)view.getParent();
+			rightSidePanel.removeAll();
+			rightSidePanel.add(new SubscriberController().view, BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);
@@ -114,10 +122,17 @@ public class SubscriberListController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
-			RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
+			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
 			rightSidePanel.removeAll();
 			rightSidePanel.add(new SubscriberDashboardController().view,
 					BorderLayout.CENTER);
+			rightSidePanel.repaint();
+			rightSidePanel.revalidate();
+			rightSidePanel.setVisible(true);*/
+			
+			RightPanel rightSidePanel = (RightPanel)view.getParent();
+			rightSidePanel.removeAll();
+			rightSidePanel.add(new SubscriberDashboardController().view, BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);

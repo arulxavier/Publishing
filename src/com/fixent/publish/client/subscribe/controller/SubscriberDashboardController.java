@@ -8,6 +8,7 @@ import java.util.List;
 import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.ClientConstants;
 import com.fixent.publish.client.common.RightSidePanel;
+import com.fixent.publish.client.comon.RightPanel;
 import com.fixent.publish.client.subscribe.view.SubscriberDashboardView;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
@@ -30,10 +31,18 @@ public class SubscriberDashboardController extends BaseController {
 		public void actionPerformed(ActionEvent e) {
 
 			push(ClientConstants.SCREEN_MODE, ClientConstants.ADD);
-			RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
+			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
 			rightSidePanel.removeAll();
 			rightSidePanel.add(new SubscriberController().view,
 					BorderLayout.CENTER);
+			rightSidePanel.repaint();
+			rightSidePanel.revalidate();
+			rightSidePanel.setVisible(true);*/
+			
+			
+			RightPanel rightSidePanel = (RightPanel)view.getParent();
+			rightSidePanel.removeAll();
+			rightSidePanel.add(new SubscriberController().view, BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);
@@ -72,10 +81,18 @@ public class SubscriberDashboardController extends BaseController {
 				push("name", view.getSubscriberNameTextField().getText());
 			}
 
-			RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
+			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
 			rightSidePanel.removeAll();
 			rightSidePanel.add(new SubscriberListController().view,
 					BorderLayout.CENTER);
+			rightSidePanel.repaint();
+			rightSidePanel.revalidate();
+			rightSidePanel.setVisible(true);*/
+			
+			
+			RightPanel rightSidePanel = (RightPanel)view.getParent();
+			rightSidePanel.removeAll();
+			rightSidePanel.add(new SubscriberListController().view, BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);

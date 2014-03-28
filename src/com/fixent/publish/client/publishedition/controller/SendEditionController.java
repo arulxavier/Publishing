@@ -34,7 +34,7 @@ extends BaseController {
 
 	private void setView() {
 		
-		view.getBookNameTextField().setText(book.getName());
+		view.getBookNameTextField().setText(book.getName().trim());
 		view.getAuthorTextField().setText(book.getAuthor());
 		view.getFrequencyTextField().setText(book.getFrequency());
 		
