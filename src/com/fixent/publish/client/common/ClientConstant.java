@@ -1,4 +1,4 @@
-package com.fixent.publish.client.comon;
+package com.fixent.publish.client.common;
 
 public class ClientConstant {
 	

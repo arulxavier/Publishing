@@ -86,7 +86,7 @@ extends BaseController {
 	}
 
 	private void setErrorMsg(String msg) {
-		setErrorMessages(view.getParent(), msg);
+//		setErrorMessages(view.getParent(), msg);
 	}
 
 }

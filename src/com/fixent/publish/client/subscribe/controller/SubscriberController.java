@@ -22,8 +22,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
 import com.fixent.publish.client.common.BaseController;
-import com.fixent.publish.client.common.RightSidePanel;
-import com.fixent.publish.client.comon.RightPanel;
+import com.fixent.publish.client.common.RightPanel;
 import com.fixent.publish.client.subscribe.view.SubscriberInfoPopupView;
 import com.fixent.publish.client.subscribe.view.SubscriberView;
 import com.fixent.publish.server.model.Address;
@@ -287,15 +286,18 @@ public class SubscriberController extends BaseController {
 				}
 			}
 
+			Address address;
 			if (subscriber == null) {
 				subscriber = new Subscriber();
+				address = new Address();
+			} else {
+				address = subscriber.getAddress();
 			}
 
 			subscriber.setName(view.getSubscriberNameTextField().getText());
 			subscriber.setMobileNumber(view.getMobileNumberTextField()
 					.getText());
 
-			Address address = new Address();
 			address.setStreet(view.getStreetTextField().getText());
 			address.setCity(view.getCityTextField().getText());
 			address.setState(view.getStateTextField().getText());
@@ -317,10 +319,18 @@ public class SubscriberController extends BaseController {
 				impl.createSubscriber(subscriber);
 			}
 
-			RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
+			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
 			rightSidePanel.removeAll();
 			rightSidePanel.add(new SubscriberDashboardController().view,
 					BorderLayout.CENTER);
+			rightSidePanel.repaint();
+			rightSidePanel.revalidate();
+			rightSidePanel.setVisible(true);*/
+			
+			
+			RightPanel rightSidePanel = (RightPanel)view.getParent();
+			rightSidePanel.removeAll();
+			rightSidePanel.add(new SubscriberDashboardController().view, BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);

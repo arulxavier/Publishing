@@ -7,7 +7,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import com.fixent.publish.client.common.BaseController;
+import com.fixent.publish.client.common.RightPanel;
 import com.fixent.publish.client.notification.view.NotificationView;
 import com.fixent.publish.server.model.SubscribeInfo;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
@@ -74,7 +77,10 @@ public class NotificationController extends BaseController {
 	}
 
 	private void setErrorMsg(String msg) {
-		setErrorMessages(view.getParent(), msg);
+		
+		RightPanel rightSidePanel = (RightPanel)view.getParent();
+		JOptionPane.showMessageDialog(rightSidePanel.getParent(), msg);
+//		setErrorMessages(view.getParent(), msg);
 	}
 
 }

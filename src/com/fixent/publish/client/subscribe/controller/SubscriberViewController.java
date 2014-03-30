@@ -22,7 +22,7 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
 import com.fixent.publish.client.common.BaseController;
-import com.fixent.publish.client.common.RightSidePanel;
+import com.fixent.publish.client.common.RightPanel;
 import com.fixent.publish.client.subscribe.view.SubscriberInfoPopupView;
 import com.fixent.publish.client.subscribe.view.SubscriberView;
 import com.fixent.publish.server.model.Address;
@@ -61,7 +61,7 @@ public class SubscriberViewController extends BaseController {
 
 		public void mouseClicked(MouseEvent e) {
 
-			setErrorMessages(view.getParent(), "");
+//			setErrorMessages(view.getParent(), "");
 			if (e.getClickCount() == 2) {
 				final int row = view.getSubscribeInfoTable().getSelectedRow();
 				subscribeInfo = subscribeInfos.get(row);
@@ -116,7 +116,7 @@ public class SubscriberViewController extends BaseController {
 		
 		public void caretUpdate(CaretEvent e) {
 
-			setErrorMessages(view.getParent(), "");
+//			setErrorMessages(view.getParent(), "");
 			setExpiryDateValue(infoPopupView);
 		}
 	}
@@ -126,7 +126,7 @@ public class SubscriberViewController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
-			setErrorMessages(view.getParent(), "");
+//			setErrorMessages(view.getParent(), "");
 			SubscriberInfoPopupView infoPopupView = new SubscriberInfoPopupView();
 			infoPopupView.getSaveButton().addActionListener(
 					new SavePopupAction(infoPopupView));
@@ -163,7 +163,7 @@ public class SubscriberViewController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
-			setErrorMessages(view.getParent(), "");
+//			setErrorMessages(view.getParent(), "");
 			final int row = view.getSubscribeInfoTable().getSelectedRow();
 			subscribeInfos.remove(row);
 			SubscribeInfoDataTable dataModel = new SubscribeInfoDataTable(
@@ -178,10 +178,10 @@ public class SubscriberViewController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
-			setErrorMessages(view.getParent(), "");
+//			setErrorMessages(view.getParent(), "");
 			boolean result = validateMandatoryFields();
 			if (!result) {
-				setErrorMessages(view.getParent(), "");
+//				setErrorMessages(view.getParent(), "");
 				return;
 			}
 			Subscriber subscriber = new Subscriber();
@@ -205,13 +205,22 @@ public class SubscriberViewController extends BaseController {
 			SubscribeServiceImpl impl = new SubscribeServiceImpl();
 			impl.createSubscriber(subscriber);
 
-			RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
+			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
 			rightSidePanel.removeAll();
 			rightSidePanel.add(new SubscriberDashboardController().view,
 					BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
+			rightSidePanel.setVisible(true);*/
+			
+			RightPanel rightSidePanel = (RightPanel)view.getParent();
+			rightSidePanel.removeAll();
+			rightSidePanel.add(new SubscriberDashboardController().view, BorderLayout.CENTER);
+			rightSidePanel.repaint();
+			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);
+			
+			
 
 		}
 
@@ -252,7 +261,7 @@ public class SubscriberViewController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
-			setErrorMessages(view.getParent(), "");
+//			setErrorMessages(view.getParent(), "");
 			SubscribeInfo info = new SubscribeInfo();
 			info.setBook(getBook(infoPopupView.getBookComboBox()
 					.getSelectedItem().toString()));
@@ -266,8 +275,8 @@ public class SubscriberViewController extends BaseController {
 				for (SubscribeInfo info2 : subscribeInfos) {
 					if (info2.getBook().getName()
 							.equalsIgnoreCase(info.getBook().getName())) {
-						setErrorMessages(view.getParent(),
-								"Book is already subscribed for the same subscriber");
+//						setErrorMessages(view.getParent(),
+//								"Book is already subscribed for the same subscriber");
 						return;
 					}
 				}
@@ -293,7 +302,7 @@ public class SubscriberViewController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
-			setErrorMessages(view.getParent(), "");
+//			setErrorMessages(view.getParent(), "");
 			subscribeInfoPopup.dispose();
 		}
 

@@ -9,7 +9,7 @@ import javax.swing.plaf.ColorUIResource;
 
 public class BaseFrame 
 extends JFrame{
-	
+
 	/**
 	 * 
 	 */
@@ -18,28 +18,26 @@ extends JFrame{
 	public BaseFrame() {
 
 		UIManager
-				.put("ComboBox.background",
-						new ColorUIResource(UIManager
-								.getColor("TextField.background")));
+		.put("ComboBox.background",
+				new ColorUIResource(UIManager
+						.getColor("TextField.background")));
 		UIManager
-				.put("ComboBox.foreground",
-						new ColorUIResource(UIManager
-								.getColor("TextField.foreground")));
+		.put("ComboBox.foreground",
+				new ColorUIResource(UIManager
+						.getColor("TextField.foreground")));
 		UIManager.put("ComboBox.selectionBackground", new ColorUIResource(
 				Color.LIGHT_GRAY));
 		UIManager.put("ComboBox.selectionForeground", new ColorUIResource(
 				Color.WHITE));
 		setName("BaseFrame");
-		// setBounds(250, 50, 960, 650);
+		//		setBounds(250, 50, 960, 650);
 		setSize(1000, 650);
 		setLayout(new BorderLayout());
 		setBackground(Color.WHITE);
 		add(new BasePane(), BorderLayout.CENTER);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);	
 		setLocationRelativeTo(null);
-		setResizable(false);
 		setVisible(true);
-
 	}
 
 }

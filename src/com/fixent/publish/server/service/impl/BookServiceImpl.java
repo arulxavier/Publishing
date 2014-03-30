@@ -51,6 +51,7 @@ public class BookServiceImpl implements BookService {
 			if (subscriberDAO.getSubscriberForBook(book.getId()) > 0) {
 				return false;
 			}
+			book = dao.getBook(book.getName());
 			status = dao.deleteBook(book);
 
 		} catch (Exception e) {

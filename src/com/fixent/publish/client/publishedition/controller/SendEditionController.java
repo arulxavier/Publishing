@@ -1,5 +1,6 @@
 package com.fixent.publish.client.publishedition.controller;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -7,8 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 import com.fixent.publish.client.common.BaseController;
+import com.fixent.publish.client.common.RightPanel;
 import com.fixent.publish.client.notification.controller.NotificationUtil;
 import com.fixent.publish.client.publishedition.view.SendEditionView;
+import com.fixent.publish.client.subscribe.controller.SubscriberController;
 import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.model.Edition;
 import com.fixent.publish.server.model.SubscribeInfo;
@@ -63,6 +66,13 @@ extends BaseController {
 				infoList.addAll(subscriberInfos);
 				NotificationUtil.createPDFForSubscriber(infoList, true, "DeliveryReports.pdf");
 			}
+			
+			RightPanel rightSidePanel = (RightPanel)view.getParent();
+			rightSidePanel.removeAll();
+			rightSidePanel.add(new PublishEditionController().view, BorderLayout.CENTER);
+			rightSidePanel.repaint();
+			rightSidePanel.revalidate();
+			rightSidePanel.setVisible(true);
 			
 		}
 		

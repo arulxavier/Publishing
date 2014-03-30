@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Accordion"/>
 	<classpathentry kind="var" path="3rdparty-jar/antlr-2.7.6.jar"/>
 	<classpathentry kind="var" path="3rdparty-jar/commons-cli-1.0.jar"/>
 	<classpathentry kind="var" path="3rdparty-jar/commons-collections-3.1.jar"/>

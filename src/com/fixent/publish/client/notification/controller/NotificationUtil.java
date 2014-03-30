@@ -2,6 +2,7 @@ package com.fixent.publish.client.notification.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 
 import com.fixent.publish.server.model.SubscribeInfo;
 import com.itextpdf.text.Anchor;
@@ -143,43 +144,60 @@ public class NotificationUtil {
 			
 			document.addHeader("Notifications","D:/dev/logicielfixent/Publishing/src/com/fixent/publish/client/common/Header_Image.png");
 
-			PdfPTable table = new PdfPTable(5);
-			PdfPCell c1 = new PdfPCell(new Phrase("Subscriber ID"));
+			PdfPTable table = new PdfPTable(2);
+			PdfPCell c1 = new PdfPCell(new Phrase("Details"));
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(c1);
 
-			c1 = new PdfPCell(new Phrase("Subscriber Name"));
+			c1 = new PdfPCell(new Phrase(""));
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.addCell(c1);
-
-			c1 = new PdfPCell(new Phrase("Mobile Number"));
-			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-			table.addCell(c1);
-
-			c1 = new PdfPCell(new Phrase("Book Name"));
-			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-			table.addCell(c1);
-			
-			c1 = new PdfPCell(new Phrase("Address"));
-			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-			table.addCell(c1);
+//
+//			c1 = new PdfPCell(new Phrase("Mobile Number"));
+//			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//			table.addCell(c1);
+//
+//			c1 = new PdfPCell(new Phrase("Book Name"));
+//			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//			table.addCell(c1);
+//			
+//			c1 = new PdfPCell(new Phrase("Address"));
+//			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+//			table.addCell(c1);
 
 			if (subscribeInfos != null && !subscribeInfos.isEmpty()) {
+				
 				for (SubscribeInfo subscribeInfo : subscribeInfos) {
-					table.addCell(subscribeInfo.getSubscriber() != null ? String
-							.valueOf(subscribeInfo.getSubscriber().getId())
-							: null);
-					table.addCell(subscribeInfo.getSubscriber() != null ? subscribeInfo
-							.getSubscriber().getName() : null);
-					table.addCell(subscribeInfo.getSubscriber() != null ? subscribeInfo
-							.getSubscriber().getMobileNumber() : null);
-					table.addCell(subscribeInfo.getBook() != null ? subscribeInfo
-							.getBook().getName() : null);
-					String address = subscribeInfo.getSubscriber().getAddress().getStreet() + "\n" +
-							subscribeInfo.getSubscriber().getAddress().getCity() +  "\n" +
-							subscribeInfo.getSubscriber().getAddress().getState() + "\n" +
-							subscribeInfo.getSubscriber().getAddress().getPincode();
-					table.addCell(address);
+					
+					
+					StringBuffer fullAddress = new StringBuffer(); 
+					fullAddress.append("   \n");
+					fullAddress.append(String.valueOf(subscribeInfo.getSubscriber().getId()) + "\n");
+					fullAddress.append(subscribeInfo.getSubscriber().getName() + "\n");
+					fullAddress.append(subscribeInfo.getSubscriber().getAddress().getStreet() + "\n");
+					fullAddress.append(subscribeInfo.getSubscriber().getAddress().getCity() +  "\n");
+					fullAddress.append(subscribeInfo.getSubscriber().getAddress().getState() + "\n");
+					fullAddress.append(subscribeInfo.getSubscriber().getAddress().getPincode() + "\n");
+					SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy");
+			        String date1 = DATE_FORMAT.format(subscribeInfo.getExpiredDate());
+					fullAddress.append(date1 + "\n");
+					fullAddress.append("   \n");
+					
+//					table.addCell(subscribeInfo.getSubscriber() != null ? String
+//							.valueOf(subscribeInfo.getSubscriber().getId())
+//							: null);
+//					table.addCell(subscribeInfo.getSubscriber() != null ? subscribeInfo
+//							.getSubscriber().getName() : null);
+//					table.addCell(subscribeInfo.getSubscriber() != null ? subscribeInfo
+//							.getSubscriber().getMobileNumber() : null);
+//					table.addCell(subscribeInfo.getBook() != null ? subscribeInfo
+//							.getBook().getName() : null);
+//					String address = subscribeInfo.getSubscriber().getAddress().getStreet() + "\n" +
+//							subscribeInfo.getSubscriber().getAddress().getCity() +  "\n" +
+//							subscribeInfo.getSubscriber().getAddress().getState() + "\n" +
+//							subscribeInfo.getSubscriber().getAddress().getPincode();
+					table.addCell(fullAddress.toString());
+					table.addCell("");
 							
 				}
 			}

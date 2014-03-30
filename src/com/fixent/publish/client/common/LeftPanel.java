@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fixent.publish.client.comon;
+package com.fixent.publish.client.common;
 
 /**
  *

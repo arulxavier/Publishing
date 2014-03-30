@@ -4,25 +4,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 import com.fixent.publish.client.book.view.BookPopupView;
 import com.fixent.publish.client.book.view.BookView;
 import com.fixent.publish.client.common.BaseController;
+import com.fixent.publish.client.common.RightPanel;
 import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.service.impl.BookServiceImpl;
 
-public class BookController extends BaseController {
+public class BookController 
+extends BaseController {
 
 	public BookView view;
 	JDialog bookPopup;
-	List<Book> books;
-	public static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy");
+	List<Book> books;	
 	Book book;
 
 	public BookController() {
@@ -37,17 +37,16 @@ public class BookController extends BaseController {
 		view.getBookListTable().addMouseListener(new BookTableClickAction());
 	}
 
-	class AddAction implements ActionListener {
+	class AddAction 
+	implements ActionListener {
 
 		
 		public void actionPerformed(ActionEvent e) {
 
 			BookPopupView bookPopupView = new BookPopupView();
 
-			bookPopupView.getSaveButton().addActionListener(
-					new SaveAction(bookPopupView));
-			bookPopupView.getCancelButton().addActionListener(
-					new CancelAction(bookPopupView));
+			bookPopupView.getSaveButton().addActionListener(new SaveAction(bookPopupView));
+			bookPopupView.getCancelButton().addActionListener(new CancelAction(bookPopupView));
 
 			bookPopup = new JDialog();
 			bookPopup.add(bookPopupView);
@@ -55,13 +54,10 @@ public class BookController extends BaseController {
 			bookPopup.setResizable(false);
 			bookPopup.setLocationRelativeTo(null);
 			bookPopup.setVisible(true);
-
 		}
-
 	}
 
 	class DeleteAction implements ActionListener {
-
 		
 		public void actionPerformed(ActionEvent e) {
 
@@ -69,17 +65,18 @@ public class BookController extends BaseController {
 			final int row = view.getBookListTable().getSelectedRow();
 			Book deleteObject = books.get(row);
 			BookServiceImpl impl = new BookServiceImpl();
+			
 			if (!impl.deleteBook(deleteObject)) {
-
-				setErrorMessages(view.getParent(),
-						"Cannot delete book details after it is subscribed");
+				
+				RightPanel rightSidePanel = (RightPanel)view.getParent();
+				showPopup(rightSidePanel.getParent(), "Cannot delete book details after it is subscribed");
 			}
 			setView();
 		}
-
 	}
 
-	class ViewAction implements ActionListener {
+	class ViewAction 
+	implements ActionListener {
 
 		
 		public void actionPerformed(ActionEvent e) {
@@ -87,14 +84,13 @@ public class BookController extends BaseController {
 			final int row = view.getBookListTable().getSelectedRow();
 			// final int column =
 			// view.getSubjectCategoryTable().getSelectedColumn();
-			Book book = getBook((Integer) view.getBookListTable().getValueAt(
-					row, 0));
+			book = getBook((Integer) view.getBookListTable().getValueAt(row, 0));
 
 			BookPopupView bookPopupView = new BookPopupView();
 			bookPopupView.getBookNmaeTextField().setText(book.getName());
 			bookPopupView.getAuthorTextField().setText(book.getAuthor());
 			bookPopupView.getPublishingDatePicker().setDateTextField(
-					book.getPublishingDate().toString());
+					book.getPublishingDate());
 			bookPopupView.getFrequencyComboBox().setSelectedItem(
 					book.getFrequency());
 
@@ -109,22 +105,19 @@ public class BookController extends BaseController {
 			bookPopup.setResizable(false);
 			bookPopup.setLocationRelativeTo(null);
 			bookPopup.setVisible(true);
-
 		}
-
 	}
 
-	class SaveAction implements ActionListener {
+	class SaveAction 
+	implements ActionListener {
 
 		BookPopupView bookPopupView;
 
 		public SaveAction(BookPopupView bookPopupView) {
-
 			this.bookPopupView = bookPopupView;
 		}
 
 		@SuppressWarnings("deprecation")
-		
 		public void actionPerformed(ActionEvent e) {
 
 			setErrorMsg("");
@@ -132,11 +125,14 @@ public class BookController extends BaseController {
 			BookServiceImpl impl = new BookServiceImpl();
 
 			if (book == null) {
+				
 				book = new Book();
 				book.setName(bookPopupView.getBookNmaeTextField().getText());
 				book.setAuthor(bookPopupView.getAuthorTextField().getText());
-				book.setPublishingDate(new Date(bookPopupView
-						.getPublishingDatePicker().getjTextField1()));
+				String publishdate = bookPopupView
+						.getPublishingDatePicker().getjTextField1();
+				Date date = new Date(publishdate);
+				book.setPublishingDate(date);
 				book.setFrequency(bookPopupView.getFrequencyComboBox()
 						.getSelectedItem().toString());
 				boolean result = checkForDuplicate(book.getName(), null, true);
@@ -146,23 +142,24 @@ public class BookController extends BaseController {
 				}
 				impl.createBook(book);
 			} else {
-				Book localBook = new Book();
-				localBook.setId(book.getId());
-				localBook.setName(bookPopupView.getBookNmaeTextField()
+				
+				book.setName(bookPopupView.getBookNmaeTextField()
 						.getText());
-				localBook.setAuthor(bookPopupView.getAuthorTextField()
+				book.setAuthor(bookPopupView.getAuthorTextField()
 						.getText());
-				localBook.setPublishingDate(new Date(bookPopupView
-						.getPublishingDatePicker().getjTextField1()));
-				localBook.setFrequency(bookPopupView.getFrequencyComboBox()
+				String publishdate = bookPopupView
+						.getPublishingDatePicker().getjTextField1();
+				Date date = new Date(publishdate);
+				book.setPublishingDate(date);
+				book.setFrequency(bookPopupView.getFrequencyComboBox()
 						.getSelectedItem().toString());
-				boolean result = checkForDuplicate(localBook.getName(),
-						localBook.getId(), false);
+				boolean result = checkForDuplicate(book.getName(),
+						book.getId(), false);
 				if (result) {
 					setErrorMsg("Book Name already exist");
 					return;
 				}
-				impl.modifyBook(localBook);
+				impl.modifyBook(book);
 			}
 
 			setView();
@@ -182,7 +179,8 @@ public class BookController extends BaseController {
 
 	}
 
-	class BookTableClickAction extends MouseAdapter {
+	class BookTableClickAction 
+	extends MouseAdapter {
 
 		public void mouseClicked(MouseEvent e) {
 
@@ -200,7 +198,7 @@ public class BookController extends BaseController {
 				bookView.getBookNmaeTextField().setText(book.getName());
 				bookView.getAuthorTextField().setText(book.getAuthor());
 				bookView.getPublishingDatePicker().setDateTextField(
-						DATE_FORMAT.format(book.getPublishingDate()));
+						book.getPublishingDate());
 				bookPopup = new JDialog();
 				bookPopup.add(bookView);
 				bookPopup.setSize(400, 400);

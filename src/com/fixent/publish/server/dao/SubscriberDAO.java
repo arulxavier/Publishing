@@ -106,19 +106,19 @@ public class SubscriberDAO extends BaseDAO {
 		return null;
 	}
 
-	public List<Subscriber> getSubscribers(Integer id, String name) {
+	public List<Subscriber> getSubscribers(Integer id, String name, int pincode) {
 
 		Session session = getSession();
 		Criteria criteria = session.createCriteria(Subscriber.class);
-		if (id != null && id > 0)
-		{
-			
+		if (id != null && id > 0) {			
 			criteria.add(Restrictions.eq("id", id));
 		}
-		if (name != null && !name.isEmpty())
-		{
-			
+		if (name != null && !name.isEmpty()) {			
 			criteria.add(Restrictions.ilike("name", "%"+name+"%"));
+		}
+		Criteria addressCriteria = criteria.createCriteria("address");
+		if (pincode != 0) {
+			addressCriteria.add(Restrictions.eq("pincode", pincode));
 		}
 		List<Subscriber> students = criteria.list();
 		initializeSubscriber(students);
@@ -273,6 +273,31 @@ public class SubscriberDAO extends BaseDAO {
 				} else {
 					Hibernate.initialize(subscriber);
 				}
+				
+			} else {
+				
+				Book book = subscribeInfo.getBook();
+				if (book instanceof HibernateProxy) {
+					
+					HibernateProxy hibernateProxy2 = (HibernateProxy) book;
+					Book book2 = (Book) hibernateProxy2;
+					Hibernate.initialize(book2);
+					 
+				} else {
+					Hibernate.initialize(book);
+				}
+				
+				Subscriber subscriber = subscribeInfo.getSubscriber();
+				if (subscriber instanceof HibernateProxy) {
+					
+					HibernateProxy hibernateProxy2 = (HibernateProxy) subscriber;
+					Subscriber subscriber2 = (Subscriber) hibernateProxy2;
+					Hibernate.initialize(subscriber2);
+					 
+				} else {
+					Hibernate.initialize(subscriber);
+				}
+				
 				
 			}
 			

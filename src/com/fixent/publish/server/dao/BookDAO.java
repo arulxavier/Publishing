@@ -4,11 +4,16 @@ import java.math.BigInteger;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.proxy.HibernateProxy;
 
 import com.fixent.publish.server.common.BaseDAO;
 import com.fixent.publish.server.model.Book;
+import com.fixent.publish.server.model.SubscribeInfo;
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 public class BookDAO extends BaseDAO {
 
@@ -70,8 +75,26 @@ public class BookDAO extends BaseDAO {
 	}
 
 	public Book getBook(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session session = getSession();
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Book.class);
+		criteria.add(Restrictions.like("name", name));
+		Book book = (Book) criteria.list().get(0);
+		initializeBook(book);
+		session.getTransaction().commit();
+		session.close();
+		return book;
+	}
+	
+	public void initializeBook(Book book) {
+		
+		if (book instanceof HibernateProxy) {
+			
+			HibernateProxy hibernateProxy = (HibernateProxy) book;
+			book = (Book) hibernateProxy;
+			Hibernate.initialize(book);
+		}
 	}
 
 	public Book getBookById(int id) {

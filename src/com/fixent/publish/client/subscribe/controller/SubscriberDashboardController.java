@@ -7,13 +7,13 @@ import java.util.List;
 
 import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.ClientConstants;
-import com.fixent.publish.client.common.RightSidePanel;
-import com.fixent.publish.client.comon.RightPanel;
+import com.fixent.publish.client.common.RightPanel;
 import com.fixent.publish.client.subscribe.view.SubscriberDashboardView;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
 
-public class SubscriberDashboardController extends BaseController {
+public class SubscriberDashboardController 
+extends BaseController {
 
 	public SubscriberDashboardView view;
 
@@ -56,46 +56,78 @@ public class SubscriberDashboardController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
+			boolean status = false;
 			Integer id = null;
-			SubscribeServiceImpl subscribeServiceImpl = new SubscribeServiceImpl();
 			List<Subscriber> subscribers;
-			if (view.getSubscriberIdTextField().getText() != null
-					&& !view.getSubscriberIdTextField().getText().isEmpty()
-					&& !view.getSubscriberIdTextField().getText().trim()
-							.isEmpty()) {
+			int pincode = 0;
+			
+			SubscribeServiceImpl subscribeServiceImpl = new SubscribeServiceImpl();
+			
+			String subscriberId = view.getSubscriberIdTextField().getText();
+			if (subscriberId != null && !subscriberId.isEmpty()	&& !subscriberId.trim().isEmpty()) {
+				
 				try {
-					id = Integer.parseInt(view.getSubscriberIdTextField()
-							.getText());
+					
+					id = Integer.parseInt(subscriberId);
+					status = true;
 				} catch (NumberFormatException e1) {
-					setErrorMessages(view, "Please enter a numeric value");
+					
+					status = false;
+					showPopup(view, "Please enter a Valid ID");
 				}
 
+			} else {
+				status = true;
 			}
-			subscribers = subscribeServiceImpl.getSubscriber(id, view
-					.getSubscriberNameTextField().getText());
-			push("subscribersList", subscribers);
-			if (id != null) {
-				push("id", id);
-			}
-			if (view.getSubscriberNameTextField().getText() != null) {
-				push("name", view.getSubscriberNameTextField().getText());
-			}
+			
+			String pin = view.getPincodeTextField().getText();
+			if (pin != null && !pin.isEmpty()	&& !pin.trim().isEmpty()) {
+				
+				try {
+					
+					pincode = Integer.parseInt(pin);
+					status = true;
+				} catch (NumberFormatException e1) {
+					
+					status = false;
+					showPopup(view, "Please enter Valid Pincode");
+				}
 
-			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
-			rightSidePanel.removeAll();
-			rightSidePanel.add(new SubscriberListController().view,
-					BorderLayout.CENTER);
-			rightSidePanel.repaint();
-			rightSidePanel.revalidate();
-			rightSidePanel.setVisible(true);*/
+			} else {
+				status = true;
+			}
 			
+			String name =  view.getSubscriberNameTextField().getText();
 			
-			RightPanel rightSidePanel = (RightPanel)view.getParent();
-			rightSidePanel.removeAll();
-			rightSidePanel.add(new SubscriberListController().view, BorderLayout.CENTER);
-			rightSidePanel.repaint();
-			rightSidePanel.revalidate();
-			rightSidePanel.setVisible(true);
+			if (status) {
+				
+				subscribers = subscribeServiceImpl.getSubscriber(id, name, pincode);
+				push("subscribersList", subscribers);
+				if (id != null) {
+					push("id", id);
+				}
+				if (view.getSubscriberNameTextField().getText() != null) {
+					push("name", view.getSubscriberNameTextField().getText());
+				}
+
+				/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
+				rightSidePanel.removeAll();
+				rightSidePanel.add(new SubscriberListController().view,
+						BorderLayout.CENTER);
+				rightSidePanel.repaint();
+				rightSidePanel.revalidate();
+				rightSidePanel.setVisible(true);*/
+				
+				
+				RightPanel rightSidePanel = (RightPanel)view.getParent();
+				rightSidePanel.removeAll();
+				rightSidePanel.add(new SubscriberListController().view, BorderLayout.CENTER);
+				rightSidePanel.repaint();
+				rightSidePanel.revalidate();
+				rightSidePanel.setVisible(true);
+				
+			}
+			
 		}
 
 	}

@@ -1,4 +1,4 @@
-package com.fixent.publish.client.comon;
+package com.fixent.publish.client.common;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

@@ -81,14 +81,14 @@ public class SubscribeServiceImpl implements SubscribeService {
 	}
 
 	
-	public List<Subscriber> getSubscriber(Integer id, String name) {
+	public List<Subscriber> getSubscriber(Integer id, String name, int pincode) {
 
 		List<Subscriber> subscribers = null;
 
 		try {
 
 			SubscriberDAO dao = new SubscriberDAO();
-			subscribers = dao.getSubscribers(id, name);
+			subscribers = dao.getSubscribers(id, name, pincode);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,6 +167,13 @@ public class SubscribeServiceImpl implements SubscribeService {
 			e.printStackTrace();
 		}
 		return status;
+	}
+
+
+	public List<Subscriber> getSubscriber(Integer subscriberId,
+			String subscriberName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
