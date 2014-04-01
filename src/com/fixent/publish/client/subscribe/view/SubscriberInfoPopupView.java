@@ -29,7 +29,6 @@ public class SubscriberInfoPopupView extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         bookComboBox = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        subscribeDatePicker = new com.fixent.scm.client.component.ADatePicker();
         jLabel3 = new javax.swing.JLabel();
         noOfYearComboBox = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
@@ -38,6 +37,7 @@ public class SubscriberInfoPopupView extends javax.swing.JPanel {
         cancelButton = new javax.swing.JButton();
         expiryTxt = new javax.swing.JTextField();
         errorLabel = new javax.swing.JLabel();
+        subscribeDatePicker = new com.fixent.component.datepicker.ADatePicker();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -62,11 +62,15 @@ public class SubscriberInfoPopupView extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel5.setText("Subscribtion Details");
 
+        saveButton.setBackground(new java.awt.Color(61, 86, 109));
         saveButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        saveButton.setForeground(new java.awt.Color(255, 255, 255));
         saveButton.setText("Save");
         saveButton.setPreferredSize(new java.awt.Dimension(75, 25));
 
+        cancelButton.setBackground(new java.awt.Color(61, 86, 109));
         cancelButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelButton.setText("Cancel");
 
         expiryTxt.setEditable(false);
@@ -103,9 +107,9 @@ public class SubscriberInfoPopupView extends javax.swing.JPanel {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4)))
                             .addGap(34, 34, 34)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(subscribeDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(expiryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(expiryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(subscribeDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,24 +120,25 @@ public class SubscriberInfoPopupView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorLabel)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(subscribeDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(bookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel3)
-                        .addComponent(noOfYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(expiryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(bookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(noOfYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(expiryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cancelButton)))
+                    .addComponent(subscribeDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -149,7 +154,7 @@ public class SubscriberInfoPopupView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JComboBox noOfYearComboBox;
     private javax.swing.JButton saveButton;
-    private com.fixent.scm.client.component.ADatePicker subscribeDatePicker;
+    private com.fixent.component.datepicker.ADatePicker subscribeDatePicker;
     // End of variables declaration//GEN-END:variables
 	public javax.swing.JComboBox getBookComboBox() {
 		return bookComboBox;
@@ -232,21 +237,21 @@ public class SubscriberInfoPopupView extends javax.swing.JPanel {
 		this.saveButton = saveButton;
 	}
 
-	public com.fixent.scm.client.component.ADatePicker getSubscribeDatePicker() {
-		return subscribeDatePicker;
-	}
-
-	public void setSubscribeDatePicker(
-			com.fixent.scm.client.component.ADatePicker subscribeDatePicker) {
-		this.subscribeDatePicker = subscribeDatePicker;
-	}
-
 	public javax.swing.JLabel getErrorLabel() {
 		return errorLabel;
 	}
 
 	public void setErrorLabel(javax.swing.JLabel errorLabel) {
 		this.errorLabel = errorLabel;
+	}
+
+	public com.fixent.component.datepicker.ADatePicker getSubscribeDatePicker() {
+		return subscribeDatePicker;
+	}
+
+	public void setSubscribeDatePicker(
+			com.fixent.component.datepicker.ADatePicker subscribeDatePicker) {
+		this.subscribeDatePicker = subscribeDatePicker;
 	}
     
     

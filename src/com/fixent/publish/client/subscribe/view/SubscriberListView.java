@@ -33,6 +33,7 @@ public class SubscriberListView extends javax.swing.JPanel {
         viewButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
+        printButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -73,6 +74,11 @@ public class SubscriberListView extends javax.swing.JPanel {
         cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
         cancelBtn.setText("Cancel");
 
+        printButton.setBackground(new java.awt.Color(61, 86, 109));
+        printButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        printButton.setForeground(new java.awt.Color(255, 255, 255));
+        printButton.setText("Print");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,11 +94,12 @@ public class SubscriberListView extends javax.swing.JPanel {
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cancelBtn)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cancelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(deleteButton)
                             .addComponent(viewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modifyButton))))
+                            .addComponent(modifyButton)
+                            .addComponent(printButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
@@ -110,7 +117,9 @@ public class SubscriberListView extends javax.swing.JPanel {
                 .addComponent(deleteButton)
                 .addGap(10, 10, 10)
                 .addComponent(cancelBtn)
-                .addGap(19, 19, 19))
+                .addGap(20, 20, 20)
+                .addComponent(printButton)
+                .addGap(42, 42, 42))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -119,6 +128,7 @@ public class SubscriberListView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modifyButton;
+    private javax.swing.JButton printButton;
     private javax.swing.JTable subscriberListTable;
     private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
@@ -176,6 +186,14 @@ public class SubscriberListView extends javax.swing.JPanel {
 
 	public void setCancelBtn(javax.swing.JButton cancelBtn) {
 		this.cancelBtn = cancelBtn;
+	}
+
+	public javax.swing.JButton getPrintButton() {
+		return printButton;
+	}
+
+	public void setPrintButton(javax.swing.JButton printButton) {
+		this.printButton = printButton;
 	}
     
 }

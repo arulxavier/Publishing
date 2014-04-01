@@ -16,7 +16,7 @@ public class SubscriberListDataTable extends AbstractTableModel {
 	/**/
 	private static final long serialVersionUID = 1L;
 	List<Subscriber> studentList;
-	String columnList[] = new String[] { "Subscriber ID", "Subscriber Name" };
+	String columnList[] = new String[] { "Group Code", "Code", "Name", "Mobile Number" };
 
 	
 	public int getColumnCount() {
@@ -34,9 +34,13 @@ public class SubscriberListDataTable extends AbstractTableModel {
 		Subscriber entity = studentList.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			return entity.getId();
+			return entity.getGroupCode();
 		case 1:
+			return entity.getCode();
+		case 2:
 			return entity.getName();
+		case 3:
+			return entity.getMobileNumber();
 		default:
 			return null;
 		}

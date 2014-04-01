@@ -71,8 +71,8 @@ public class SubscriberModifyController extends BaseController {
 						new CancelAction(infoPopupView));
 				infoPopupView.getNoOfYearComboBox().addItemListener(
 						new YearChangeEvent(infoPopupView));
-				infoPopupView.getSubscribeDatePicker().getDateField()
-						.addCaretListener(new SubscribedAction(infoPopupView));
+//				infoPopupView.getSubscribeDatePicker().getDateField()
+//						.addCaretListener(new SubscribedAction(infoPopupView));
 				DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
 
 				boxModel.addElement("Select One");
@@ -88,8 +88,7 @@ public class SubscriberModifyController extends BaseController {
 						subscribeInfo.getBook().getName());
 				infoPopupView.getNoOfYearComboBox().setSelectedItem(
 						String.valueOf(subscribeInfo.getNoOfYear()));
-				infoPopupView.getSubscribeDatePicker().setDateTextField(
-						DATE_FORMAT.format(subscribeInfo.getSubscribeDate()));
+				infoPopupView.getSubscribeDatePicker().setDateTextField(subscribeInfo.getSubscribeDate());
 
 				infoPopupView.getExpiryTxt().setText(
 						DATE_FORMAT.format(subscribeInfo.getExpiredDate())
@@ -133,8 +132,8 @@ public class SubscriberModifyController extends BaseController {
 					new CancelAction(infoPopupView));
 			infoPopupView.getNoOfYearComboBox().addItemListener(
 					new YearChangeEvent(infoPopupView));
-			infoPopupView.getSubscribeDatePicker().getDateField()
-					.addCaretListener(new SubscribedAction(infoPopupView));
+			/*infoPopupView.getSubscribeDatePicker().getDateField()
+					.addCaretListener(new SubscribedAction(infoPopupView));*/
 
 			DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
 
@@ -189,7 +188,8 @@ public class SubscriberModifyController extends BaseController {
 					.getText());
 
 			Address address = new Address();
-			address.setStreet(view.getStreetTextField().getText());
+			address.setStreet1(view.getStreet1TextField().getText());
+			address.setStreet2(view.getStreet2TextField().getText());
 			address.setCity(view.getCityTextField().getText());
 			address.setState(view.getStateTextField().getText());
 			address.setCountry(view.getCountryTextField().getText());

@@ -10,6 +10,7 @@ import com.fixent.publish.client.common.ClientConstants;
 import com.fixent.publish.client.common.RightPanel;
 import com.fixent.publish.client.subscribe.view.SubscriberDashboardView;
 import com.fixent.publish.server.model.Subscriber;
+import com.fixent.publish.server.model.info.SearchInfo;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
 
 public class SubscriberDashboardController 
@@ -51,74 +52,50 @@ extends BaseController {
 
 	}
 
-	class SearchAction implements ActionListener {
+	class SearchAction 
+	implements ActionListener {
 
 		
 		public void actionPerformed(ActionEvent e) {
-
-			boolean status = false;
-			Integer id = null;
-			List<Subscriber> subscribers;
-			int pincode = 0;
 			
-			SubscribeServiceImpl subscribeServiceImpl = new SubscribeServiceImpl();
+			boolean status = true;
+			SearchInfo info = new SearchInfo();
 			
-			String subscriberId = view.getSubscriberIdTextField().getText();
-			if (subscriberId != null && !subscriberId.isEmpty()	&& !subscriberId.trim().isEmpty()) {
+			String name = view.getNameTextField().getText();
+			info.setName(name);
+			
+			String code = view.getCodeTextField().getText();
+			info.setCode(code);
+			
+			String mobileNumber = view.getMobileNumberTextField().getText();
+			
+			if (mobileNumber != null && mobileNumber.length() > 0) {
 				
 				try {
-					
-					id = Integer.parseInt(subscriberId);
-					status = true;
-				} catch (NumberFormatException e1) {
-					
+					info.setMobileNumber(mobileNumber);
+				} catch (Exception e2) {
 					status = false;
-					showPopup(view, "Please enter a Valid ID");
+					showPopup((RightPanel)view.getParent(), "Enter valid Mobile Number");
 				}
-
-			} else {
-				status = true;
 			}
 			
-			String pin = view.getPincodeTextField().getText();
-			if (pin != null && !pin.isEmpty()	&& !pin.trim().isEmpty()) {
+			String pincode = view.getPincodeTextField().getText();
+			
+			if (pincode != null && pincode.length() > 0) {
 				
 				try {
-					
-					pincode = Integer.parseInt(pin);
-					status = true;
-				} catch (NumberFormatException e1) {
-					
+					info.setPincode(Integer.parseInt(pincode));
+				} catch (Exception e2) {
 					status = false;
-					showPopup(view, "Please enter Valid Pincode");
+					showPopup((RightPanel)view.getParent(), "Enter valid Pincode");
 				}
-
-			} else {
-				status = true;
 			}
+
 			
-			String name =  view.getSubscriberNameTextField().getText();
 			
 			if (status) {
 				
-				subscribers = subscribeServiceImpl.getSubscriber(id, name, pincode);
-				push("subscribersList", subscribers);
-				if (id != null) {
-					push("id", id);
-				}
-				if (view.getSubscriberNameTextField().getText() != null) {
-					push("name", view.getSubscriberNameTextField().getText());
-				}
-
-				/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
-				rightSidePanel.removeAll();
-				rightSidePanel.add(new SubscriberListController().view,
-						BorderLayout.CENTER);
-				rightSidePanel.repaint();
-				rightSidePanel.revalidate();
-				rightSidePanel.setVisible(true);*/
-				
-				
+				push("searchinfo", info);
 				RightPanel rightSidePanel = (RightPanel)view.getParent();
 				rightSidePanel.removeAll();
 				rightSidePanel.add(new SubscriberListController().view, BorderLayout.CENTER);

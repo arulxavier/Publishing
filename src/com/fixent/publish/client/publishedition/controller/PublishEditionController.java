@@ -43,20 +43,12 @@ extends BaseController {
 
 		public void actionPerformed(ActionEvent e) {
 			
-			if (view.getBookListTable().getSelectedRow() >=  0)
-			{
+			if (view.getBookListTable().getSelectedRow() >=  0) {
+				
 				final int row = view.getBookListTable().getSelectedRow();
 				Book book = books.get(row);
 				
 				push("book", book);
-
-			/*	RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
-				rightSidePanel.removeAll();
-				rightSidePanel.add(new SendEditionController().view, BorderLayout.CENTER);
-				rightSidePanel.repaint();
-				rightSidePanel.revalidate();
-				rightSidePanel.setVisible(true);*/
-				
 				boolean status = false;
 				
 				for (Edition edition : book.getEditions()) {
@@ -84,6 +76,8 @@ extends BaseController {
 				}*/
 				
 				
+			} else {
+				showPopup((RightPanel)view.getParent(), "Select Book to Publish");
 			}
 			
 		}

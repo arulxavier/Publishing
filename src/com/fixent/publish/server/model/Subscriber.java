@@ -6,6 +6,8 @@ public class Subscriber {
 	
 	Integer id;
 	String name;
+	String groupCode;
+	String code;
 	String mobileNumber;
 	Address address;	
 	
@@ -41,6 +43,18 @@ public class Subscriber {
 	}
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	public String getGroupCode() {
+		return groupCode;
+	}
+	public void setGroupCode(String groupCode) {
+		this.groupCode = groupCode;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
 	}
 	
 	

@@ -58,21 +58,26 @@ extends BaseController {
 			edition.setEditionDate(new Date());
 			edition.setName(view.getEditionTextField().getText());
 			edition.setBook(book);
-			SubscribeServiceImpl impl = new SubscribeServiceImpl();
-			boolean status = impl.saveEdition(edition);
-			if (status) {
-				System.out.println("Success");
-				List<SubscribeInfo> infoList = new ArrayList<SubscribeInfo>();
-				infoList.addAll(subscriberInfos);
-				NotificationUtil.createPDFForSubscriber(infoList, true, "DeliveryReports.pdf");
+			if (edition.getName() != null && edition.getName().length() <= 0) {
+				showPopup((RightPanel)view.getParent(), "Enter the Edition detail");
+			} else {
+				
+				SubscribeServiceImpl impl = new SubscribeServiceImpl();
+				boolean status = impl.saveEdition(edition);
+				if (status) {
+					System.out.println("Success");
+					List<SubscribeInfo> infoList = new ArrayList<SubscribeInfo>();
+					infoList.addAll(subscriberInfos);
+					NotificationUtil.createPDFForSubscriberInfo(infoList, true, "DeliveryReports.pdf");
+				}
+				
+				RightPanel rightSidePanel = (RightPanel)view.getParent();
+				rightSidePanel.removeAll();
+				rightSidePanel.add(new PublishEditionController().view, BorderLayout.CENTER);
+				rightSidePanel.repaint();
+				rightSidePanel.revalidate();
+				rightSidePanel.setVisible(true);
 			}
-			
-			RightPanel rightSidePanel = (RightPanel)view.getParent();
-			rightSidePanel.removeAll();
-			rightSidePanel.add(new PublishEditionController().view, BorderLayout.CENTER);
-			rightSidePanel.repaint();
-			rightSidePanel.revalidate();
-			rightSidePanel.setVisible(true);
 			
 		}
 		

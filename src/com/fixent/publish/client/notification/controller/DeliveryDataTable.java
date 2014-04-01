@@ -1,54 +1,76 @@
 package com.fixent.publish.client.notification.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
 import com.fixent.publish.server.model.SubscribeInfo;
+import com.fixent.publish.server.model.Subscriber;
 
 public class DeliveryDataTable extends AbstractTableModel {
 
-	public DeliveryDataTable(List<SubscribeInfo> subscribers) {
+	public DeliveryDataTable(List<SubscribeInfo> subscribeInfos) {
 		super();
-		this.subscribers = subscribers;
+		this.subscribeInfos = subscribeInfos;
 	}
 
 	/**/
 	private static final long serialVersionUID = 1L;
-	List<SubscribeInfo> subscribers;
-	String columnList[] = new String[] { "Subscriber ID", "Subscriber Name",
-			"Mobile Number", "Book Name" , "Expired Date", "Frequency"};
+	List<SubscribeInfo> subscribeInfos;
+	String columnList[] = new String[] { "Book Name", "Expiry date",
+			"Subscriber Name", "Mobile Number" , "Address"};
 
 	
 	public int getColumnCount() {
 		return columnList.length;
 	}
 
-	
+	public String[] getColumnList() {
+		return columnList;
+	}
 	public int getRowCount() {
-		return subscribers !=null ? subscribers.size() : 0;
+		return subscribeInfos !=null ? subscribeInfos.size() : 0;
 	}
 
 	
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
-		SubscribeInfo entity = subscribers.get(rowIndex);
+		SubscribeInfo entity = subscribeInfos.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			return entity.getSubscriber() != null ? entity.getSubscriber().getId() : null;
+			return entity.getBook() != null ? entity.getBook().getName().trim() : null;
 		case 1:
-			return entity.getSubscriber() != null ? entity.getSubscriber().getName() : null;
+			return entity != null ? getExpiryDate(entity.getExpiredDate()) : null;
 		case 2:
-			return entity.getSubscriber() != null ?  entity.getSubscriber().getMobileNumber() : null;
+			return entity.getSubscriber() != null ?  entity.getSubscriber().getName().trim() : null;
 		case 3:
-			return entity.getBook()!= null ? entity.getBook().getName() : null;
+			return entity.getSubscriber() != null ?  entity.getSubscriber().getMobileNumber().trim() : null;
 		case 4:
-			return entity.getExpiredDate()!= null ? entity.getExpiredDate() : null;
-		case 5:
-			return entity.getBook()!= null ? entity.getBook().getFrequency() : null;
+			return entity.getSubscriber().getAddress() != null ? entity.getSubscriber().getAddress().getPincode() : null;		
 		default:
 			return null;
 		}
+	}
+	
+	public String getExpiryDate(Date date) {
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+		return dateFormat.format(date);
+	}
+	
+	public String getBook(Subscriber subscriber) {
+		
+		StringBuffer buffer = new StringBuffer();
+		for (SubscribeInfo info : subscriber.getSubscribeInfos()) {
+			
+			buffer.append(info.getBook().getName() + " : \n" );
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+			buffer.append(dateFormat.format(info.getExpiredDate()) + " \n");
+			
+		}
+		return buffer.toString();
 	}
 
 	

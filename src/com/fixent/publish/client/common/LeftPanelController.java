@@ -11,6 +11,7 @@ import javax.swing.JViewport;
 
 import com.fixent.publish.client.book.controller.BookController;
 import com.fixent.publish.client.notification.controller.NotificationController;
+import com.fixent.publish.client.notification.controller.NotificationDashboardController;
 import com.fixent.publish.client.publishedition.controller.PublishEditionController;
 import com.fixent.publish.client.subscribe.controller.SubscriberDashboardController;
 
@@ -101,7 +102,7 @@ public class LeftPanelController {
 								"Notification")) {
 
 							rightSidePanel
-									.add(new NotificationController().view,
+									.add(new NotificationDashboardController().view,
 											BorderLayout.CENTER);
 						}
 						rightSidePanel.repaint();

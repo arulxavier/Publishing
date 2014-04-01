@@ -15,6 +15,14 @@
 			<column name="MOBILE_NUMBER" length="20" not-null="true" />
 		</property>
 		
+		<property name="groupCode" type="string">
+			<column name="GROUP_CODE" length="20" not-null="true" />
+		</property>
+		
+		<property name="code" type="string">
+			<column name="CODE" length="20" not-null="true" />
+		</property>
+		
 		 <set name="subscribeInfos" table="SUBSCRIBE_INFO" 
 				inverse="false" lazy="true" cascade="all" fetch="select">
             <key>

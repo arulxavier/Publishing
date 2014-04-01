@@ -26,46 +26,111 @@ public class SubscriberDashboardView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        subscriberIdTextField = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        subscriberNameTextField = new javax.swing.JTextField();
-        addButton = new javax.swing.JButton();
-        searchButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        codeTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         pincodeTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        mobileNumberTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        searchButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel1.setText("Subscriber ID");
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel3.setText("Subscriber Dashboard");
 
-        subscriberIdTextField.setColumns(15);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        codeTextField.setColumns(15);
+
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel1.setText("Code");
+
+        nameTextField.setColumns(15);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel2.setText("Subscriber Name");
+        jLabel2.setText("Name");
 
-        subscriberNameTextField.setColumns(15);
+        pincodeTextField.setColumns(15);
+        pincodeTextField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        addButton.setBackground(new java.awt.Color(61, 86, 109));
-        addButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        addButton.setForeground(new java.awt.Color(255, 255, 255));
-        addButton.setText("Add");
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel4.setText("Pincode");
+
+        mobileNumberTextField.setColumns(15);
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel5.setText("Mobile Number");
 
         searchButton.setBackground(new java.awt.Color(61, 86, 109));
         searchButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         searchButton.setForeground(new java.awt.Color(255, 255, 255));
         searchButton.setText("Search");
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel3.setText("Subscriber Dashboard");
+        addButton.setBackground(new java.awt.Color(61, 86, 109));
+        addButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        addButton.setForeground(new java.awt.Color(255, 255, 255));
+        addButton.setText("Add");
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel4.setText("Pincode");
-
-        pincodeTextField.setColumns(15);
-        pincodeTextField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(664, 664, 664))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(searchButton)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel1))
+                                    .addGap(58, 58, 58)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(codeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(mobileNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(pincodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pincodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mobileNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(20, 20, 20)
+                .addComponent(searchButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(addButton)
+                .addGap(20, 20, 20))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -74,66 +139,36 @@ public class SubscriberDashboardView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(72, 72, 72)
-                                .addComponent(subscriberIdTextField))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(50, 50, 50))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addGap(107, 107, 107)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(subscriberNameTextField)
-                                        .addComponent(pincodeTextField)))))))
-                .addContainerGap(197, Short.MAX_VALUE))
+                        .addGap(93, 93, 93)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel3)
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subscriberIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                    .addComponent(jLabel1))
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subscriberNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(jLabel2))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(pincodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(searchButton)
-                .addGap(20, 20, 20)
-                .addComponent(addButton)
-                .addGap(89, 89, 89))
+                .addComponent(jLabel3)
+                .addGap(62, 62, 62)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JTextField codeTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField mobileNumberTextField;
+    private javax.swing.JTextField nameTextField;
     private javax.swing.JTextField pincodeTextField;
     private javax.swing.JButton searchButton;
-    private javax.swing.JTextField subscriberIdTextField;
-    private javax.swing.JTextField subscriberNameTextField;
     // End of variables declaration//GEN-END:variables
 	public javax.swing.JButton getAddButton() {
 		return addButton;
@@ -143,62 +178,29 @@ public class SubscriberDashboardView extends javax.swing.JPanel {
 		this.addButton = addButton;
 	}
 
-	public javax.swing.JLabel getjLabel1() {
-		return jLabel1;
+	public javax.swing.JTextField getCodeTextField() {
+		return codeTextField;
 	}
 
-	public void setjLabel1(javax.swing.JLabel jLabel1) {
-		this.jLabel1 = jLabel1;
+	public void setCodeTextField(javax.swing.JTextField codeTextField) {
+		this.codeTextField = codeTextField;
 	}
 
-	public javax.swing.JLabel getjLabel2() {
-		return jLabel2;
+	public javax.swing.JTextField getMobileNumberTextField() {
+		return mobileNumberTextField;
 	}
 
-	public void setjLabel2(javax.swing.JLabel jLabel2) {
-		this.jLabel2 = jLabel2;
+	public void setMobileNumberTextField(
+			javax.swing.JTextField mobileNumberTextField) {
+		this.mobileNumberTextField = mobileNumberTextField;
 	}
 
-	public javax.swing.JLabel getjLabel3() {
-		return jLabel3;
+	public javax.swing.JTextField getNameTextField() {
+		return nameTextField;
 	}
 
-	public void setjLabel3(javax.swing.JLabel jLabel3) {
-		this.jLabel3 = jLabel3;
-	}
-
-	public javax.swing.JButton getSearchButton() {
-		return searchButton;
-	}
-
-	public void setSearchButton(javax.swing.JButton searchButton) {
-		this.searchButton = searchButton;
-	}
-
-	public javax.swing.JTextField getSubscriberIdTextField() {
-		return subscriberIdTextField;
-	}
-
-	public void setSubscriberIdTextField(
-			javax.swing.JTextField subscriberIdTextField) {
-		this.subscriberIdTextField = subscriberIdTextField;
-	}
-
-	public javax.swing.JTextField getSubscriberNameTextField() {
-		return subscriberNameTextField;
-	}
-
-	public void setSubscriberNameTextField(
-			javax.swing.JTextField subscriberNameTextField) {
-		this.subscriberNameTextField = subscriberNameTextField;
-	}
-
-	public javax.swing.JLabel getjLabel4() {
-		return jLabel4;
-	}
-
-	public void setjLabel4(javax.swing.JLabel jLabel4) {
-		this.jLabel4 = jLabel4;
+	public void setNameTextField(javax.swing.JTextField nameTextField) {
+		this.nameTextField = nameTextField;
 	}
 
 	public javax.swing.JTextField getPincodeTextField() {
@@ -208,5 +210,14 @@ public class SubscriberDashboardView extends javax.swing.JPanel {
 	public void setPincodeTextField(javax.swing.JTextField pincodeTextField) {
 		this.pincodeTextField = pincodeTextField;
 	}
+
+	public javax.swing.JButton getSearchButton() {
+		return searchButton;
+	}
+
+	public void setSearchButton(javax.swing.JButton searchButton) {
+		this.searchButton = searchButton;
+	}
+	
     
 }

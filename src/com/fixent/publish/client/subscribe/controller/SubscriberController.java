@@ -3,6 +3,8 @@ package com.fixent.publish.client.subscribe.controller;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
@@ -30,6 +32,7 @@ import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.model.SubscribeInfo;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.service.impl.BookServiceImpl;
+import com.fixent.publish.server.service.impl.CodeBaseServiceImpl;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
 
 public class SubscriberController extends BaseController {
@@ -51,6 +54,8 @@ public class SubscriberController extends BaseController {
 	public SubscriberController() {
 
 		view = new SubscriberView();
+		view.getCodeTextField().setEditable(false);
+		
 		screenMode = (String) pop(SCREEN_MODE);
 		BookServiceImpl bookServiceImpl = new BookServiceImpl();
 		books = bookServiceImpl.getBooks();
@@ -63,6 +68,8 @@ public class SubscriberController extends BaseController {
 
 			subscriber = (Subscriber) OBJECT_MAP.get("subscriber");
 			setView();
+			view.getCodeTextField().setEditable(false);
+			view.getGroupCodeTextField().setEditable(false);
 		} else if (VIEW.equalsIgnoreCase(screenMode)) {
 
 			subscriber = (Subscriber) OBJECT_MAP.get("subscriber");
@@ -76,12 +83,14 @@ public class SubscriberController extends BaseController {
 		view.getSaveButton().addActionListener(new SaveAction());
 		view.getDeleteButton().addActionListener(new DeleteAction());
 		view.getCancelBtn().addActionListener(new MainCancelAction());
+		view.getGroupCodeTextField().addFocusListener(new GroupCodeFocusEvent());
 	}
 
 	private void setViewMode() {
 		view.getSubscriberNameTextField().setEditable(false);
 		view.getMobileNumberTextField().setEditable(false);
-		view.getStreetTextField().setEditable(false);
+		view.getStreet1TextField().setEditable(false);
+		view.getStreet2TextField().setEditable(false);
 		view.getCityTextField().setEditable(false);
 		view.getStateTextField().setEditable(false);
 		view.getCountryTextField().setEditable(false);
@@ -89,14 +98,19 @@ public class SubscriberController extends BaseController {
 		view.getAddButton().setEnabled(false);
 		view.getDeleteButton().setEnabled(false);
 		view.getSaveButton().setEnabled(false);
+		view.getGroupCodeTextField().setEditable(false);
 	}
 
 	public void setView() {
 		if (subscriber != null) {
+			
+			view.getGroupCodeTextField().setText(subscriber.getGroupCode());
+			view.getCodeTextField().setText(subscriber.getCode());
 			view.getSubscriberNameTextField().setText(subscriber.getName());
 			view.getMobileNumberTextField().setText(
 					subscriber.getMobileNumber());
-			view.getStreetTextField().setText(subscriber.getAddress().getStreet());
+			view.getStreet1TextField().setText(subscriber.getAddress().getStreet1());
+			view.getStreet2TextField().setText(subscriber.getAddress().getStreet2());
 			view.getCityTextField().setText(subscriber.getAddress().getCity());
 			view.getStateTextField().setText(subscriber.getAddress().getState());
 			view.getCountryTextField().setText(subscriber.getAddress().getCountry());
@@ -111,6 +125,24 @@ public class SubscriberController extends BaseController {
 			}
 		}
 
+	}
+	
+	class GroupCodeFocusEvent
+	implements FocusListener {
+
+		public void focusGained(FocusEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void focusLost(FocusEvent e) {
+			
+			CodeBaseServiceImpl impl = new CodeBaseServiceImpl();
+			String code = impl.generateCode(view.getGroupCodeTextField().getText()); 
+			view.getCodeTextField().setText(code);
+			
+		}
+		
 	}
 
 	class SubjectTableClickAction extends MouseAdapter {
@@ -129,8 +161,8 @@ public class SubscriberController extends BaseController {
 						new CancelAction(infoPopupView));
 				infoPopupView.getNoOfYearComboBox().addItemListener(
 						new YearChangeEvent(infoPopupView));
-				infoPopupView.getSubscribeDatePicker().getDateField()
-						.addCaretListener(new SubscribedAction(infoPopupView));
+//				infoPopupView.getSubscribeDatePicker().getDateField()
+//						.addCaretListener(new SubscribedAction(infoPopupView));
 				DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
 
 				boxModel.addElement("Select One");
@@ -152,8 +184,7 @@ public class SubscriberController extends BaseController {
 						subscribeInfo.getBook().getName());
 				infoPopupView.getNoOfYearComboBox().setSelectedItem(
 						String.valueOf(subscribeInfo.getNoOfYear()));
-				infoPopupView.getSubscribeDatePicker().setDateTextField(
-						DATE_FORMAT.format(subscribeInfo.getSubscribeDate()));
+				infoPopupView.getSubscribeDatePicker().setDateTextField(subscribeInfo.getSubscribeDate());
 
 				infoPopupView.getExpiryTxt().setText(
 						DATE_FORMAT.format(subscribeInfo.getExpiredDate())
@@ -200,8 +231,8 @@ public class SubscriberController extends BaseController {
 					new CancelAction(infoPopupView));
 			infoPopupView.getNoOfYearComboBox().addItemListener(
 					new YearChangeEvent(infoPopupView));
-			infoPopupView.getSubscribeDatePicker().getDateField()
-					.addCaretListener(new SubscribedAction(infoPopupView));
+			/*infoPopupView.getSubscribeDatePicker().getDateField()
+					.addCaretListener(new SubscribedAction(infoPopupView));*/
 			DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
 
 			boxModel.addElement("Select One");
@@ -227,17 +258,9 @@ public class SubscriberController extends BaseController {
 		
 		public void actionPerformed(ActionEvent e) {
 
-			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
-			rightSidePanel.removeAll();
-			rightSidePanel.add(new SubscriberDashboardController().view,
-					BorderLayout.CENTER);
-			rightSidePanel.repaint();
-			rightSidePanel.revalidate();
-			rightSidePanel.setVisible(true);*/
-			
 			RightPanel rightSidePanel = (RightPanel)view.getParent();
 			rightSidePanel.removeAll();
-			rightSidePanel.add(new SubscriberDashboardController().view, BorderLayout.CENTER);
+			rightSidePanel.add(new SubscriberListController().view, BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);
@@ -297,8 +320,11 @@ public class SubscriberController extends BaseController {
 			subscriber.setName(view.getSubscriberNameTextField().getText());
 			subscriber.setMobileNumber(view.getMobileNumberTextField()
 					.getText());
-
-			address.setStreet(view.getStreetTextField().getText());
+			subscriber.setGroupCode(view.getGroupCodeTextField().getText());
+			subscriber.setCode(view.getCodeTextField().getText());
+			
+			address.setStreet1(view.getStreet1TextField().getText());
+			address.setStreet2(view.getStreet2TextField().getText());
 			address.setCity(view.getCityTextField().getText());
 			address.setState(view.getStateTextField().getText());
 			address.setCountry(view.getCountryTextField().getText());
@@ -319,18 +345,10 @@ public class SubscriberController extends BaseController {
 				impl.createSubscriber(subscriber);
 			}
 
-			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
-			rightSidePanel.removeAll();
-			rightSidePanel.add(new SubscriberDashboardController().view,
-					BorderLayout.CENTER);
-			rightSidePanel.repaint();
-			rightSidePanel.revalidate();
-			rightSidePanel.setVisible(true);*/
-			
 			
 			RightPanel rightSidePanel = (RightPanel)view.getParent();
 			rightSidePanel.removeAll();
-			rightSidePanel.add(new SubscriberDashboardController().view, BorderLayout.CENTER);
+			rightSidePanel.add(new SubscriberListController().view, BorderLayout.CENTER);
 			rightSidePanel.repaint();
 			rightSidePanel.revalidate();
 			rightSidePanel.setVisible(true);

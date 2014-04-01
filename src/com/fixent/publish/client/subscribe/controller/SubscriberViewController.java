@@ -72,8 +72,8 @@ public class SubscriberViewController extends BaseController {
 						new CancelAction(infoPopupView));
 				infoPopupView.getNoOfYearComboBox().addItemListener(
 						new YearChangeEvent(infoPopupView));
-				infoPopupView.getSubscribeDatePicker().getDateField()
-						.addCaretListener(new SubscribedAction(infoPopupView));
+				/*infoPopupView.getSubscribeDatePicker().getDateField()
+						.addCaretListener(new SubscribedAction(infoPopupView));*/
 				DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
 
 				boxModel.addElement("Select One");
@@ -89,8 +89,7 @@ public class SubscriberViewController extends BaseController {
 						subscribeInfo.getBook().getName());
 				infoPopupView.getNoOfYearComboBox().setSelectedItem(
 						String.valueOf(subscribeInfo.getNoOfYear()));
-				infoPopupView.getSubscribeDatePicker().setDateTextField(
-						DATE_FORMAT.format(subscribeInfo.getSubscribeDate()));
+				infoPopupView.getSubscribeDatePicker().setDateTextField(subscribeInfo.getSubscribeDate());
 
 				infoPopupView.getExpiryTxt().setText(
 						DATE_FORMAT.format(subscribeInfo.getExpiredDate())
@@ -134,8 +133,8 @@ public class SubscriberViewController extends BaseController {
 					new CancelAction(infoPopupView));
 			infoPopupView.getNoOfYearComboBox().addItemListener(
 					new YearChangeEvent(infoPopupView));
-			infoPopupView.getSubscribeDatePicker().getDateField()
-					.addCaretListener(new SubscribedAction(infoPopupView));
+			/*infoPopupView.getSubscribeDatePicker().getDateField()
+					.addCaretListener(new SubscribedAction(infoPopupView));*/
 
 			DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
 
@@ -190,7 +189,8 @@ public class SubscriberViewController extends BaseController {
 					.getText());
 
 			Address address = new Address();
-			address.setStreet(view.getStreetTextField().getText());
+			address.setStreet1(view.getStreet1TextField().getText());
+			address.setStreet2(view.getStreet2TextField().getText());
 			address.setCity(view.getCityTextField().getText());
 			address.setState(view.getStateTextField().getText());
 			address.setCountry(view.getCountryTextField().getText());
@@ -205,14 +205,6 @@ public class SubscriberViewController extends BaseController {
 			SubscribeServiceImpl impl = new SubscribeServiceImpl();
 			impl.createSubscriber(subscriber);
 
-			/*RightSidePanel rightSidePanel = (RightSidePanel) view.getParent();
-			rightSidePanel.removeAll();
-			rightSidePanel.add(new SubscriberDashboardController().view,
-					BorderLayout.CENTER);
-			rightSidePanel.repaint();
-			rightSidePanel.revalidate();
-			rightSidePanel.setVisible(true);*/
-			
 			RightPanel rightSidePanel = (RightPanel)view.getParent();
 			rightSidePanel.removeAll();
 			rightSidePanel.add(new SubscriberDashboardController().view, BorderLayout.CENTER);

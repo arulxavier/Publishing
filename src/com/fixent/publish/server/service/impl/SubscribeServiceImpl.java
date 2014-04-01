@@ -1,5 +1,6 @@
 package com.fixent.publish.server.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fixent.publish.server.dao.SubscriberDAO;
@@ -8,6 +9,7 @@ import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.model.Edition;
 import com.fixent.publish.server.model.SubscribeInfo;
 import com.fixent.publish.server.model.Subscriber;
+import com.fixent.publish.server.model.info.SearchInfo;
 import com.fixent.publish.server.service.SubscribeService;
 
 public class SubscribeServiceImpl implements SubscribeService {
@@ -40,7 +42,10 @@ public class SubscribeServiceImpl implements SubscribeService {
 		boolean status = false;
 		try {
 			SubscriberDAO dao = new SubscriberDAO();
-			status = dao.modifySubscriber(subscriber);
+			status = dao.modifyAddress(subscriber.getAddress());
+			if (status) {
+				status = dao.modifySubscriber(subscriber);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -174,6 +179,34 @@ public class SubscribeServiceImpl implements SubscribeService {
 			String subscriberName) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public List<Subscriber> searchSubscribers(SearchInfo info) {
+		
+		List<Subscriber> subscribers = new ArrayList<Subscriber>();
+		try {
+			
+			SubscriberDAO dao = new SubscriberDAO();
+			subscribers = dao.searchSubscribers(info);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return subscribers;
+	}
+	
+	public List<SubscribeInfo> searchSubscribeInfo(SearchInfo info) {
+		
+		List<SubscribeInfo> subscribeInfos = new ArrayList<SubscribeInfo>();
+		try {
+			
+			SubscriberDAO dao = new SubscriberDAO();
+			subscribeInfos = dao.searchSubscriberInfo(info);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return subscribeInfos;
 	}
 
 }

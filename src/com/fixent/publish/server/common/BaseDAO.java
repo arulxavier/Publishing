@@ -1,12 +1,18 @@
 package com.fixent.publish.server.common;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class BaseDAO {
 
-
+	public Connection connection = null;
+	public PreparedStatement preparedStatement = null;
+	public ResultSet resultSet = null;
 
 	private static final SessionFactory sessionFactory = buildSessionFactory();
 
@@ -34,9 +40,5 @@ public class BaseDAO {
 
 		return BaseDAO.getSessionFactory().openSession();
 	}
-
-
-
-
 
 }
