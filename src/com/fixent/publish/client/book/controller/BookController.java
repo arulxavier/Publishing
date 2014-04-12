@@ -8,13 +8,13 @@ import java.util.Date;
 import java.util.List;
 
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 
 import com.fixent.publish.client.book.view.BookPopupView;
 import com.fixent.publish.client.book.view.BookView;
 import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.RightPanel;
 import com.fixent.publish.server.model.Book;
+import com.fixent.publish.server.model.info.BookInfo;
 import com.fixent.publish.server.service.impl.BookServiceImpl;
 
 public class BookController 
@@ -27,24 +27,33 @@ extends BaseController {
 
 	public BookController() {
 
+		initView();
+		subscribeListner();
+	}
+
+
+	private void initView() {
+		
 		view = new BookView();
-
 		setView();
+	}
 
+	private void subscribeListner() {
+		
 		view.getAddButton().addActionListener(new AddAction());
 		view.getDeleteButton().addActionListener(new DeleteAction());
 		view.getViewButton().addActionListener(new ViewAction());
 		view.getBookListTable().addMouseListener(new BookTableClickAction());
 	}
-
+	
 	class AddAction 
 	implements ActionListener {
 
-		
 		public void actionPerformed(ActionEvent e) {
 
 			BookPopupView bookPopupView = new BookPopupView();
-
+			bookPopupView.getPublishingDatePicker().setDateTextField(new Date());
+			
 			bookPopupView.getSaveButton().addActionListener(new SaveAction(bookPopupView));
 			bookPopupView.getCancelButton().addActionListener(new CancelAction(bookPopupView));
 
@@ -62,14 +71,16 @@ extends BaseController {
 		public void actionPerformed(ActionEvent e) {
 
 			setErrorMsg("");
+			
 			final int row = view.getBookListTable().getSelectedRow();
 			Book deleteObject = books.get(row);
 			BookServiceImpl impl = new BookServiceImpl();
 			
 			if (!impl.deleteBook(deleteObject)) {
 				
-				RightPanel rightSidePanel = (RightPanel)view.getParent();
-				showPopup(rightSidePanel.getParent(), "Cannot delete book details after it is subscribed");
+				setErrorMsg("Cannot delete book details after it is subscribed");
+//				RightPanel rightSidePanel = (RightPanel)view.getParent();
+//				showPopup(rightSidePanel.getParent(), "Cannot delete book details after it is subscribed");
 			}
 			setView();
 		}
@@ -121,6 +132,7 @@ extends BaseController {
 		public void actionPerformed(ActionEvent e) {
 
 			setErrorMsg("");
+			String publishdate;
 
 			BookServiceImpl impl = new BookServiceImpl();
 
@@ -129,13 +141,14 @@ extends BaseController {
 				book = new Book();
 				book.setName(bookPopupView.getBookNmaeTextField().getText());
 				book.setAuthor(bookPopupView.getAuthorTextField().getText());
-				String publishdate = bookPopupView
-						.getPublishingDatePicker().getjTextField1();
-				Date date = new Date(publishdate);
-				book.setPublishingDate(date);
-				book.setFrequency(bookPopupView.getFrequencyComboBox()
-						.getSelectedItem().toString());
-				boolean result = checkForDuplicate(book.getName(), null, true);
+				publishdate = bookPopupView.getPublishingDatePicker().getjTextField1();
+				book.setPublishingDate(new Date(publishdate));
+				book.setFrequency(bookPopupView.getFrequencyComboBox().getSelectedItem().toString());
+				
+				BookInfo bookInfo = new BookInfo();
+				bookInfo.setBookName(book.getName());
+				bookInfo.setIsCreate(true);
+				boolean result = checkForDuplicate(bookInfo);
 				if (result) {
 					setErrorMsg("Book Name already exist");
 					return;
@@ -147,14 +160,19 @@ extends BaseController {
 						.getText());
 				book.setAuthor(bookPopupView.getAuthorTextField()
 						.getText());
-				String publishdate = bookPopupView
+				publishdate = bookPopupView
 						.getPublishingDatePicker().getjTextField1();
 				Date date = new Date(publishdate);
 				book.setPublishingDate(date);
 				book.setFrequency(bookPopupView.getFrequencyComboBox()
 						.getSelectedItem().toString());
-				boolean result = checkForDuplicate(book.getName(),
-						book.getId(), false);
+				
+				BookInfo bookInfo = new BookInfo();
+				bookInfo.setBookName(book.getName());
+				bookInfo.setIsCreate(false);
+				bookInfo.setId(book.getId());
+				
+				boolean result = checkForDuplicate(bookInfo);
 				if (result) {
 					setErrorMsg("Book Name already exist");
 					return;
@@ -168,12 +186,10 @@ extends BaseController {
 			bookPopup.dispose();
 		}
 
-		private boolean checkForDuplicate(String bookName, Integer bookId,
-				boolean isCreate) {
+		private boolean checkForDuplicate(BookInfo bookInfo) {
 			boolean isDuplicate = false;
 			BookServiceImpl bookServiceImpl = new BookServiceImpl();
-			isDuplicate = bookServiceImpl.checkDuplicate(bookName, bookId,
-					isCreate);
+			isDuplicate = bookServiceImpl.checkDuplicate(bookInfo);
 			return isDuplicate;
 		}
 
@@ -185,8 +201,10 @@ extends BaseController {
 		public void mouseClicked(MouseEvent e) {
 
 			setErrorMsg("");
-			if (e.getClickCount() == 2 && view.getBookListTable().getSelectedRow() > 0) {
+			if (e.getClickCount() == 2 && view.getBookListTable().getSelectedRow() >= 0) {
+				
 				final int row = view.getBookListTable().getSelectedRow();
+				
 				book = books.get(row);
 				BookPopupView bookView = new BookPopupView();
 				bookView.getSaveButton().addActionListener(
@@ -199,6 +217,7 @@ extends BaseController {
 				bookView.getAuthorTextField().setText(book.getAuthor());
 				bookView.getPublishingDatePicker().setDateTextField(
 						book.getPublishingDate());
+				setEditMode(bookView, false);
 				bookPopup = new JDialog();
 				bookPopup.add(bookView);
 				bookPopup.setSize(400, 400);
@@ -213,10 +232,20 @@ extends BaseController {
 	}
 
 	public void setView() {
+		
 		BookServiceImpl bookServiceImpl = new BookServiceImpl();
 		books = bookServiceImpl.getBooks();
 		BookDataTable dataTable = new BookDataTable(books);
 		view.getBookListTable().setModel(dataTable);
+	}
+	
+	public void setEditMode(BookPopupView popupView, Boolean status) {
+		
+		popupView.getBookNmaeTextField().setEditable(status);
+		popupView.getAuthorTextField().setEditable(status);
+		popupView.getPublishingDatePicker().setEditable(status);
+		popupView.getFrequencyComboBox().setEnabled(status);
+		
 	}
 
 	class CancelAction implements ActionListener {

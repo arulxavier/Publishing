@@ -4,19 +4,19 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import com.fixent.publish.server.model.SubscribeInfo;
+import com.fixent.publish.server.model.Subscription;
 import com.fixent.publish.server.model.Subscriber;
 
 public class SubscriberDataTable extends AbstractTableModel {
 
-	public SubscriberDataTable(List<SubscribeInfo> subscribeInfos) {
+	public SubscriberDataTable(List<Subscription> subscribeInfos) {
 		super();
 		this.subscribeInfos = subscribeInfos;
 	}
 
 	/**/
 	private static final long serialVersionUID = 1L;
-	List<SubscribeInfo> subscribeInfos;
+	List<Subscription> subscribeInfos;
 	
 	String columnList[] = new String[] { 
 										"Subscriber ID", 
@@ -37,7 +37,7 @@ public class SubscriberDataTable extends AbstractTableModel {
 	
 	public Object getValueAt(int rowIndex, int columnIndex) {
 
-		SubscribeInfo entity = subscribeInfos.get(rowIndex);
+		Subscription entity = subscribeInfos.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
 			return entity.getId();

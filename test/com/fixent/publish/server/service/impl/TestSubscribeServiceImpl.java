@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fixent.publish.server.model.Book;
-import com.fixent.publish.server.model.SubscribeInfo;
+import com.fixent.publish.server.model.Subscription;
 import com.fixent.publish.server.model.Subscriber;
 
 public class TestSubscribeServiceImpl {
@@ -23,18 +23,18 @@ public class TestSubscribeServiceImpl {
 		subscriber.setState("State");
 		subscriber.setCountry("Country");*/
 		
-		Set<SubscribeInfo> subscribeInfos = new HashSet<SubscribeInfo>();
-		SubscribeInfo subscribeInfo = new SubscribeInfo();
-		subscribeInfo.setNoOfYear(1);
-		subscribeInfo.setSubscribeDate(new Date());
-		subscribeInfo.setExpiredDate(new Date());
+		Set<Subscription> subscribeInfos = new HashSet<Subscription>();
+		Subscription subscription = new Subscription();
+//		subscribeInfo.setNoOfYear(1);
+//		subscribeInfo.setSubscribeDate(new Date());
+//		subscribeInfo.setExpiredDate(new Date());
 		Book book = new Book();
 		book.setId(0);
-		subscribeInfo.setBook(book);
-		subscribeInfos.add(subscribeInfo);
-		subscribeInfo.setSubscriber(subscriber);
+		subscription.setBook(book);
+		subscribeInfos.add(subscription);
+		subscription.setSubscriber(subscriber);
 		
-		subscriber.setSubscribeInfos(subscribeInfos);
+		subscriber.setSubscriptions(subscribeInfos);
 		
 		SubscribeServiceImpl impl = new SubscribeServiceImpl();
 		impl.createSubscriber(subscriber);

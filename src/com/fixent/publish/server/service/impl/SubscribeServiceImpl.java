@@ -7,7 +7,7 @@ import com.fixent.publish.server.dao.SubscriberDAO;
 import com.fixent.publish.server.model.Address;
 import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.model.Edition;
-import com.fixent.publish.server.model.SubscribeInfo;
+import com.fixent.publish.server.model.Subscription;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.model.info.SearchInfo;
 import com.fixent.publish.server.service.SubscribeService;
@@ -61,6 +61,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 		try {
 
 			SubscriberDAO dao = new SubscriberDAO();
+			subscriber = dao.getSubscriber(subscriber.getId());
 			status = dao.deleteSubscriber(subscriber);
 
 		} catch (Exception e) {
@@ -77,7 +78,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 		try {
 
 			SubscriberDAO dao = new SubscriberDAO();
-			subscriber = dao.getSubscriber(subscriberName);
+//			subscriber = dao.getSubscriber(subscriberName);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,8 +112,8 @@ public class SubscribeServiceImpl implements SubscribeService {
 		return false;
 	}
 
-	public List<SubscribeInfo> getExpiredSubscribers() {
-		List<SubscribeInfo> subscribers = null;
+	public List<Subscription> getExpiredSubscribers() {
+		List<Subscription> subscribers = null;
 
 		try {
 
@@ -126,8 +127,8 @@ public class SubscribeServiceImpl implements SubscribeService {
 
 	}
 	
-	public List<SubscribeInfo> getDeliverySubscribers() {
-		List<SubscribeInfo> subscribers = null;
+	public List<Subscription> getDeliverySubscribers() {
+		List<Subscription> subscribers = null;
 
 		try {
 
@@ -141,10 +142,10 @@ public class SubscribeServiceImpl implements SubscribeService {
 
 	}
 	
-	public List<SubscribeInfo> getSubscribersByBook(Book book) {
+	public List<Subscription> getSubscribersByBook(Book book) {
 		
 		
-		List<SubscribeInfo> subscribeInfos = null;
+		List<Subscription> subscribeInfos = null;
 
 		try {
 
@@ -195,9 +196,9 @@ public class SubscribeServiceImpl implements SubscribeService {
 		return subscribers;
 	}
 	
-	public List<SubscribeInfo> searchSubscribeInfo(SearchInfo info) {
+	public List<Subscription> searchSubscribeInfo(SearchInfo info) {
 		
-		List<SubscribeInfo> subscribeInfos = new ArrayList<SubscribeInfo>();
+		List<Subscription> subscribeInfos = new ArrayList<Subscription>();
 		try {
 			
 			SubscriberDAO dao = new SubscriberDAO();

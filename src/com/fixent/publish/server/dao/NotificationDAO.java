@@ -12,18 +12,18 @@ import org.hibernate.proxy.HibernateProxy;
 
 import com.fixent.publish.server.common.BaseDAO;
 import com.fixent.publish.server.model.Book;
-import com.fixent.publish.server.model.SubscribeInfo;
+import com.fixent.publish.server.model.Subscription;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.model.info.SearchInfo;
 
 public class NotificationDAO 
 extends BaseDAO {
 
-	public List<SubscribeInfo> searchSubscriberInfo(SearchInfo info)
+	public List<Subscription> searchSubscriberInfo(SearchInfo info)
 	throws Exception {
 
 		Session session = getSession();
-		Criteria criteria = session.createCriteria(SubscribeInfo.class);
+		Criteria criteria = session.createCriteria(Subscription.class);
 		
 		if (info != null) {
 			
@@ -34,18 +34,18 @@ extends BaseDAO {
 				criteria.add(Restrictions.le("expiredDate", info.getToDate()));
 			}
 		}
-		List<SubscribeInfo> subscriberinfos = criteria.list();
+		List<Subscription> subscriberinfos = criteria.list();
 		initializeSubscribeInfo(subscriberinfos);
 		return subscriberinfos;
 	}
 
-	private void initializeSubscribeInfo(List<SubscribeInfo> subscribeInfos) {
+	private void initializeSubscribeInfo(List<Subscription> subscribeInfos) {
 
-		for (SubscribeInfo subscribeInfo : subscribeInfos) {
+		for (Subscription subscribeInfo : subscribeInfos) {
 
 			if (subscribeInfo instanceof HibernateProxy) {
 				HibernateProxy hibernateProxy = (HibernateProxy) subscribeInfo;
-				SubscribeInfo subscribeInfo2 = (SubscribeInfo) hibernateProxy;
+				Subscription subscribeInfo2 = (Subscription) hibernateProxy;
 				Hibernate.initialize(subscribeInfo2);
 
 				Book book = subscribeInfo.getBook();

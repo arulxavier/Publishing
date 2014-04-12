@@ -21,7 +21,7 @@ import com.fixent.publish.server.common.BaseDAO;
 import com.fixent.publish.server.model.Address;
 import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.model.Edition;
-import com.fixent.publish.server.model.SubscribeInfo;
+import com.fixent.publish.server.model.Subscription;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.model.info.SearchInfo;
 
@@ -114,9 +114,20 @@ public class SubscriberDAO extends BaseDAO {
 		return false;
 	}
 
-	public Subscriber getSubscriber(String subscriberName) {
-		// TODO Auto-generated method stub
-		return null;
+	public Subscriber getSubscriber(int id) {
+
+		Subscriber subscriber = new Subscriber();
+		Session session = getSession();
+		Criteria criteria = session.createCriteria(Subscriber.class);
+
+		if (id != 0) {
+			criteria.add(Restrictions.eq("id", id));
+		}
+		subscriber = (Subscriber) criteria.list().get(0);
+		initialize(subscriber);
+		session.close();
+		return subscriber;
+
 	}
 
 	public List<Subscriber> getSubscribers(Integer id, String name, int pincode) {
@@ -146,9 +157,23 @@ public class SubscriberDAO extends BaseDAO {
 			Hibernate.initialize(subscriber);
 //			List<SubscribeInfo> infos = new ArrayList<SubscribeInfo>();
 //			infos.addAll(subscriber.getSubscribeInfos());
-			initializeSubscribeInfo(subscriber.getSubscribeInfos());
+			initializeSubscribeInfo(subscriber.getSubscriptions());
 			Hibernate.initialize(subscriber.getAddress());
 		}
+	}
+	
+	private void initialize(Subscriber subscriber) {
+		
+		if (subscriber instanceof HibernateProxy) {
+			
+			HibernateProxy hibernateProxy = (HibernateProxy) subscriber;
+			Subscriber subscriber2 = (Subscriber) hibernateProxy;
+			Hibernate.initialize(subscriber2);
+		} else {
+			Hibernate.initialize(subscriber);
+		}
+		initializeSubscribeInfo(subscriber.getSubscriptions());
+		Hibernate.initialize(subscriber.getAddress());
 	}
 
 	private void initializeSubscriberModel(Subscriber subscriber) {
@@ -160,10 +185,10 @@ public class SubscriberDAO extends BaseDAO {
 		}
 	}
 
-	private void initializeSubscriberInfo(List<SubscribeInfo> subscribeInfos) {
+	private void initializeSubscriberInfo(List<Subscription> subscribeInfos) {
 
 		if (subscribeInfos != null && !subscribeInfos.isEmpty()) {
-			for (SubscribeInfo subscribeInfo : subscribeInfos) {
+			for (Subscription subscribeInfo : subscribeInfos) {
 				Hibernate.initialize(subscribeInfo);
 				Hibernate.initialize(subscribeInfo.getBook());
 				Hibernate.initialize(subscribeInfo.getBook());
@@ -178,10 +203,10 @@ public class SubscriberDAO extends BaseDAO {
 
 		Session session = getSession();
 		session.beginTransaction();
-		Criteria criteria = session.createCriteria(SubscribeInfo.class);
+		Criteria criteria = session.createCriteria(Subscription.class);
 		criteria.createCriteria("book");
 		criteria.add(Restrictions.like("book.id", bookId));
-		List<SubscribeInfo> subscribers = criteria.list();
+		List<Subscription> subscribers = criteria.list();
 		session.getTransaction().commit();
 		session.close();
 		return subscribers != null ? subscribers.size() : 0;
@@ -203,22 +228,22 @@ public class SubscriberDAO extends BaseDAO {
 		return count.intValue();
 	}
 
-	public List<SubscribeInfo> getExpiredSubscriber() {
+	public List<Subscription> getExpiredSubscriber() {
 		Session session = getSession();
-		Criteria criteria = session.createCriteria(SubscribeInfo.class);
+		Criteria criteria = session.createCriteria(Subscription.class);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		calendar.set(Calendar.DAY_OF_MONTH,
 				calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
 		criteria.add(Restrictions.le("expiredDate", calendar.getTime()));
-		List<SubscribeInfo> subscriberinfos = criteria.list();
+		List<Subscription> subscriberinfos = criteria.list();
 		initializeSubscriberInfo(subscriberinfos);
 		return subscriberinfos;
 	}
 
-	public List<SubscribeInfo> getDeliverySubscribers() {
+	public List<Subscription> getDeliverySubscribers() {
 		Session session = getSession();
-		Criteria criteria = session.createCriteria(SubscribeInfo.class);
+		Criteria criteria = session.createCriteria(Subscription.class);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(new Date());
 		/*
@@ -233,33 +258,33 @@ public class SubscriberDAO extends BaseDAO {
 		 * calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
 		 */
 		criteria.add(Restrictions.ge("expiredDate", calendar.getTime()));
-		List<SubscribeInfo> subscriberinfos = criteria.list();
+		List<Subscription> subscriberinfos = criteria.list();
 		initializeSubscriberInfo(subscriberinfos);
 		return subscriberinfos;
 	}
 
-	public List<SubscribeInfo> getSubscribersByBook(Book book) {
+	public List<Subscription> getSubscribersByBook(Book book) {
 
 		Session session = getSession();
 		session.beginTransaction();
-		Criteria criteria = session.createCriteria(SubscribeInfo.class);
+		Criteria criteria = session.createCriteria(Subscription.class);
 		criteria.createCriteria("book");
 		criteria.add(Restrictions.like("book.id", book.getId()));
-		List<SubscribeInfo> subscribeInfos = criteria.list();
+		List<Subscription> subscribeInfos = criteria.list();
 		session.getTransaction().commit();
 		// session.close();
 		initializeSubscribeInfo(subscribeInfos);
 		return subscribeInfos;
 	}
 
-	private void initializeSubscribeInfo(Set<SubscribeInfo> subscribeInfos) {
+	private void initializeSubscribeInfo(Set<Subscription> subscribeInfos) {
 
 		Hibernate.initialize(subscribeInfos);
-		for (SubscribeInfo subscribeInfo : subscribeInfos) {
+		for (Subscription subscribeInfo : subscribeInfos) {
 
 			if (subscribeInfo instanceof HibernateProxy) {
 				HibernateProxy hibernateProxy = (HibernateProxy) subscribeInfo;
-				SubscribeInfo subscribeInfo2 = (SubscribeInfo) hibernateProxy;
+				Subscription subscribeInfo2 = (Subscription) hibernateProxy;
 				Hibernate.initialize(subscribeInfo2);
 
 				Book book = subscribeInfo.getBook();
@@ -313,13 +338,13 @@ public class SubscriberDAO extends BaseDAO {
 		}
 	}
 
-	private void initializeSubscribeInfo(List<SubscribeInfo> subscribeInfos) {
+	private void initializeSubscribeInfo(List<Subscription> subscribeInfos) {
 
-		for (SubscribeInfo subscribeInfo : subscribeInfos) {
+		for (Subscription subscribeInfo : subscribeInfos) {
 
 			if (subscribeInfo instanceof HibernateProxy) {
 				HibernateProxy hibernateProxy = (HibernateProxy) subscribeInfo;
-				SubscribeInfo subscribeInfo2 = (SubscribeInfo) hibernateProxy;
+				Subscription subscribeInfo2 = (Subscription) hibernateProxy;
 				Hibernate.initialize(subscribeInfo2);
 
 				Book book = subscribeInfo.getBook();
@@ -416,10 +441,6 @@ public class SubscriberDAO extends BaseDAO {
 				criteria.add(Restrictions.ilike("name", "%"
 						+ info.getName().trim() + "%"));
 			}
-			if (info.getCode() != null && info.getCode().length() > 0) {
-				criteria.add(Restrictions.ilike("groupCode", "%"
-						+ info.getCode().trim() + "%"));
-			}
 			if (info.getMobileNumber() != null && info.getMobileNumber().length() > 0) {
 				criteria.add(Restrictions.ilike("mobileNumber", "%"
 						+ info.getMobileNumber().trim() + "%"));
@@ -448,16 +469,16 @@ public class SubscriberDAO extends BaseDAO {
 
 	}
 	
-	public List<SubscribeInfo> searchSubscriberInfo(SearchInfo info) throws Exception {
+	public List<Subscription> searchSubscriberInfo(SearchInfo info) throws Exception {
 
-		List<SubscribeInfo> subscribeInfos = new ArrayList<SubscribeInfo>();
+		List<Subscription> subscribeInfos = new ArrayList<Subscription>();
 		Session session = getSession();
-		Criteria criteria = session.createCriteria(SubscribeInfo.class);
+		Criteria criteria = session.createCriteria(Subscription.class);
 
 		if (info != null) {
 
 			if (info.getFromDate() != null && info.getToDate() != null) {
-				criteria.add(Restrictions.between("expiredDate",
+				criteria.add(Restrictions.between("subscriptionExpiredDate",
 						info.getFromDate(), info.getToDate()));
 			}
 			Criteria bookCriteria = criteria
@@ -465,6 +486,10 @@ public class SubscriberDAO extends BaseDAO {
 			if (info.getBookName() != null) {
 				bookCriteria.add(Restrictions.ilike("name", "%"
 						+ info.getBookName().trim() + "%"));
+			}
+			if (info.getCode() != null && info.getCode().length() > 0) {
+				criteria.add(Restrictions.ilike("subscriptionCode", "%"
+						+ info.getCode().trim() + "%"));
 			}
 		}
 		subscribeInfos = criteria.list();

@@ -36,14 +36,14 @@ public class LeftPanel extends javax.swing.JPanel {
         bookInfoButton.setBackground(new java.awt.Color(61, 86, 109));
         bookInfoButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         bookInfoButton.setForeground(new java.awt.Color(255, 255, 255));
-        bookInfoButton.setText("Book Info");
+        bookInfoButton.setText("Book");
         bookInfoButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         bookInfoButton.setFocusPainted(false);
 
         bookSubscribeButton.setBackground(new java.awt.Color(61, 86, 109));
         bookSubscribeButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         bookSubscribeButton.setForeground(new java.awt.Color(255, 255, 255));
-        bookSubscribeButton.setText("Book Subscribe");
+        bookSubscribeButton.setText("Subscription");
         bookSubscribeButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         bookSubscribeButton.setFocusPainted(false);
         bookSubscribeButton.addActionListener(new java.awt.event.ActionListener() {
@@ -55,14 +55,14 @@ public class LeftPanel extends javax.swing.JPanel {
         publishEditionButton.setBackground(new java.awt.Color(61, 86, 109));
         publishEditionButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         publishEditionButton.setForeground(new java.awt.Color(255, 255, 255));
-        publishEditionButton.setText("Publish Edition");
+        publishEditionButton.setText("Book Publish");
         publishEditionButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         publishEditionButton.setFocusPainted(false);
 
         notificationButton.setBackground(new java.awt.Color(61, 86, 109));
         notificationButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         notificationButton.setForeground(new java.awt.Color(255, 255, 255));
-        notificationButton.setText("Notification");
+        notificationButton.setText("Search");
         notificationButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         notificationButton.setFocusPainted(false);
 

@@ -9,12 +9,12 @@ import java.util.List;
 
 import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.RightPanel;
-import com.fixent.publish.client.notification.controller.NotificationUtil;
 import com.fixent.publish.client.publishedition.view.SendEditionView;
-import com.fixent.publish.client.subscribe.controller.SubscriberController;
+import com.fixent.publish.client.search.controller.PrintUtil;
+import com.fixent.publish.client.subscriber.controller.SubscriberController;
 import com.fixent.publish.server.model.Book;
 import com.fixent.publish.server.model.Edition;
-import com.fixent.publish.server.model.SubscribeInfo;
+import com.fixent.publish.server.model.Subscription;
 import com.fixent.publish.server.model.Subscriber;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
 
@@ -23,7 +23,7 @@ extends BaseController {
 	
 	SendEditionView view;
 	Book book;
-	List<SubscribeInfo> subscriberInfos;
+	List<Subscription> subscriberInfos;
 	
 	public SendEditionController() {
 		
@@ -66,9 +66,9 @@ extends BaseController {
 				boolean status = impl.saveEdition(edition);
 				if (status) {
 					System.out.println("Success");
-					List<SubscribeInfo> infoList = new ArrayList<SubscribeInfo>();
+					List<Subscription> infoList = new ArrayList<Subscription>();
 					infoList.addAll(subscriberInfos);
-					NotificationUtil.createPDFForSubscriberInfo(infoList, true, "DeliveryReports.pdf");
+					PrintUtil.createPDFForSubscriberInfo(infoList, true, "DeliveryReports.pdf");
 				}
 				
 				RightPanel rightSidePanel = (RightPanel)view.getParent();

@@ -5,13 +5,14 @@ import java.util.Set;
 public class Subscriber {
 	
 	Integer id;
-	String name;
-	String groupCode;
-	String code;
-	String mobileNumber;
-	Address address;	
 	
-	Set<SubscribeInfo> subscribeInfos;
+	String name;
+	
+	String mobileNumber;
+	
+	Address address;
+	
+	Set<Subscription> subscriptions;
 	
 	public Integer getId() {
 		return id;
@@ -31,32 +32,17 @@ public class Subscriber {
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-	public Set<SubscribeInfo> getSubscribeInfos() {
-		return subscribeInfos;
-	}
-	public void setSubscribeInfos(Set<SubscribeInfo> subscribeInfos) {
-		this.subscribeInfos = subscribeInfos;
-	}
 	
+	public Set<Subscription> getSubscriptions() {
+		return subscriptions;
+	}
+	public void setSubscriptions(Set<Subscription> subscriptions) {
+		this.subscriptions = subscriptions;
+	}
 	public Address getAddress() {
 		return address;
 	}
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public String getGroupCode() {
-		return groupCode;
-	}
-	public void setGroupCode(String groupCode) {
-		this.groupCode = groupCode;
-	}
-	public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
-	}
-	
-	
-	
 }

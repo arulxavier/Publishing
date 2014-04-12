@@ -12,7 +12,8 @@ import org.hibernate.proxy.HibernateProxy;
 
 import com.fixent.publish.server.common.BaseDAO;
 import com.fixent.publish.server.model.Book;
-import com.fixent.publish.server.model.SubscribeInfo;
+import com.fixent.publish.server.model.Subscription;
+import com.fixent.publish.server.model.info.BookInfo;
 import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 public class BookDAO extends BaseDAO {
@@ -31,16 +32,16 @@ public class BookDAO extends BaseDAO {
 		return id;
 	}
 
-	public int getBookCount(String bookName, Integer bookId, boolean isCreate) {
+	public int getBookCount(BookInfo bookInfo) {
 		
 		BigInteger count;
 		Session session = getSession();
 		StringBuilder builder = new StringBuilder();
 		builder.append("select count(bk.id) from BOOK bk where bk.name='");
-		builder.append(bookName + "'");
-		if (!isCreate) {
+		builder.append(bookInfo.getBookName() + "'");
+		if (!bookInfo.getIsCreate()) {
 			builder.append(" and bk.id !=");
-			builder.append(bookId);
+			builder.append(bookInfo.getId());
 		}
 		Query query = session.createSQLQuery(builder.toString());
 		count = (BigInteger) query.uniqueResult();

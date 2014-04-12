@@ -15,7 +15,7 @@
 
 		<mapping resource="com/fixent/publish/server/hbm/Book.hbm.xml"></mapping>
 		<mapping resource="com/fixent/publish/server/hbm/Subscriber.hbm.xml"></mapping>
-		<mapping resource="com/fixent/publish/server/hbm/SubscribeInfo.hbm.xml"></mapping>
+		<mapping resource="com/fixent/publish/server/hbm/Subscription.hbm.xml"></mapping>
 		<mapping resource="com/fixent/publish/server/hbm/Edition.hbm.xml"></mapping>
 		<mapping resource="com/fixent/publish/server/hbm/Address.hbm.xml"></mapping>
 

@@ -10,10 +10,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
 import com.fixent.publish.client.book.controller.BookController;
-import com.fixent.publish.client.notification.controller.NotificationController;
-import com.fixent.publish.client.notification.controller.NotificationDashboardController;
 import com.fixent.publish.client.publishedition.controller.PublishEditionController;
-import com.fixent.publish.client.subscribe.controller.SubscriberDashboardController;
+import com.fixent.publish.client.search.controller.SearchListController;
+import com.fixent.publish.client.search.controller.SearchDashboardController;
+import com.fixent.publish.client.subscriber.controller.SubscriberDashboardController;
 
 public class LeftPanelController {
 
@@ -65,7 +65,7 @@ public class LeftPanelController {
 		
 
 
-		System.out.println(leftPanel.getParent());
+//		System.out.println(leftPanel.getParent());
 
 		for (Component component2 : leftPanel.getParent()
 				.getComponents()) {
@@ -81,28 +81,28 @@ public class LeftPanelController {
 								.getComponents()[0];
 						rightSidePanel.removeAll();
 						if (((JButton)e.getSource()).getText().equalsIgnoreCase(
-								"Book Info")) {
+								"Book")) {
 
 							rightSidePanel
 									.add(new BookController().view,
 											BorderLayout.CENTER);
 						} else if (((JButton)e.getSource()).getText().equalsIgnoreCase(
-								"Book Subscribe")) {
+								"Subscription")) {
 
 							rightSidePanel
 									.add(new SubscriberDashboardController().view,
 											BorderLayout.CENTER);
 						}  else if (((JButton)e.getSource()).getText().equalsIgnoreCase(
-								"Publish Edition")) {
+								"Book Publish")) {
 
 							rightSidePanel
 									.add(new PublishEditionController().view,
 											BorderLayout.CENTER);
 						}  else if (((JButton)e.getSource()).getText().equalsIgnoreCase(
-								"Notification")) {
+								"Search")) {
 
 							rightSidePanel
-									.add(new NotificationDashboardController().view,
+									.add(new SearchDashboardController().view,
 											BorderLayout.CENTER);
 						}
 						rightSidePanel.repaint();

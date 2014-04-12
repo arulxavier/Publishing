@@ -5,6 +5,7 @@ import java.util.List;
 import com.fixent.publish.server.dao.BookDAO;
 import com.fixent.publish.server.dao.SubscriberDAO;
 import com.fixent.publish.server.model.Book;
+import com.fixent.publish.server.model.info.BookInfo;
 import com.fixent.publish.server.service.BookService;
 
 public class BookServiceImpl implements BookService {
@@ -105,10 +106,9 @@ public class BookServiceImpl implements BookService {
 		return books;
 	}
 
-	public boolean checkDuplicate(String bookName, Integer bookId,
-			boolean isCreate) {
+	public boolean checkDuplicate(BookInfo bookInfo) {
 		BookDAO dao = new BookDAO();
-		int count = dao.getBookCount(bookName, bookId, isCreate);
+		int count = dao.getBookCount(bookInfo);
 		if (count > 0) {
 			return true;
 		}

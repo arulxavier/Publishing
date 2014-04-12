@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.fixent.publish.server.model.Subscription" table="SUBSCRIPTION">
+		<id name="id" type="java.lang.Integer">
+			<column name="ID"/>
+			<generator class="increment" />
+		</id>
+		
+		<property name="subscriptionGroup" type="string">
+			<column name="SUBSCRIPTION_GROUP" length="20" not-null="true" />
+		</property>
+		
+		<property name="subscriptionNumber" type="java.lang.Integer">
+			<column name="SUBSCRIPTION_NUMBER" length="20" not-null="true" />
+		</property>
+		
+		<property name="subscriptionCode" type="string">
+			<column name="SUBSCRIPTION_CODE" length="20" not-null="true" />
+		</property>
+		
+		<property name="subscriptionDate" type="date">
+			<column name="SUBSCRIPTION_DATE" length="20" not-null="true" />
+		</property>	
+		
+		<property name="subscriptionYear" type="java.lang.Integer">
+			<column name="SUBSCRIPTION_YEAR" length="20" not-null="true" />
+		</property>
+			
+		<property name="subscriptionExpiredDate" type="date">
+			<column name="SUBSCRIPTION_EXPIRED_DATE" not-null="true" />
+		</property>
+		
+		 <many-to-one name="book" class="com.fixent.publish.server.model.Book" fetch="select">
+            <column name="BOOK_ID" not-null="true" />
+        </many-to-one>
+        
+         <many-to-one name="subscriber" class="com.fixent.publish.server.model.Subscriber" fetch="select">
+            <column name="SUBSCRIBER_ID"  />
+        </many-to-one>
+		
+	</class>
+</hibernate-mapping>
