@@ -194,6 +194,9 @@ public class SubscriberController extends BaseController {
 					subscriptionPopupView.getNoOfYearComboBox().setEnabled(false);
 					subscriptionPopupView.getGroupCodeTextField().setEditable(false);
 					subscriptionPopupView.getCodeTextField().setEditable(false);
+				} else {
+					subscriptionPopupView.getExpiryTxt().setEditable(true);
+					subscriptionPopupView.getExpiryTxt().setEnabled(true);
 				}
 				subscriptionPopupView.getBookComboBox().setModel(boxModel);
 
@@ -203,6 +206,7 @@ public class SubscriberController extends BaseController {
 				subscriptionPopupView.getExpiryTxt().setText(DATE_FORMAT.format(subscription.getSubscriptionExpiredDate()).toString());
 				subscriptionPopupView.getGroupCodeTextField().setText(subscription.getSubscriptionGroup());
 				subscriptionPopupView.getCodeTextField().setText(subscription.getSubscriptionCode());
+								
 
 				subscribeInfoPopup = new JDialog();
 				subscribeInfoPopup.add(subscriptionPopupView);
@@ -254,6 +258,9 @@ public class SubscriberController extends BaseController {
 				boxModel.addElement(book.getName());
 			}
 			subscriptionPopupView.getBookComboBox().setModel(boxModel);
+			
+			subscriptionPopupView.getExpiryTxt().setEditable(true);
+			subscriptionPopupView.getExpiryTxt().setEnabled(true);
 
 			subscribeInfoPopup = new JDialog();
 			subscribeInfoPopup.add(subscriptionPopupView);
