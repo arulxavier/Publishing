@@ -10,7 +10,7 @@ import com.fixent.publish.server.model.Subscription;
 
 public class SubscribeInfoDataTable extends AbstractTableModel {
 	
-	DateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+	DateFormat dateFormat = new SimpleDateFormat("MMM-yyyy");
 
 	public SubscribeInfoDataTable(List<Subscription> subscribeInfos) {
 		super();
@@ -20,7 +20,7 @@ public class SubscribeInfoDataTable extends AbstractTableModel {
 	/**/
 	private static final long serialVersionUID = 1L;
 	List<Subscription> subscribeInfos;
-	String columnList[] = new String[] { "Book Name", "Subscribed Date", "Years" };
+	String columnList[] = new String[] { "Book Name", "Group Code", "Subscription Year", "Expiry Date", "Free Copy", "ExchangeCopy"};
 
 	
 	public int getColumnCount() {
@@ -40,9 +40,15 @@ public class SubscribeInfoDataTable extends AbstractTableModel {
 		case 0:
 			return entity.getBook().getName();
 		case 1:
-			return dateFormat.format(entity.getSubscriptionDate());
+			return entity.getSubscriptionCode();
 		case 2:
 			return entity.getSubscriptionYear();
+		case 3:
+			return dateFormat.format(entity.getSubscriptionExpiredDate());
+		case 4:
+			return entity.isFreeCopy() ? "Yes" : "NO";
+		case 5:
+			return entity.isExchangeCopy() ? "Yes" : "NO";
 		default:
 			return null;
 		}

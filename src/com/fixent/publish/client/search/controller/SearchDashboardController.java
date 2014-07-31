@@ -38,19 +38,24 @@ extends BaseController {
 			
 			SubscriptionInfo info = new SubscriptionInfo();
 			
-			String fd = view.getFromDatePicker().getjTextField1();
+			Date fd = null;
+			Date ld = null;
 			
-			if (fd != null && fd.length() > 0) {
+			if (view.getFromDateTextField().getText() != null && view.getFromDateTextField().getText().length() > 0)
+			fd = DateUtil.getMonthEnddateFromExpiryMonthAndYear(view.getFromDateTextField().getText());
+			
+			if (fd != null) {
 				
-				Date fromDate = DateUtil.getFirstDayOfTheMonth(new Date(fd));
+				Date fromDate = DateUtil.getFirstDayOfTheMonth(fd);
 				info.setFromDate(fromDate);
 			}
 			
-			String ld = view.getToDatePicker().getjTextField1();
+			if (view.getToDateTextField().getText() != null && view.getToDateTextField().getText().length() > 0)
+			ld = DateUtil.getMonthEnddateFromExpiryMonthAndYear(view.getToDateTextField().getText());
 			
-			if (ld != null && ld.length() > 0) {
+			if (ld != null) {
 				
-				Date toDate = DateUtil.getLastDayOfTheMonth(new Date(ld));
+				Date toDate = DateUtil.getLastDayOfTheMonth(ld);
 				info.setToDate(toDate);
 			}
 			
@@ -59,6 +64,9 @@ extends BaseController {
 			
 			String subscriptionCode = view.getSubscriptionCodeTextField().getText();
 			info.setSubscriptionCode(subscriptionCode);
+			
+			info.setFreeCopy(view.getFreeCopyCheckBox().isSelected());
+			info.setExchangeCopy(view.getExchangeCopyCheckBox().isSelected());
 			
 			push("searchinfo", info);
 			RightPanel rightSidePanel = (RightPanel)view.getParent();

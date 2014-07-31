@@ -12,16 +12,12 @@ import java.awt.event.MouseEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JDialog;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
 
 import com.fixent.publish.client.common.BaseController;
 import com.fixent.publish.client.common.RightPanel;
@@ -35,6 +31,7 @@ import com.fixent.publish.server.model.info.SubscriptionInfo;
 import com.fixent.publish.server.service.impl.BookServiceImpl;
 import com.fixent.publish.server.service.impl.SubscribeServiceImpl;
 import com.fixent.publish.server.service.impl.SubscriptionServiceImpl;
+import com.fixent.publish.server.util.DateUtil;
 
 public class SubscriberController extends BaseController {
 
@@ -44,6 +41,7 @@ public class SubscriberController extends BaseController {
 	List<Subscription> subscriptions = new ArrayList<Subscription>();
 	Subscription subscription;
 	public static DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy");
+	public static DateFormat DATE_FORMAT_MONTH_YEAR = new SimpleDateFormat("MMM-yyyy");
 	public static String ADD = "add";
 	public static String VIEW = "view";
 	public static String MODIFY = "modify";
@@ -66,6 +64,7 @@ public class SubscriberController extends BaseController {
 
 			view.getStateTextField().setText("Tamil Nadu");
 			view.getCountryTextField().setText("India");
+			view.getSaveButton().setEnabled(false);
 		} else if (MODIFY.equalsIgnoreCase(screenMode)) {
 
 			subscriber = (Subscriber) OBJECT_MAP.get("subscriber");
@@ -82,6 +81,8 @@ public class SubscriberController extends BaseController {
 		view.getSaveButton().addActionListener(new SaveAction());
 		view.getDeleteButton().addActionListener(new DeleteAction());
 		view.getCancelBtn().addActionListener(new MainCancelAction());
+		
+		
 	}
 
 	private void setViewMode() {
@@ -139,7 +140,7 @@ public class SubscriberController extends BaseController {
 
 		public void focusLost(FocusEvent e) {
 			
-			String bookName = subscriptionPopupView.getBookComboBox().getSelectedItem().toString();
+			String bookName = subscriptionPopupView.getBookNameComboBox().getSelectedItem().toString();
 			
 			if (bookName != null && bookName.length() > 0 && !bookName.equals("Select One")) {
 				
@@ -149,7 +150,7 @@ public class SubscriberController extends BaseController {
 				
 				SubscriptionServiceImpl impl = new SubscriptionServiceImpl();
 				String code = impl.getSubscriptionCode(subscriptionInfo);
-				subscriptionPopupView.getCodeTextField().setText(code);
+				subscriptionPopupView.getSubscriptionCodeTextField().setText(code);
 			} else {
 				
 				subscriptionPopupView.getErrorLabel().setText("Select Book to Generate Group Code");
@@ -173,10 +174,10 @@ public class SubscriberController extends BaseController {
 				setPopUpErrorMsg("", subscriptionPopupView);
 				subscriptionPopupView.getSaveButton().addActionListener(new SavePopupAction(subscriptionPopupView));
 				subscriptionPopupView.getCancelButton().addActionListener(new CancelAction(subscriptionPopupView));
-				subscriptionPopupView.getNoOfYearComboBox().addItemListener(new YearChangeEvent(subscriptionPopupView));
-				subscriptionPopupView.getSubscribeDatePicker().getDateField().addCaretListener(new SubscribedAction(subscriptionPopupView));
+//				subscriptionPopupView.getNoOfYearComboBox().addItemListener(new YearChangeEvent(subscriptionPopupView));
+				//subscriptionPopupView.getSubscribeDatePicker().getDateField().addCaretListener(new SubscribedAction(subscriptionPopupView));
 				subscriptionPopupView.getGroupCodeTextField().addFocusListener(new GroupCodeFocusEvent(subscriptionPopupView));
-				subscriptionPopupView.getBookComboBox().addItemListener(new BookSelectionEvent(subscriptionPopupView));
+				subscriptionPopupView.getBookNameComboBox().addItemListener(new BookSelectionEvent(subscriptionPopupView));
 				
 				DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
 				boxModel.addElement("Select One");
@@ -189,28 +190,32 @@ public class SubscriberController extends BaseController {
 				if (VIEW.equalsIgnoreCase(screenMode)) {
 					
 					subscriptionPopupView.getSaveButton().setEnabled(false);
-					subscriptionPopupView.getBookComboBox().setEnabled(false);
-					subscriptionPopupView.getSubscribeDatePicker().setEditable(false);
+					subscriptionPopupView.getBookNameComboBox().setEnabled(false);
+					//subscriptionPopupView.getSubscribeDatePicker().setEditable(false);
 					subscriptionPopupView.getNoOfYearComboBox().setEnabled(false);
 					subscriptionPopupView.getGroupCodeTextField().setEditable(false);
-					subscriptionPopupView.getCodeTextField().setEditable(false);
+					subscriptionPopupView.getSubscriptionCodeTextField().setEditable(false);
+					subscriptionPopupView.getFreeCopyCheckBox().setEnabled(false);
+					subscriptionPopupView.getExchangeCopyCheckBox().setEnabled(false);
 				} else {
-					subscriptionPopupView.getExpiryTxt().setEditable(true);
-					subscriptionPopupView.getExpiryTxt().setEnabled(true);
+					subscriptionPopupView.getExpiryTextField().setEditable(true);
+					subscriptionPopupView.getExpiryTextField().setEnabled(true);
 				}
-				subscriptionPopupView.getBookComboBox().setModel(boxModel);
+				subscriptionPopupView.getBookNameComboBox().setModel(boxModel);
 
-				subscriptionPopupView.getBookComboBox().setSelectedItem(subscription.getBook().getName());
+				subscriptionPopupView.getBookNameComboBox().setSelectedItem(subscription.getBook().getName());
 				subscriptionPopupView.getNoOfYearComboBox().setSelectedItem(String.valueOf(subscription.getSubscriptionYear()));
-				subscriptionPopupView.getSubscribeDatePicker().setDateTextField(subscription.getSubscriptionDate());
-				subscriptionPopupView.getExpiryTxt().setText(DATE_FORMAT.format(subscription.getSubscriptionExpiredDate()).toString());
+//				subscriptionPopupView.getSubscribeDatePicker().setDateTextField(subscription.getSubscriptionDate());
+				subscriptionPopupView.getExpiryTextField().setText(DATE_FORMAT_MONTH_YEAR.format(subscription.getSubscriptionExpiredDate()).toString());
 				subscriptionPopupView.getGroupCodeTextField().setText(subscription.getSubscriptionGroup());
-				subscriptionPopupView.getCodeTextField().setText(subscription.getSubscriptionCode());
+				subscriptionPopupView.getSubscriptionCodeTextField().setText(subscription.getSubscriptionCode());
+				subscriptionPopupView.getFreeCopyCheckBox().setSelected(subscription.isFreeCopy());
+				subscriptionPopupView.getExchangeCopyCheckBox().setSelected(subscription.isExchangeCopy());
 								
 
 				subscribeInfoPopup = new JDialog();
 				subscribeInfoPopup.add(subscriptionPopupView);
-				subscribeInfoPopup.setSize(670, 270);
+				subscribeInfoPopup.setSize(670, 320);
 				subscribeInfoPopup.setResizable(false);
 				subscribeInfoPopup.setLocationRelativeTo(null);
 				subscribeInfoPopup.setVisible(true);
@@ -219,7 +224,7 @@ public class SubscriberController extends BaseController {
 		}
 	}
 
-	class SubscribedAction implements CaretListener {
+	/*class SubscribedAction implements CaretListener {
 		SubscriptionPopupView infoPopupView;
 
 		public SubscribedAction(SubscriptionPopupView infoPopupView) {
@@ -233,7 +238,7 @@ public class SubscriberController extends BaseController {
 			setPopUpErrorMsg("", infoPopupView);
 			setExpiryDateValue(infoPopupView);
 		}
-	}
+	}*/
 
 	class AddAction implements ActionListener {
 
@@ -246,10 +251,13 @@ public class SubscriberController extends BaseController {
 			
 			subscriptionPopupView.getSaveButton().addActionListener(new SavePopupAction(subscriptionPopupView));
 			subscriptionPopupView.getCancelButton().addActionListener(new CancelAction(subscriptionPopupView));
-			subscriptionPopupView.getNoOfYearComboBox().addItemListener(new YearChangeEvent(subscriptionPopupView));
-			subscriptionPopupView.getSubscribeDatePicker().getDateField().addCaretListener(new SubscribedAction(subscriptionPopupView));
+//			subscriptionPopupView.getNoOfYearComboBox().addItemListener(new YearChangeEvent(subscriptionPopupView));
+//			subscriptionPopupView.getSubscribeDatePicker().getDateField().addCaretListener(new SubscribedAction(subscriptionPopupView));
 			subscriptionPopupView.getGroupCodeTextField().addFocusListener(new GroupCodeFocusEvent(subscriptionPopupView));
-			subscriptionPopupView.getBookComboBox().addItemListener(new BookSelectionEvent(subscriptionPopupView));
+			subscriptionPopupView.getBookNameComboBox().addItemListener(new BookSelectionEvent(subscriptionPopupView));
+			subscriptionPopupView.getFreeCopyCheckBox().addActionListener(new FreeCopySelectionEvent(subscriptionPopupView));
+			subscriptionPopupView.getExchangeCopyCheckBox().addActionListener(new ExchangeCopySelectionEvent(subscriptionPopupView));
+			
 			
 			DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
 			boxModel.addElement("Select One");
@@ -257,14 +265,14 @@ public class SubscriberController extends BaseController {
 
 				boxModel.addElement(book.getName());
 			}
-			subscriptionPopupView.getBookComboBox().setModel(boxModel);
+			subscriptionPopupView.getBookNameComboBox().setModel(boxModel);
 			
-			subscriptionPopupView.getExpiryTxt().setEditable(true);
-			subscriptionPopupView.getExpiryTxt().setEnabled(true);
+			subscriptionPopupView.getExpiryTextField().setEditable(true);
+			subscriptionPopupView.getExpiryTextField().setEnabled(true);
 
 			subscribeInfoPopup = new JDialog();
 			subscribeInfoPopup.add(subscriptionPopupView);
-			subscribeInfoPopup.setSize(670, 270);
+			subscribeInfoPopup.setSize(670, 320);
 			subscribeInfoPopup.setResizable(false);
 			subscribeInfoPopup.setLocationRelativeTo(null);
 			subscribeInfoPopup.setVisible(true);
@@ -288,12 +296,12 @@ public class SubscriberController extends BaseController {
 			if (groupCode != null && groupCode.length() > 0) {
 				
 				SubscriptionInfo subscriptionInfo = new SubscriptionInfo();
-				subscriptionInfo.setBookName(subscriptionPopupView.getBookComboBox().getSelectedItem().toString());
+				subscriptionInfo.setBookName(subscriptionPopupView.getBookNameComboBox().getSelectedItem().toString());
 				subscriptionInfo.setSubscriptionGroup(groupCode);
 				
 				SubscriptionServiceImpl impl = new SubscriptionServiceImpl();
 				String code = impl.getSubscriptionCode(subscriptionInfo);
-				subscriptionPopupView.getCodeTextField().setText(code);
+				subscriptionPopupView.getSubscriptionCodeTextField().setText(code);
 			}
 			subscriptionPopupView.getErrorLabel().setText("");
 		}
@@ -323,6 +331,8 @@ public class SubscriberController extends BaseController {
 			setErrorMsg("");
 			final int row = view.getSubscriptionTable().getSelectedRow();
 			subscriptions.remove(row);
+			if (subscriptions.size() == 0)
+				view.getSaveButton().setEnabled(false);
 			SubscribeInfoDataTable dataModel = new SubscribeInfoDataTable(
 					subscriptions);
 			view.getSubscriptionTable().setModel(dataModel);
@@ -348,12 +358,12 @@ public class SubscriberController extends BaseController {
 					return;
 				}
 			} else {
-				result = checkForDuplicate(view.getSubscriberNameTextField()
+				/*result = checkForDuplicate(view.getSubscriberNameTextField()
 						.getText(), null, true);
 				if (result) {
 					setErrorMsg("Subscriber Name already exist");
 					return;
-				}
+				}*/
 			}
 
 			Address address;
@@ -444,8 +454,6 @@ public class SubscriberController extends BaseController {
 			this.subscriptionPopupView = infoPopupView;
 		}
 
-		@SuppressWarnings("deprecation")
-		
 		public void actionPerformed(ActionEvent e) {
 
 			setErrorMsg("");
@@ -454,23 +462,23 @@ public class SubscriberController extends BaseController {
 			String subscriptionGroup = null;
 			String subscriptionCode = null;
 			Integer subscriptionNumber = 0;
-			String subscriptionDate = null;
+//			String subscriptionDate = null;
 					
 			if (subscription == null) {
 				subscription = new Subscription();
 			}
 			
-			bookName = subscriptionPopupView.getBookComboBox().getSelectedItem().toString();
+			bookName = subscriptionPopupView.getBookNameComboBox().getSelectedItem().toString();
 			Book book = getBook(bookName);
 			subscription.setBook(book);
 			
-			subscriptionDate = subscriptionPopupView.getSubscribeDatePicker().getjTextField1();
+			/*subscriptionDate = subscriptionPopupView.getSubscribeDatePicker().getjTextField1();
 			if (subscriptionDate != null && subscriptionDate.length() > 0) {
-				subscription.setSubscriptionDate(new Date(subscriptionDate));
 			}
+			subscription.setSubscriptionDate(new Date());*/
 			subscriptionGroup = subscriptionPopupView.getGroupCodeTextField().getText();
 			subscription.setSubscriptionGroup(subscriptionGroup);
-			subscriptionCode = subscriptionPopupView.getCodeTextField().getText();
+			subscriptionCode = subscriptionPopupView.getSubscriptionCodeTextField().getText();
 			subscription.setSubscriptionCode(subscriptionCode);
 			subscriptionNumber = getSubscriptionNumber(subscription);
 			subscription.setSubscriptionNumber(subscriptionNumber);
@@ -480,10 +488,20 @@ public class SubscriberController extends BaseController {
 			} else {
 				subscription.setSubscriptionYear(Integer.parseInt(subscriptionYear));
 			}
-			String subscriptionExpiryDate = subscriptionPopupView.getExpiryTxt().getText();
+			String subscriptionExpiryDate = subscriptionPopupView.getExpiryTextField().getText();
 			if (subscriptionExpiryDate != null && subscriptionExpiryDate.length() > 0) {
-				subscription.setSubscriptionExpiredDate(new Date(subscriptionExpiryDate));
+				
+				try {					
+					subscription.setSubscriptionExpiredDate(DateUtil.getMonthEnddateFromExpiryMonthAndYear(subscriptionExpiryDate));
+				} catch (Exception t) {
+				}
 			}
+			
+			boolean freeCopy = subscriptionPopupView.getFreeCopyCheckBox().isSelected();
+			boolean exchangeCopy = subscriptionPopupView.getExchangeCopyCheckBox().isSelected();
+			
+			subscription.setFreeCopy(freeCopy);
+			subscription.setExchangeCopy(exchangeCopy);
 			
 			if (validateSubscription(subscriptionPopupView, subscription)) {
 				
@@ -529,16 +547,20 @@ public class SubscriberController extends BaseController {
 				SubscribeInfoDataTable dataModel = new SubscribeInfoDataTable(subscriptions);
 				view.getSubscriptionTable().setModel(dataModel);
 				subscribeInfoPopup.dispose();
+				view.getSaveButton().setEnabled(true);
 				subscription = null;
 			}
 		}
 
 		private Integer getSubscriptionNumber(Subscription subscription) {
 			
+			int subNumber = 0;
 			int fromIndex = subscription.getSubscriptionGroup().length();
 			int endIndex = subscription.getSubscriptionCode().length();
 			String subscriptionNumber = subscription.getSubscriptionCode().substring(fromIndex, endIndex);
-			return Integer.parseInt(subscriptionNumber);
+			if (subscriptionNumber.length() > 0)
+				subNumber = Integer.parseInt(subscriptionNumber);
+			return subNumber;
 		}
 	}
 	
@@ -547,26 +569,34 @@ public class SubscriberController extends BaseController {
 		
 		StringBuffer buffer = new StringBuffer();
 		Boolean status = false;
+		boolean isError = false;
 		if (subscription != null) {
 			
+			buffer.append("Fill the Mandatory Fields : \n");
+			
 			if (subscription.getBook() == null) {
-				buffer.append(" Book is Mandatory : \n");
+				buffer.append(" Book,  \n");
+				isError = true;
 			}
 			if (subscription.getSubscriptionGroup() == null || subscription.getSubscriptionGroup().length() == 0) {
-				buffer.append(" Group Code is Mandatory : \n");
+				buffer.append(" Group Code, \n");
+				isError = true;
 			}
 			if (subscription.getSubscriptionCode() == null || subscription.getSubscriptionCode().length() == 0) {
-				buffer.append(" Subscription Code is Mandatory : \n");
+				buffer.append(" Subscription Code, \n");
+				isError = true;
 			}
 			if (subscription.getSubscriptionExpiredDate() == null) {
-				buffer.append(" Expiry Date is Mandatory : \n");
+				buffer.append(" Expiry Date, \n");
+				isError = true;
 			}
 			if (subscription.getSubscriptionYear() == 0) {
-				buffer.append(" Subscription Year is Mandatory : \n");
+				buffer.append(" Subscription Year \n");
+				isError = true;
 			}
 		}
 		
-		if (buffer.length() > 0) {
+		if (isError) {
 			
 			status = false;
 			setPopUpErrorMsg(buffer.toString(), subscriptionPopupView);
@@ -605,13 +635,12 @@ public class SubscriberController extends BaseController {
 		
 		public void itemStateChanged(ItemEvent e) {
 			setPopUpErrorMsg("", infoPopupView);
-			setExpiryDateValue(infoPopupView);
+//			setExpiryDateValue(infoPopupView);
 		}
 
 	}
 
-	@SuppressWarnings("deprecation")
-	public void setExpiryDateValue(SubscriptionPopupView infoPopupView) {
+	/*public void setExpiryDateValue(SubscriptionPopupView infoPopupView) {
 
 		if (infoPopupView.getSubscribeDatePicker().getjTextField1() != null
 				&& !infoPopupView.getSubscribeDatePicker().getjTextField1()
@@ -629,10 +658,10 @@ public class SubscriberController extends BaseController {
 			calendar.set(Calendar.DATE,
 					calendar.getActualMaximum(Calendar.DATE));
 			DateFormat DATE_FORMAT = new SimpleDateFormat("dd-MMM-yyyy");
-			infoPopupView.getExpiryTxt().setText(
+			infoPopupView.getExpiryTextField().setText(
 					DATE_FORMAT.format(calendar.getTime()));
 		}
-	}
+	}*/
 
 	public Book getBook(String bookName) {
 		for (Book book : books) {
@@ -659,4 +688,56 @@ public class SubscriberController extends BaseController {
 	private void setPopUpErrorMsg(String msg, SubscriptionPopupView view) {
 		view.getErrorLabel().setText(msg);
 	}
+	
+	class FreeCopySelectionEvent 
+	implements ActionListener {
+		
+		SubscriptionPopupView popupView;
+		
+		public FreeCopySelectionEvent(SubscriptionPopupView popupView) {
+			
+			this.popupView = popupView;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			boolean selectStatus = this.popupView.getFreeCopyCheckBox().isSelected();
+			
+			if (selectStatus) {
+				this.popupView.getExchangeCopyCheckBox().setEnabled(false);
+			} else {
+				this.popupView.getExchangeCopyCheckBox().setEnabled(true);
+			}
+			
+		}
+		
+	}
+	
+	class ExchangeCopySelectionEvent 
+	implements ActionListener {
+		
+		SubscriptionPopupView popupView;
+		
+		public ExchangeCopySelectionEvent(SubscriptionPopupView popupView) {
+			
+			this.popupView = popupView;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			boolean selectStatus = this.popupView.getExchangeCopyCheckBox().isSelected();
+			
+			if (selectStatus) {
+				this.popupView.getFreeCopyCheckBox().setEnabled(false);
+			} else {
+				this.popupView.getFreeCopyCheckBox().setEnabled(true);
+			}
+			
+		}
+		
+	}
+	
+	
 }

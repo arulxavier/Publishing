@@ -19,8 +19,7 @@ public class BookListDataTable extends AbstractTableModel {
 	
 	String columnList[] = new String[] { 
 										"Book ID", 
-										"Book Name",
-										"Author", 
+										"Book Name",										
 										"Frequency"
 										};
 
@@ -42,10 +41,8 @@ public class BookListDataTable extends AbstractTableModel {
 		case 0:
 			return entity.getId();
 		case 1:
-			return entity.getName();
+			return entity.getName();		
 		case 2:
-			return entity.getAuthor();
-		case 3:
 			return entity.getFrequency();		
 		default:
 			return null;

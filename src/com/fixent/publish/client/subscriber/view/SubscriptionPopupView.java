@@ -28,21 +28,24 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
 
         jLabel5 = new javax.swing.JLabel();
         errorLabel = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        bookNameComboBox = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         groupCodeTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        codeTextField = new javax.swing.JTextField();
-        bookComboBox = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        subscribeDatePicker = new com.fixent.component.datepicker.ADatePicker();
-        jLabel2 = new javax.swing.JLabel();
         noOfYearComboBox = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        expiryTxt = new javax.swing.JTextField();
+        subscriptionCodeTextField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        expiryTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        saveButton = new javax.swing.JButton();
+        freeCopyCheckBox = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        exchangeCopyCheckBox = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
         cancelButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -52,26 +55,18 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
         errorLabel.setBackground(new java.awt.Color(255, 255, 255));
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel6.setText("Group Code");
-
-        groupCodeTextField.setColumns(15);
-
-        jLabel7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel7.setText("Subscription Code");
-
-        codeTextField.setColumns(15);
-
-        bookComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        bookComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel1.setText("Book Name");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jLabel2.setText("Subscribe Date");
+        bookNameComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        bookNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel6.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel6.setText("Group Code");
+
+        groupCodeTextField.setColumns(10);
 
         noOfYearComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         noOfYearComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select One", "1", "2", "3" }));
@@ -79,13 +74,33 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel3.setText("Years");
 
-        expiryTxt.setEditable(false);
-        expiryTxt.setBackground(new java.awt.Color(255, 255, 255));
-        expiryTxt.setColumns(15);
-        expiryTxt.setEnabled(false);
+        subscriptionCodeTextField.setColumns(10);
+
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel7.setText("Subscription Code");
+
+        expiryTextField.setEditable(false);
+        expiryTextField.setBackground(new java.awt.Color(255, 255, 255));
+        expiryTextField.setColumns(10);
+        expiryTextField.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel4.setText("Expired Date");
+
+        freeCopyCheckBox.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel8.setText("Free Copy");
+
+        exchangeCopyCheckBox.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel2.setText("Exchange Copy");
+
+        cancelButton.setBackground(new java.awt.Color(61, 86, 109));
+        cancelButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
+        cancelButton.setText("Cancel");
 
         saveButton.setBackground(new java.awt.Color(61, 86, 109));
         saveButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -93,78 +108,97 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
         saveButton.setText("Save");
         saveButton.setPreferredSize(new java.awt.Dimension(75, 25));
 
-        cancelButton.setBackground(new java.awt.Color(61, 86, 109));
-        cancelButton.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        cancelButton.setForeground(new java.awt.Color(255, 255, 255));
-        cancelButton.setText("Cancel");
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel9.setText("Expired Date : mmm-yyyy");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(groupCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(noOfYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(30, 30, 30))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(bookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(32, 32, 32)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel4)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bookNameComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noOfYearComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, 126, Short.MAX_VALUE)
+                    .addComponent(expiryTextField, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(groupCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(34, 34, 34))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
                                     .addComponent(jLabel2))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(subscribeDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(codeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(expiryTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(cancelButton)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(freeCopyCheckBox)
+                            .addComponent(subscriptionCodeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(exchangeCopyCheckBox)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelButton)))
+                .addGap(23, 23, 23))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(bookComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2))
-                    .addComponent(subscribeDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(groupCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(bookNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(codeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(noOfYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(expiryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                    .addComponent(groupCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(noOfYearComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(subscriptionCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7))
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton)
-                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(expiryTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel8))
+                    .addComponent(freeCopyCheckBox))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(exchangeCopyCheckBox)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cancelButton)
+                            .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel9)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -173,16 +207,16 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 116, Short.MAX_VALUE))
-                    .addComponent(errorLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(26, 26, 26)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 142, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -192,17 +226,19 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(45, 45, 45))
         );
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox bookComboBox;
+    private javax.swing.JComboBox bookNameComboBox;
     private javax.swing.JButton cancelButton;
-    private javax.swing.JTextField codeTextField;
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JTextField expiryTxt;
+    private javax.swing.JCheckBox exchangeCopyCheckBox;
+    private javax.swing.JTextField expiryTextField;
+    private javax.swing.JCheckBox freeCopyCheckBox;
     private javax.swing.JTextField groupCodeTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -211,17 +247,19 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JComboBox noOfYearComboBox;
     private javax.swing.JButton saveButton;
-    private com.fixent.component.datepicker.ADatePicker subscribeDatePicker;
+    private javax.swing.JTextField subscriptionCodeTextField;
     // End of variables declaration//GEN-END:variables
 	public javax.swing.JComboBox getBookComboBox() {
-		return bookComboBox;
+		return bookNameComboBox;
 	}
 
 	public void setBookComboBox(javax.swing.JComboBox bookComboBox) {
-		this.bookComboBox = bookComboBox;
+		this.bookNameComboBox = bookComboBox;
 	}
 
 	public javax.swing.JButton getCancelButton() {
@@ -233,11 +271,11 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
 	}
 
 	public javax.swing.JTextField getCodeTextField() {
-		return codeTextField;
+		return subscriptionCodeTextField;
 	}
 
 	public void setCodeTextField(javax.swing.JTextField codeTextField) {
-		this.codeTextField = codeTextField;
+		this.subscriptionCodeTextField = codeTextField;
 	}
 
 	public javax.swing.JLabel getErrorLabel() {
@@ -249,11 +287,11 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
 	}
 
 	public javax.swing.JTextField getExpiryTxt() {
-		return expiryTxt;
+		return expiryTextField;
 	}
 
 	public void setExpiryTxt(javax.swing.JTextField expiryTxt) {
-		this.expiryTxt = expiryTxt;
+		this.expiryTextField = expiryTxt;
 	}
 
 	public javax.swing.JTextField getGroupCodeTextField() {
@@ -280,14 +318,47 @@ public class SubscriptionPopupView extends javax.swing.JPanel {
 		this.saveButton = saveButton;
 	}
 
-	public com.fixent.component.datepicker.ADatePicker getSubscribeDatePicker() {
-		return subscribeDatePicker;
+	public javax.swing.JComboBox getBookNameComboBox() {
+		return bookNameComboBox;
 	}
 
-	public void setSubscribeDatePicker(
-			com.fixent.component.datepicker.ADatePicker subscribeDatePicker) {
-		this.subscribeDatePicker = subscribeDatePicker;
+	public void setBookNameComboBox(javax.swing.JComboBox bookNameComboBox) {
+		this.bookNameComboBox = bookNameComboBox;
 	}
 
+	public javax.swing.JCheckBox getExchangeCopyCheckBox() {
+		return exchangeCopyCheckBox;
+	}
+
+	public void setExchangeCopyCheckBox(javax.swing.JCheckBox exchangeCopyCheckBox) {
+		this.exchangeCopyCheckBox = exchangeCopyCheckBox;
+	}
+
+	public javax.swing.JTextField getExpiryTextField() {
+		return expiryTextField;
+	}
+
+	public void setExpiryTextField(javax.swing.JTextField expiryTextField) {
+		this.expiryTextField = expiryTextField;
+	}
+
+	public javax.swing.JCheckBox getFreeCopyCheckBox() {
+		return freeCopyCheckBox;
+	}
+
+	public void setFreeCopyCheckBox(javax.swing.JCheckBox freeCopyCheckBox) {
+		this.freeCopyCheckBox = freeCopyCheckBox;
+	}
+
+	public javax.swing.JTextField getSubscriptionCodeTextField() {
+		return subscriptionCodeTextField;
+	}
+
+	public void setSubscriptionCodeTextField(
+			javax.swing.JTextField subscriptionCodeTextField) {
+		this.subscriptionCodeTextField = subscriptionCodeTextField;
+	}
+
+	
     
 }

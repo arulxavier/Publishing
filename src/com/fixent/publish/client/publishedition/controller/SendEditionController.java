@@ -37,6 +37,9 @@ extends BaseController {
 
 	private void setView() {
 		
+		view.getAuthorTextField().setVisible(false);
+		view.getjLabel2().setVisible(false);
+		
 		view.getBookNameTextField().setText(book.getName().trim());
 		view.getAuthorTextField().setText(book.getAuthor());
 		view.getFrequencyTextField().setText(book.getFrequency());

@@ -41,5 +41,54 @@ public class DateUtil {
 		System.err.println(DateUtil.getLastDayOfTheMonth(date));
 		System.out.println(DateUtil.getFirstDayOfTheMonth(date));
 	}
+	
+	public static Date getMonthEnddateFromExpiryMonthAndYear(String expirydate) {
+		
+		Calendar calendar = null;
+		
+		if (expirydate != null && expirydate.length() > 0) {
+			
+			calendar = Calendar.getInstance();
+			
+			String[] expiryDateArray = expirydate.split("-");
+			calendar.set(Calendar.MONTH, getMonth(expiryDateArray[0]));
+			calendar.set(Calendar.YEAR, Integer.parseInt(expiryDateArray[1]));
+			calendar.setTime(getLastDayOfTheMonth(calendar.getTime()));
+		}		
+		return calendar != null ? calendar.getTime() : null;
+	}
+	
+	public static int getMonth(String month) {
+		
+		int monthValue = 0;
+		if (month != null) {
+			
+			if (month.equalsIgnoreCase("jan"))
+				monthValue =  0;
+			else if (month.equalsIgnoreCase("feb"))
+				monthValue =  1;
+			else if (month.equalsIgnoreCase("mar"))
+				monthValue =  2;
+			else if (month.equalsIgnoreCase("apr"))
+				monthValue =  3;
+			else if (month.equalsIgnoreCase("may"))
+				monthValue =  4;
+			else if (month.equalsIgnoreCase("jun"))
+				monthValue =  5;
+			else if (month.equalsIgnoreCase("jul"))
+				monthValue =  6;
+			else if (month.equalsIgnoreCase("aug"))
+				monthValue =  7;
+			else if (month.equalsIgnoreCase("sep"))
+				monthValue =  8;
+			else if (month.equalsIgnoreCase("oct"))
+				monthValue =  9;
+			else if (month.equalsIgnoreCase("nov"))
+				monthValue =  10;
+			else if (month.equalsIgnoreCase("dec"))
+				monthValue =  11;		
+		}
+		return monthValue;
+	}
 
 }

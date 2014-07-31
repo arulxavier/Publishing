@@ -16,7 +16,7 @@ public class SubscriberListDataTable extends AbstractTableModel {
 	/**/
 	private static final long serialVersionUID = 1L;
 	List<Subscriber> studentList;
-	String columnList[] = new String[] { "Name", "Mobile Number", "Pincode" };
+	String columnList[] = new String[] { "Name", "Addrress 1", "Address 2", "City", "Mobile Number", "Pincode" };
 
 	
 	public int getColumnCount() {
@@ -36,9 +36,15 @@ public class SubscriberListDataTable extends AbstractTableModel {
 		case 0:
 			return entity.getName();
 		case 1:
-			return entity.getMobileNumber();
+			return entity.getAddress().getStreet1();
 		case 2:
+			return entity.getAddress().getStreet2();
+		case 3:
+			return entity.getAddress().getCity();
+		case 4:
 			return entity.getAddress().getPincode();
+		case 5:
+			return entity.getMobileNumber();
 		default:
 			return null;
 		}

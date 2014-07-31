@@ -8,9 +8,10 @@ public class Subscription {
 	String subscriptionGroup;
 	Integer subscriptionNumber;
 	String subscriptionCode;
-	Date subscriptionDate;
 	Integer subscriptionYear;
 	Date subscriptionExpiredDate;
+	boolean freeCopy;
+	boolean exchangeCopy;
 	Book book;
 	Subscriber subscriber;
 	
@@ -38,12 +39,6 @@ public class Subscription {
 	public void setSubscriptionCode(String subscriptionCode) {
 		this.subscriptionCode = subscriptionCode;
 	}
-	public Date getSubscriptionDate() {
-		return subscriptionDate;
-	}
-	public void setSubscriptionDate(Date subscriptionDate) {
-		this.subscriptionDate = subscriptionDate;
-	}
 	public Integer getSubscriptionYear() {
 		return subscriptionYear;
 	}
@@ -68,4 +63,20 @@ public class Subscription {
 	public void setSubscriber(Subscriber subscriber) {
 		this.subscriber = subscriber;
 	}
+	public boolean isFreeCopy() {
+		return freeCopy;
+	}
+	public void setFreeCopy(boolean freeCopy) {
+		this.freeCopy = freeCopy;
+	}
+	public boolean isExchangeCopy() {
+		return exchangeCopy;
+	}
+	public void setExchangeCopy(boolean exchangeCopy) {
+		this.exchangeCopy = exchangeCopy;
+	}
+	public void setSubscriptionNumber(Integer subscriptionNumber) {
+		this.subscriptionNumber = subscriptionNumber;
+	}
+	
 }

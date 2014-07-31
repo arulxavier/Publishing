@@ -56,6 +56,12 @@ extends BaseController {
 			
 			bookPopupView.getSaveButton().addActionListener(new SaveAction(bookPopupView));
 			bookPopupView.getCancelButton().addActionListener(new CancelAction(bookPopupView));
+			
+			bookPopupView.getAuthorTextField().setVisible(false);
+			bookPopupView.getPublishingDatePicker().setVisible(false);
+			bookPopupView.getjLabel5().setVisible(false);
+			bookPopupView.getjLabel6().setVisible(false);
+			
 
 			bookPopup = new JDialog();
 			bookPopup.add(bookPopupView);
@@ -73,16 +79,19 @@ extends BaseController {
 			setErrorMsg("");
 			
 			final int row = view.getBookListTable().getSelectedRow();
-			Book deleteObject = books.get(row);
-			BookServiceImpl impl = new BookServiceImpl();
 			
-			if (!impl.deleteBook(deleteObject)) {
+			if (row != -1) {
 				
-				setErrorMsg("Cannot delete book details after it is subscribed");
-//				RightPanel rightSidePanel = (RightPanel)view.getParent();
-//				showPopup(rightSidePanel.getParent(), "Cannot delete book details after it is subscribed");
+				Book deleteObject = books.get(row);
+				BookServiceImpl impl = new BookServiceImpl();
+				
+				if (!impl.deleteBook(deleteObject)) {
+					setErrorMsg("Cannot delete book details after it is subscribed");
+				}
+				setView();
+			} else {
+				setErrorMsg("Select Row before Delete");
 			}
-			setView();
 		}
 	}
 
@@ -93,29 +102,39 @@ extends BaseController {
 		public void actionPerformed(ActionEvent e) {
 
 			final int row = view.getBookListTable().getSelectedRow();
-			// final int column =
-			// view.getSubjectCategoryTable().getSelectedColumn();
-			book = getBook((Integer) view.getBookListTable().getValueAt(row, 0));
-
-			BookPopupView bookPopupView = new BookPopupView();
-			bookPopupView.getBookNmaeTextField().setText(book.getName());
-			bookPopupView.getAuthorTextField().setText(book.getAuthor());
-			bookPopupView.getPublishingDatePicker().setDateTextField(
-					book.getPublishingDate());
-			bookPopupView.getFrequencyComboBox().setSelectedItem(
-					book.getFrequency());
-
-			bookPopupView.getSaveButton().addActionListener(
-					new SaveAction(bookPopupView));
-			bookPopupView.getCancelButton().addActionListener(
-					new CancelAction(bookPopupView));
-
-			bookPopup = new JDialog();
-			bookPopup.add(bookPopupView);
-			bookPopup.setSize(450, 400);
-			bookPopup.setResizable(false);
-			bookPopup.setLocationRelativeTo(null);
-			bookPopup.setVisible(true);
+			
+			if (row != -1) {
+				
+				book = getBook((String) view.getBookListTable().getValueAt(row, 0));
+				
+				BookPopupView bookPopupView = new BookPopupView();
+				bookPopupView.getBookNmaeTextField().setText(book.getName());
+				bookPopupView.getAuthorTextField().setText(book.getAuthor());
+				bookPopupView.getPublishingDatePicker().setDateTextField(
+						book.getPublishingDate());
+				bookPopupView.getFrequencyComboBox().setSelectedItem(
+						book.getFrequency());
+				
+				bookPopupView.getSaveButton().addActionListener(
+						new SaveAction(bookPopupView));
+				bookPopupView.getCancelButton().addActionListener(
+						new CancelAction(bookPopupView));
+				
+				bookPopupView.getAuthorTextField().setVisible(false);
+				bookPopupView.getPublishingDatePicker().setVisible(false);
+				bookPopupView.getjLabel5().setVisible(false);
+				bookPopupView.getjLabel6().setVisible(false);
+				
+				
+				bookPopup = new JDialog();
+				bookPopup.add(bookPopupView);
+				bookPopup.setSize(450, 400);
+				bookPopup.setResizable(false);
+				bookPopup.setLocationRelativeTo(null);
+				bookPopup.setVisible(true);
+			} else {
+				setErrorMsg("Select Row before Edit");
+			}
 		}
 	}
 
@@ -135,55 +154,86 @@ extends BaseController {
 			String publishdate;
 
 			BookServiceImpl impl = new BookServiceImpl();
-
-			if (book == null) {
+			
+			if (validateBook()) {
 				
-				book = new Book();
-				book.setName(bookPopupView.getBookNmaeTextField().getText());
-				book.setAuthor(bookPopupView.getAuthorTextField().getText());
-				publishdate = bookPopupView.getPublishingDatePicker().getjTextField1();
-				book.setPublishingDate(new Date(publishdate));
-				book.setFrequency(bookPopupView.getFrequencyComboBox().getSelectedItem().toString());
-				
-				BookInfo bookInfo = new BookInfo();
-				bookInfo.setBookName(book.getName());
-				bookInfo.setIsCreate(true);
-				boolean result = checkForDuplicate(bookInfo);
-				if (result) {
-					setErrorMsg("Book Name already exist");
-					return;
+				if (book == null) {
+					
+					book = new Book();
+					book.setName(bookPopupView.getBookNmaeTextField().getText());
+					book.setAuthor(bookPopupView.getAuthorTextField().getText());
+					publishdate = bookPopupView.getPublishingDatePicker().getjTextField1();
+					book.setPublishingDate(new Date(publishdate));
+					book.setFrequency(bookPopupView.getFrequencyComboBox().getSelectedItem().toString());
+					
+					BookInfo bookInfo = new BookInfo();
+					bookInfo.setBookName(book.getName());
+					bookInfo.setIsCreate(true);
+					boolean result = checkForDuplicate(bookInfo);
+					if (result) {
+						setErrorMsg("Book Name already exist");
+						return;
+					}
+					impl.createBook(book);
+				} else {
+					
+					book.setName(bookPopupView.getBookNmaeTextField()
+							.getText());
+					book.setAuthor(bookPopupView.getAuthorTextField()
+							.getText());
+					publishdate = bookPopupView
+							.getPublishingDatePicker().getjTextField1();
+					Date date = new Date(publishdate);
+					book.setPublishingDate(date);
+					book.setFrequency(bookPopupView.getFrequencyComboBox()
+							.getSelectedItem().toString());
+					
+					BookInfo bookInfo = new BookInfo();
+					bookInfo.setBookName(book.getName());
+					bookInfo.setIsCreate(false);
+					bookInfo.setId(book.getId());
+					
+					boolean result = checkForDuplicate(bookInfo);
+					if (result) {
+						setErrorMsg("Book Name already exist");
+						return;
+					}
+					impl.modifyBook(book);
 				}
-				impl.createBook(book);
-			} else {
 				
-				book.setName(bookPopupView.getBookNmaeTextField()
-						.getText());
-				book.setAuthor(bookPopupView.getAuthorTextField()
-						.getText());
-				publishdate = bookPopupView
-						.getPublishingDatePicker().getjTextField1();
-				Date date = new Date(publishdate);
-				book.setPublishingDate(date);
-				book.setFrequency(bookPopupView.getFrequencyComboBox()
-						.getSelectedItem().toString());
+				setView();
 				
-				BookInfo bookInfo = new BookInfo();
-				bookInfo.setBookName(book.getName());
-				bookInfo.setIsCreate(false);
-				bookInfo.setId(book.getId());
-				
-				boolean result = checkForDuplicate(bookInfo);
-				if (result) {
-					setErrorMsg("Book Name already exist");
-					return;
-				}
-				impl.modifyBook(book);
+				book = null;
+				bookPopup.dispose();
 			}
 
-			setView();
+		}
 
-			book = null;
-			bookPopup.dispose();
+		private boolean validateBook() {
+			
+			StringBuffer errorMsg = new StringBuffer();
+			boolean status = false;
+			errorMsg.append("Enter Mandatory Fields : ");
+			
+			if (bookPopupView.getBookNmaeTextField().getText().length() == 0) {
+				
+				errorMsg.append("Book Name, ");
+				status = true;
+			}
+			if (bookPopupView.getFrequencyComboBox().getSelectedItem().toString().equalsIgnoreCase("Select one")) {
+				
+				errorMsg.append("Frequency Year");
+				status = true;
+			}
+			
+			if (status) {
+				
+				bookPopupView.getErrorLabel().setText(errorMsg.toString());
+				return false;
+			} else {				
+				return true;
+			}
+			
 		}
 
 		private boolean checkForDuplicate(BookInfo bookInfo) {
@@ -218,6 +268,12 @@ extends BaseController {
 				bookView.getPublishingDatePicker().setDateTextField(
 						book.getPublishingDate());
 				setEditMode(bookView, false);
+				
+				bookView.getAuthorTextField().setVisible(false);
+				bookView.getPublishingDatePicker().setVisible(false);
+				bookView.getjLabel5().setVisible(false);
+				bookView.getjLabel6().setVisible(false);
+				
 				bookPopup = new JDialog();
 				bookPopup.add(bookView);
 				bookPopup.setSize(400, 400);
@@ -271,11 +327,11 @@ extends BaseController {
 
 	}
 
-	Book getBook(int id) {
+	Book getBook(String bookName) {
 
 		for (Book book : books) {
 
-			if (book.getId() == id) {
+			if (book.getName() == bookName) {
 				return book;
 			}
 		}

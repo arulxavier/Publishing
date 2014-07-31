@@ -56,7 +56,7 @@ public class SubscriptionDataTable extends AbstractTableModel {
 	
 	public String getExpiryDate(Date date) {
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-yyyy");
 		return dateFormat.format(date);
 	}
 	

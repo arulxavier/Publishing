@@ -223,6 +223,7 @@ public class PrintUtil {
 		fullAddress.append(subscriber.getAddress().getCity() + "\n");
 		fullAddress.append(subscriber.getAddress().getState() + "\n");
 		fullAddress.append(subscriber.getAddress().getPincode()	+ "\n");
+		fullAddress.append("Mobile : " + subscriber.getMobileNumber()	+ "\n");
 		fullAddress.append("   \n");
 		return fullAddress.toString();
 	
@@ -261,19 +262,7 @@ public class PrintUtil {
 			c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 			c1.setBorder(Rectangle.NO_BORDER);
 			table.addCell(c1);
-			//
-			// c1 = new PdfPCell(new Phrase("Mobile Number"));
-			// c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-			// table.addCell(c1);
-			//
-			// c1 = new PdfPCell(new Phrase("Book Name"));
-			// c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-			// table.addCell(c1);
-			//
-			// c1 = new PdfPCell(new Phrase("Address"));
-			// c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-			// table.addCell(c1);
-
+			
 			if (subscriptions != null && !subscriptions.isEmpty()) {
 
 				Map<Integer, Subscription> map = new HashedMap();
@@ -309,7 +298,7 @@ public class PrintUtil {
 								+ "\n");
 						fullAddress.append(info.getSubscriber()
 								.getAddress().getPincode()
-								+ "\n");
+								+ "               ");
 						SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(
 								"MMM-yyyy");
 						String date1 = DATE_FORMAT.format(info
@@ -346,7 +335,7 @@ public class PrintUtil {
 								+ "\n");
 						fullAddress1.append(info2.getSubscriber()
 								.getAddress().getPincode()
-								+ "\n");
+								+ "               ");
 						SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(
 								"MMM-yyyy");
 						String date1 = DATE_FORMAT.format(info2
@@ -362,71 +351,8 @@ public class PrintUtil {
 					table.addCell(c1);
 					
 					j = j+2;
-				}
-				
+				}	
 
-				/*for (SubscribeInfo subscribeInfo : subscribeInfos) {
-
-					StringBuffer fullAddress = new StringBuffer();
-					fullAddress.append("   \n");
-					fullAddress.append(String.valueOf(subscribeInfo
-							.getSubscriber().getCode()) + "\n");
-					fullAddress.append(subscribeInfo.getSubscriber().getName()
-							+ "\n");
-					fullAddress.append(subscribeInfo.getSubscriber()
-							.getAddress().getStreet1()
-							+ "\n");
-					fullAddress.append(subscribeInfo.getSubscriber()
-							.getAddress().getStreet2()
-							+ "\n");
-					fullAddress.append(subscribeInfo.getSubscriber()
-							.getAddress().getCity()
-							+ "\n");
-					fullAddress.append(subscribeInfo.getSubscriber()
-							.getAddress().getState()
-							+ "\n");
-					fullAddress.append(subscribeInfo.getSubscriber()
-							.getAddress().getPincode()
-							+ "\n");
-					SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(
-							"dd-MMM-yyyy");
-					String date1 = DATE_FORMAT.format(subscribeInfo
-							.getExpiredDate());
-					fullAddress.append(date1 + "\n");
-					fullAddress.append("   \n");
-
-					// table.addCell(subscribeInfo.getSubscriber() != null ?
-					// String
-					// .valueOf(subscribeInfo.getSubscriber().getId())
-					// : null);
-					// table.addCell(subscribeInfo.getSubscriber() != null ?
-					// subscribeInfo
-					// .getSubscriber().getName() : null);
-					// table.addCell(subscribeInfo.getSubscriber() != null ?
-					// subscribeInfo
-					// .getSubscriber().getMobileNumber() : null);
-					// table.addCell(subscribeInfo.getBook() != null ?
-					// subscribeInfo
-					// .getBook().getName() : null);
-					// String address =
-					// subscribeInfo.getSubscriber().getAddress().getStreet() +
-					// "\n" +
-					// subscribeInfo.getSubscriber().getAddress().getCity() +
-					// "\n" +
-					// subscribeInfo.getSubscriber().getAddress().getState() +
-					// "\n" +
-					// subscribeInfo.getSubscriber().getAddress().getPincode();
-					c1 = new PdfPCell(new Phrase(fullAddress.toString()));
-					c1.setHorizontalAlignment(Element.ALIGN_LEFT);
-					c1.setBorder(Rectangle.NO_BORDER);
-					table.addCell(c1);
-
-					c1 = new PdfPCell(new Phrase(""));
-					c1.setHorizontalAlignment(Element.ALIGN_LEFT);
-					c1.setBorder(Rectangle.NO_BORDER);
-					table.addCell(c1);
-
-				}*/
 			}
 
 			PrintUtil.addEmptyLine(preface, 3);

@@ -260,6 +260,22 @@ public class SendEditionView extends javax.swing.JPanel {
 	public void setSubscriberListTable(javax.swing.JTable subscriberListTable) {
 		this.subscriberListTable = subscriberListTable;
 	}
+
+	public javax.swing.JLabel getjLabel5() {
+		return jLabel5;
+	}
+
+	public void setjLabel5(javax.swing.JLabel jLabel5) {
+		this.jLabel5 = jLabel5;
+	}
+
+	public javax.swing.JPanel getjPanel1() {
+		return jPanel1;
+	}
+
+	public void setjPanel1(javax.swing.JPanel jPanel1) {
+		this.jPanel1 = jPanel1;
+	}
     
     
 }

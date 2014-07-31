@@ -17,7 +17,7 @@ public class BookDataTable extends AbstractTableModel {
 	/**/
 	private static final long serialVersionUID = 1L;
 	List<Book> books;
-	String columnList[] = new String[] { "Book ID", "Book Name", "Author", "Frequency" };
+	String columnList[] = new String[] {"Book Name", "Frequency" };
 
 	
 	public int getColumnCount() {
@@ -35,12 +35,8 @@ public class BookDataTable extends AbstractTableModel {
 		Book entity = books.get(rowIndex);
 		switch (columnIndex) {
 		case 0:
-			return entity.getId();
-		case 1:
 			return entity.getName();
-		case 2:
-			return entity.getAuthor();
-		case 3:
+		case 1:
 			return entity.getFrequency();
 		default:
 			return null;

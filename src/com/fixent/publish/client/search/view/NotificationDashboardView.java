@@ -30,14 +30,20 @@ public class NotificationDashboardView extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        fromDatePicker = new com.fixent.component.datepicker.ADatePicker();
         jLabel2 = new javax.swing.JLabel();
-        toDatePicker = new com.fixent.component.datepicker.ADatePicker();
         jLabel7 = new javax.swing.JLabel();
         bookNameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         subscriptionCodeTextField = new javax.swing.JTextField();
+        freeCopyCheckBox = new javax.swing.JCheckBox();
+        jLabel4 = new javax.swing.JLabel();
+        exchangeCopyCheckBox = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
         searchButton = new javax.swing.JButton();
+        fromDateTextField = new javax.swing.JTextField();
+        toDateTextField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -59,28 +65,63 @@ public class NotificationDashboardView extends javax.swing.JPanel {
 
         subscriptionCodeTextField.setColumns(15);
 
+        freeCopyCheckBox.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel4.setText("Free Copy");
+
+        exchangeCopyCheckBox.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel5.setText("Exchange Copy");
+
+        searchButton.setBackground(new java.awt.Color(61, 86, 109));
+        searchButton.setForeground(new java.awt.Color(255, 255, 255));
+        searchButton.setText("Search");
+
+        fromDateTextField.setColumns(15);
+
+        toDateTextField.setColumns(15);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel8.setText("mmm-yyyy");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel9.setText("mmm-yyyy");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(95, 95, 95)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(toDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fromDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bookNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(freeCopyCheckBox)
+                            .addComponent(exchangeCopyCheckBox)
+                            .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(toDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel9))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(fromDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel8))
                             .addComponent(subscriptionCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(200, 200, 200))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(142, 142, 142))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,64 +130,69 @@ public class NotificationDashboardView extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(bookNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(fromDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(toDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)))
-                .addGap(28, 28, 28)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(fromDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(toDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(subscriptionCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(freeCopyCheckBox)
+                    .addComponent(jLabel4))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(exchangeCopyCheckBox)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(searchButton)
                 .addContainerGap())
         );
-
-        searchButton.setBackground(new java.awt.Color(61, 86, 109));
-        searchButton.setForeground(new java.awt.Color(255, 255, 255));
-        searchButton.setText("Search");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(searchButton)
-                        .addGap(263, 263, 263))))
+                .addContainerGap(74, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(searchButton)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bookNameTextField;
-    private com.fixent.component.datepicker.ADatePicker fromDatePicker;
+    private javax.swing.JCheckBox exchangeCopyCheckBox;
+    private javax.swing.JCheckBox freeCopyCheckBox;
+    private javax.swing.JTextField fromDateTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField subscriptionCodeTextField;
-    private com.fixent.component.datepicker.ADatePicker toDatePicker;
+    private javax.swing.JTextField toDateTextField;
     // End of variables declaration//GEN-END:variables
 	public javax.swing.JTextField getBookNameTextField() {
 		return bookNameTextField;
@@ -156,14 +202,7 @@ public class NotificationDashboardView extends javax.swing.JPanel {
 		this.bookNameTextField = bookNameTextField;
 	}
 
-	public com.fixent.component.datepicker.ADatePicker getFromDatePicker() {
-		return fromDatePicker;
-	}
-
-	public void setFromDatePicker(
-			com.fixent.component.datepicker.ADatePicker fromDatePicker) {
-		this.fromDatePicker = fromDatePicker;
-	}
+	
 
 	public javax.swing.JButton getSearchButton() {
 		return searchButton;
@@ -173,14 +212,7 @@ public class NotificationDashboardView extends javax.swing.JPanel {
 		this.searchButton = searchButton;
 	}
 
-	public com.fixent.component.datepicker.ADatePicker getToDatePicker() {
-		return toDatePicker;
-	}
-
-	public void setToDatePicker(
-			com.fixent.component.datepicker.ADatePicker toDatePicker) {
-		this.toDatePicker = toDatePicker;
-	}
+	
 
 	public javax.swing.JTextField getSubscriptionCodeTextField() {
 		return subscriptionCodeTextField;
@@ -189,6 +221,38 @@ public class NotificationDashboardView extends javax.swing.JPanel {
 	public void setSubscriptionCodeTextField(
 			javax.swing.JTextField subscriptionCodeTextField) {
 		this.subscriptionCodeTextField = subscriptionCodeTextField;
+	}
+
+	public javax.swing.JCheckBox getExchangeCopyCheckBox() {
+		return exchangeCopyCheckBox;
+	}
+
+	public void setExchangeCopyCheckBox(javax.swing.JCheckBox exchangeCopyCheckBox) {
+		this.exchangeCopyCheckBox = exchangeCopyCheckBox;
+	}
+
+	public javax.swing.JCheckBox getFreeCopyCheckBox() {
+		return freeCopyCheckBox;
+	}
+
+	public void setFreeCopyCheckBox(javax.swing.JCheckBox freeCopyCheckBox) {
+		this.freeCopyCheckBox = freeCopyCheckBox;
+	}
+
+	public javax.swing.JTextField getFromDateTextField() {
+		return fromDateTextField;
+	}
+
+	public void setFromDateTextField(javax.swing.JTextField fromDateTextField) {
+		this.fromDateTextField = fromDateTextField;
+	}
+
+	public javax.swing.JTextField getToDateTextField() {
+		return toDateTextField;
+	}
+
+	public void setToDateTextField(javax.swing.JTextField toDateTextField) {
+		this.toDateTextField = toDateTextField;
 	}
     
     

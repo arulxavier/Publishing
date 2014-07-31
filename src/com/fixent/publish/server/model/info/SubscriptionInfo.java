@@ -13,6 +13,10 @@ public class SubscriptionInfo {
 	Date fromDate;
 	
 	Date toDate;
+	
+	boolean freeCopy;
+	
+	boolean exchangeCopy;
 
 	public String getSubscriptionCode() {
 		return subscriptionCode;
@@ -53,4 +57,21 @@ public class SubscriptionInfo {
 	public void setToDate(Date toDate) {
 		this.toDate = toDate;
 	}
+
+	public boolean isFreeCopy() {
+		return freeCopy;
+	}
+
+	public void setFreeCopy(boolean freeCopy) {
+		this.freeCopy = freeCopy;
+	}
+
+	public boolean isExchangeCopy() {
+		return exchangeCopy;
+	}
+
+	public void setExchangeCopy(boolean exchangeCopy) {
+		this.exchangeCopy = exchangeCopy;
+	}
+	
 }

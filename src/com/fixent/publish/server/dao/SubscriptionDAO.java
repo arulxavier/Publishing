@@ -43,6 +43,12 @@ extends BaseDAO {
 				criteria.add(Restrictions.ilike("subscriptionCode", "%"
 						+ subscriptionInfo.getSubscriptionCode().trim() + "%"));
 			}
+			
+			if (subscriptionInfo.isFreeCopy())
+			criteria.add(Restrictions.eq("freeCopy", subscriptionInfo.isFreeCopy()));
+			
+			if (subscriptionInfo.isExchangeCopy())
+			criteria.add(Restrictions.eq("exchangeCopy", subscriptionInfo.isExchangeCopy()));
 		
 		}
 		

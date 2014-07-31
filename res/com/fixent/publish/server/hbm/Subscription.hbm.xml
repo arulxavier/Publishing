@@ -20,9 +20,9 @@
 			<column name="SUBSCRIPTION_CODE" length="20" not-null="true" />
 		</property>
 		
-		<property name="subscriptionDate" type="date">
+		<!-- <property name="subscriptionDate" type="date">
 			<column name="SUBSCRIPTION_DATE" length="20" not-null="true" />
-		</property>	
+		</property>	 -->
 		
 		<property name="subscriptionYear" type="java.lang.Integer">
 			<column name="SUBSCRIPTION_YEAR" length="20" not-null="true" />
@@ -30,6 +30,14 @@
 			
 		<property name="subscriptionExpiredDate" type="date">
 			<column name="SUBSCRIPTION_EXPIRED_DATE" not-null="true" />
+		</property>
+		
+		<property name="freeCopy" type="boolean">
+			<column name="FREE_COPY" not-null="true" />
+		</property>
+		
+		<property name="exchangeCopy" type="boolean">
+			<column name="EXCHANGE_COPY" not-null="true" />
 		</property>
 		
 		 <many-to-one name="book" class="com.fixent.publish.server.model.Book" fetch="select">
